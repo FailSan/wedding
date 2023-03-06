@@ -1,0 +1,40 @@
+<div class="row">
+    <span class="link" data-page="intro">
+        <p>[01]</p>
+        <p class="big">Intro</p>
+    </span>
+
+    <span class="link" data-page="when">
+        <p>[02]</p>
+        <p class="big">Quando?</p>
+    </span>
+</div>
+
+<div class="row">
+    <span class="link" data-page="church">
+        <p>[03]</p>
+        <p class="big">Cerimonia</p>
+    </span>
+
+    <span class="link" data-page="castle">
+        <p>[04]</p>
+        <p class="big">Ricevimento</p>
+    </span>
+
+    <span class="link" data-page="guest">
+        <p>[05]</p>
+        <p class="big">RSVP</p>
+    </span>
+</div>
+
+<div class="row">
+    <span class="link" data-page="present">
+        <p>[06]</p>
+        <p class="big">Regalo</p>
+    </span>
+
+    <span class="link" data-page="misc">
+        <p>[07]</p>
+        <p class="big">Faq &amp; Contatti</p>
+    </span>
+</div>
