@@ -443,6 +443,12 @@
         font-size: calc(150px - ((1440px - 100vw) / 10));
     }
 
+    [data-content="present"] .separator {
+        height: 120px;
+
+        margin-top: 80px;
+        margin-bottom: 30px;
+    }
 
     /********************************************************************/
     /***** MISC *********************************************************/
@@ -452,9 +458,9 @@
         flex-direction: column;
         justify-content: flex-start;
         align-items: flex-start;
-        gap: 5vh;
+        gap: 120px;
 
-        padding: 50px 20px 50px 20px;
+        padding: 50px 24px 120px 24px;
     }
 
     [data-content="misc"] .faqs {

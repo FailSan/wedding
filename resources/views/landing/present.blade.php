@@ -6,3 +6,5 @@
     <p>[IBAN]</p>
     <p class="big">IT 33 BUKB 2020 1555 5555 55</p>
 </span>
+
+<div class="separator"></div>

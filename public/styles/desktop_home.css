@@ -31,14 +31,14 @@
 
 .big {
     font-family: 'Ayer', Georgia, 'Times New Roman', Times, serif;
-    font-size: calc(260px - (((1440px + 810px) - (100vw + 100vh)) / 10));
+    font-size: min(calc(260px - ((1440px - 100vw) / 5)), calc(260px - ((810px - 100vh) / 5)));
     line-height: 0.85;
     text-transform: uppercase;
 }
 
 .mid {
     font-family: 'Ayer', Georgia, 'Times New Roman', Times, serif;
-    font-size: calc(64px - ((1440px - 100vw) / 25));
+    font-size: min(calc(64px - ((1440px - 100vw) / 20)), calc(64px - ((810px - 100vh) / 20)));
     line-height: 1.125;
     text-indent: 2.5ch;
 }
@@ -135,12 +135,12 @@ main .pages {
 
 .photos {
     filter: grayscale(100);
-    transition: 0.5s linear;
+    transition: filter 0.5s linear;
 }
 
 .photos.paint {
     filter: none;
-    transition: 0.5s linear;
+    transition: filter 0.5s linear;
 }
 
 
@@ -422,7 +422,7 @@ nav .percentage {
 }
 
 [data-content="intro"] .right .mid {
-    width: 75%;
+    width: max(75%, 20ch);
 }
 
 [data-content="intro"] .right .dialog {
@@ -588,6 +588,7 @@ nav .percentage {
 
 [data-content="church"] .head .right img, [data-content="castle"] .head .right img {
     width: calc(420px - ((1440px - 100vw) / 5));
+    max-width: 100%;
     height: auto;
 
     position: absolute;
@@ -621,7 +622,7 @@ nav .percentage {
 }
 
 [data-content="church"] .content .hour .big, [data-content="castle"] .content .hour .big {
-    font-size: calc(120px - (((1440px + 810px) - (100vw + 100vh)) / 10));
+    font-size: min(calc(120px - ((1440px - 100vw) / 15)), calc(120px - ((810px - 100vh) / 15)));
 }
 
 
@@ -849,6 +850,24 @@ nav .percentage {
     font-size: calc(120px - ((1440px - 100vw) / 10));
 }
 
+[data-content="present"] .separator {
+    border-right: 1px Solid rgba(0, 0, 0, 0.2);
+
+    width: 1px;
+    height: 250px;
+
+    position: relative;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+
+    margin-top: 160px;
+    margin-bottom: 160px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /********************************************************************/
 /***** MISC *********************************************************/
 /********************************************************************/
@@ -859,18 +878,18 @@ nav .percentage {
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
-    gap: 8vw;
+    gap: 6vw;
     
     min-height: 100%;
 
-    padding: 120px 8vw 50px 8vw;
+    padding: 0px 8vw 120px 8vw;
 
     position: relative;
     z-index: 8;
 }
 
 [data-content="misc"] .big {
-    font-size: calc(180px - (((1440px + 810px) - (100vw + 100vh)) / 10));
+    font-size: min(calc(180px - ((1440px - 100vw) / 10)), calc(180px - ((810px - 100vh) / 10)));
     margin-bottom: 48px;
 }
 
@@ -880,7 +899,7 @@ nav .percentage {
     justify-content: flex-start;
     align-items: flex-start;
 
-    width: 60%;
+    width: 50%;
 }
 
 [data-content="misc"] .faqs .question {
@@ -921,7 +940,7 @@ nav .percentage {
 
 [data-content="misc"] .faqs .question .answer {
     width: 100%;
-    max-height: 50vh;
+    max-height: 100vh;
 
     padding: 0px 0px 16px 0px;
 
@@ -944,7 +963,7 @@ nav .percentage {
     justify-content: flex-start;
     align-items: flex-start;
 
-    width: 40%;
+    width: 50%;
 }
 
 [data-content="misc"] .contacts .numbers {
