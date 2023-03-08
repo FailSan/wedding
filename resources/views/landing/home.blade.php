@@ -21,7 +21,7 @@
 
         <main>
 
-            <a class="guest_button" href="/guest">RSVP</a>
+            <a class="fixedRSVP" href="/guest">RSVP</a>
 
             <section data-content="home" class="pages">@include('landing.hero')</section>
 

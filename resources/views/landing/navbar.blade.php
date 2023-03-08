@@ -7,6 +7,8 @@
     <p data-lang="en">EN</p>
 </span>
 
+<div class="percentage"></div>
+
 <menu class="hidden">
     @include('landing.menu')
 </menu>

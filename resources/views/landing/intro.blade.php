@@ -4,9 +4,11 @@
 </span>
 
 <span class="right">
-    <p class="mid">Avete capito bene. Dopo 7 anni dovevo pur cedere. Anche perchè si portava la testa già da un po' che poi ne faceva "anta" e bla bla bla...</p>
+    <p class="mid">Avete capito bene. Dopo 7 anni dovevo pur cedere. Anche perchè si portava la testa già da un po' che poi ne faceva &ldquo;anta&rdquo; e bla bla bla...</p>
     <span class="dialog">
-        <p>Scherzi a parte, siamo emozionati e felici nell'invitarvi al più importante giorno della nostra vita!</p>
-        <p class="grey">[Più importante dopo l'uscita dell'iPhone, naturalmente.]</p>
+        <p class="little">Scherzi a parte, siamo emozionati e felici nell'invitarvi al più importante giorno della nostra vita!</p>
+        <p class="little grey">[Più importante dopo l'uscita dell'iPhone, naturalmente.]</p>
     </span>
 </span>
+
+<div class="separator"></div>

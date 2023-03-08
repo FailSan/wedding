@@ -1,5 +1,6 @@
 <span class="slider">
-    <p class="big">Ci sarai? / Ci sarai? / Ci sarai? / Ci sarai? / Ci sarai? / Ci sarai?</p>
+    <p class="big">Ci sarai? / Ci sarai? / Ci sarai? / Ci sarai? / Ci sarai? / Ci sarai? / </p>
+    <p class="big">Ci sarai? / Ci sarai? / Ci sarai? / Ci sarai? / Ci sarai? / Ci sarai? / </p>
 </span>
 
 <span class="container">

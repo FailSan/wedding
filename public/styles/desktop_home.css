@@ -21,8 +21,8 @@
     font-family: 'Termina Medium', Arial, Helvetica, sans-serif;
     font-size: 12px;
     letter-spacing: 3px;
-    color: rgba(143, 130, 94, 1);
     text-transform: uppercase;
+    color: rgba(143, 130, 94, 1);
 }
 
 .grey {
@@ -40,7 +40,38 @@
     font-family: 'Ayer', Georgia, 'Times New Roman', Times, serif;
     font-size: calc(64px - ((1440px - 100vw) / 25));
     line-height: 1.125;
-    text-indent: 4ch;
+    text-indent: 2.5ch;
+}
+
+.little {
+    font-family: 'NB International', Verdana, Tahoma, sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+
+/********************************************************************/
+/***** LINKS ********************************************************/
+/********************************************************************/
+
+a {
+    appearance: none;
+    text-decoration: none;
+}
+
+a:hover {
+    appearance: none;
+    text-decoration: none;
+}
+
+a:visited {
+    appearance: none;
+    text-decoration: none;
+}
+
+a:active {
+    appearance: none;
+    text-decoration: none;
 }
 
 
@@ -112,40 +143,17 @@ main .pages {
     transition: 0.5s linear;
 }
 
-/********************************************************************/
-/***** LINKS ********************************************************/
-/********************************************************************/
-
-a {
-    appearance: none;
-    text-decoration: none;
-}
-
-a:hover {
-    appearance: none;
-    text-decoration: none;
-}
-
-a:visited {
-    appearance: none;
-    text-decoration: none;
-}
-
-a:active {
-    appearance: none;
-    text-decoration: none;
-}
-
 
 /********************************************************************/
 /***** BUTTON *******************************************************/
 /********************************************************************/
 
-.guest_button {
+.fixedRSVP {
     font-family: 'Termina Medium', Arial, Helvetica, sans-serif;
     font-size: 10px;
-    color: rgba(255, 255, 255, 1);
     letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 1);
 
     border-radius: 50%;
     background-color: rgba(143, 130, 94, 1);
@@ -158,8 +166,8 @@ a:active {
     aspect-ratio: 1 / 1;
 
     position: fixed;
-    top: 25px;
-    right: 25px;
+    top: 24px;
+    right: 24px;
     z-index: 100;
 }
 
@@ -181,8 +189,7 @@ nav {
     flex-shrink: 0;
     flex-grow: 0;
 
-    width: 5vw;
-    min-width: 60px;
+    width: 64px;
     height: 100%;
 
     padding: 24px 12px 24px 12px;
@@ -191,7 +198,7 @@ nav {
     z-index: 1;
 }
 
-nav img.logo {
+nav .logo {
     width: 40px;
 
     aspect-ratio: 1/1;
@@ -199,7 +206,7 @@ nav img.logo {
     cursor: pointer;
 }
 
-nav img.opener {
+nav .opener {
     width: 24px;
 
     aspect-ratio: 1/1;
@@ -211,8 +218,8 @@ nav .language {
     font-family: 'Termina Medium', Arial, Helvetica, sans-serif;
     font-size: 12px;
     letter-spacing: 3px;
-    color: rgba(161, 161, 161, 1);
     writing-mode: vertical-lr;
+    color: rgba(161, 161, 161, 1);
 
     display: flex;
     align-items: center;
@@ -226,8 +233,8 @@ nav .language .selected {
 }
 
 nav menu {
-    color: rgba(0, 0, 0, 1);
     white-space: nowrap;
+    color: rgba(0, 0, 0, 1);
 
     background-color: rgba(255, 255, 255, 1);
 
@@ -236,15 +243,14 @@ nav menu {
     justify-content: space-evenly;
     align-items: center;
 
-    width: 95vw;
-    max-width: calc(100vw - 50px);
+    width: calc(100vw - 63px);
     height: 100%;
 
     padding: 5vh 0px 5vh 0px;
 
     position: absolute;
     top: 0px;
-    left: 100%;
+    left: calc(100% - 1px);
     z-index: 1;
 
     overflow-x: hidden;
@@ -260,8 +266,6 @@ nav menu.hidden {
     height: 100%;
 
     padding: 0px;
-
-    z-index: -1;
 
     transition: 0.5s linear;
 }
@@ -290,7 +294,7 @@ nav menu .row:nth-of-type(3) {
 
 nav menu .row .link {
     display: flex;
-    gap: 10px;
+    gap: 16px;
 
     cursor: pointer;
 }
@@ -301,6 +305,19 @@ nav menu .row .link .big {
 
 nav menu .row .link:hover .big {
     font-style: italic;
+}
+
+nav .percentage {
+    --percentage: 0%;
+
+    border-right: 1px Solid rgba(0, 0, 0, 1);
+
+    width: 0px;
+    height: var(--percentage);
+
+    position: absolute;
+    top: 0px;
+    right: -1px;
 }
 
 
@@ -315,7 +332,7 @@ nav menu .row .link:hover .big {
 
     min-height: 100%;
 
-    padding: 0vh 8vw 15vh 8vw;
+    padding: 0vh 8vw 10vh 8vw;
 
     position: sticky;
     top: 0px;
@@ -323,12 +340,12 @@ nav menu .row .link:hover .big {
 }
 
 [data-content="home"] img {
-    width: calc(350px - (((1440px + 810px)  - (100vw + 100vh)) / 5));
+    width: calc(310px - (((1440px + 810px)  - (100vw + 100vh)) / 5));
     height: auto;
 
     position: absolute;
     top: 0px;
-    right: 15%;
+    right: 20%;
 }
 
 [data-content="home"] .left {
@@ -362,8 +379,8 @@ nav menu .row .link:hover .big {
 /********************************************************************/
 
 [data-content="intro"] {
-    border-top-left-radius: 50px;
-    border-top-right-radius: 50px;
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
     background-color: rgba(244, 243, 241, 1);
 
     display: flex;
@@ -373,7 +390,7 @@ nav menu .row .link:hover .big {
 
     min-height: 100%;
 
-    padding: 120px 8vw 50px 8vw;
+    padding: 120px 8vw 120px 8vw;
 
     position: relative;
     z-index: 2;
@@ -382,16 +399,15 @@ nav menu .row .link:hover .big {
 [data-content="intro"] .left {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
+    gap: 120px;
 
     flex-shrink: 0;
-
-    height: 100%;
 }
 
 [data-content="intro"] .left img {
-    width: calc(360px - ((1440px - 100vw) / 5));
+    width: calc(310px - ((1440px - 100vw) / 5));
     height: auto;
 }
 
@@ -422,6 +438,22 @@ nav menu .row .link:hover .big {
     width: 50%;
 }
 
+[data-content="intro"] .separator {
+    border-right: 1px Solid rgba(0, 0, 0, 0.2);
+
+    width: 1px;
+    height: 250px;
+
+    position: absolute;
+    top: auto;
+    bottom: 20px;
+    left: 0px;
+    right: 0px;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
 
 /********************************************************************/
 /***** WHEN *********************************************************/
@@ -432,12 +464,12 @@ nav menu .row .link:hover .big {
 
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     align-items: center;
 
     min-height: 100%;
 
-    padding: 50px 8vw 50px 8vw;
+    padding: 120px 8vw 120px 8vw;
 
     position: sticky;
     top: 0px;
@@ -448,8 +480,18 @@ nav menu .row .link:hover .big {
     text-align: center;
 }
 
+[data-content="when"] > p:nth-of-type(1) {
+    margin-bottom: 64px;
+}
+
+[data-content="when"] > p:nth-of-type(2) {
+    margin-bottom: 48px;
+}
+
 [data-content="when"] > p:nth-of-type(3) {
     width: 50%;
+
+    margin-bottom: 32px;
 }
 
 [data-content="when"] .countdown {
@@ -458,22 +500,23 @@ nav menu .row .link:hover .big {
     border: 1px Solid rgba(143, 130, 94, 1);
 
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     gap: 0.5ch;
 
     height: 64px;
 }
 
-[data-content="when"] .countdown img {
+[data-content="when"] .countdown > p {
+    text-align: center;
+    min-width: 3ch;
+}
+
+[data-content="when"] .countdown > img {
     height: 56px;
     width: auto;
 
     margin: 0px 24px 0px 24px;
-}
-
-[data-content="when"] .countdown p {
-    font-weight: bold;
 }
 
 
@@ -495,8 +538,8 @@ nav menu .row .link:hover .big {
 }
 
 [data-content="church"], [data-content="castle"] {
-    border-top-right-radius: 50px;
-    border-top-left-radius: 50px;
+    border-top-right-radius: 24px;
+    border-top-left-radius: 24px;
 
     display: flex;
     flex-direction: column;
@@ -506,7 +549,7 @@ nav menu .row .link:hover .big {
 
     min-height: 100%;
 
-    padding: 72px 0px 50px 0px; 
+    padding: 72px 0px 72px 0px; 
 
     position: sticky;
     top: 0px;
@@ -529,7 +572,7 @@ nav menu .row .link:hover .big {
 }
 
 [data-content="church"] .head .top img, [data-content="castle"] .head .top img {
-    width: calc(270px - ((1440px - 100vw) / 15));
+    width: calc(200px - ((1440px - 100vw) / 15));
     height: auto;
 }
 
@@ -544,7 +587,7 @@ nav menu .row .link:hover .big {
 }
 
 [data-content="church"] .head .right img, [data-content="castle"] .head .right img {
-    width: calc(440px - ((1440px - 100vw) / 5));
+    width: calc(420px - ((1440px - 100vw) / 5));
     height: auto;
 
     position: absolute;
@@ -679,8 +722,8 @@ nav menu .row .link:hover .big {
 [data-content="guest"] {
     color: rgba(255, 255, 255, 1);
 
-    border-top-right-radius: 50px;
-    border-top-left-radius: 50px;
+    border-top-right-radius: 24px;
+    border-top-left-radius: 24px;
     background-color: rgba(170, 157, 121, 1);
 
     display: flex;
@@ -711,9 +754,9 @@ nav menu .row .link:hover .big {
 }
 
 [data-content="guest"] .slider .big {
-    white-space: nowrap;
+    white-space: pre;
 
-    animation: scrollingLeft 20s linear infinite alternate;
+    animation: 10s linear infinite scrollingLeft;
 }
 
 @keyframes scrollingLeft {
@@ -756,14 +799,14 @@ nav menu .row .link:hover .big {
 
     padding: 20px 32px 20px 32px;
 
-    transition: 2s linear;
+    transition: 1s linear;
 }
 
 [data-content="guest"] .container .button:hover {
     background-color: rgba(143, 130, 94, 1);
     color: rgba(255, 255, 255, 1);
 
-    transition: 2s linear;
+    transition: 1s linear;
 }
 
 /********************************************************************/
@@ -771,8 +814,8 @@ nav menu .row .link:hover .big {
 /********************************************************************/
 
 [data-content="present"] {
-    border-top-right-radius: 50px;
-    border-top-left-radius: 50px;
+    border-top-right-radius: 24px;
+    border-top-left-radius: 24px;
     background-color: rgba(255, 255, 255, 1);
 
     display: flex;

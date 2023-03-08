@@ -8,11 +8,14 @@ let whenContainer = document.querySelector('[data-content="when"]');
 let churchContainer = document.querySelector('[data-content="church"]');
 let castleContainer = document.querySelector('[data-content="castle"]');
 
-window.addEventListener('load', adjustContainers);
-window.addEventListener('resize', adjustContainers);
-window.addEventListener('orientationchange', adjustContainers);
+window.addEventListener('load', initiateWindow);
+window.addEventListener('resize', initiateWindow);
+window.addEventListener('orientationchange', initiateWindow);
 
-function adjustContainers() {
+function initiateWindow() {
+    let perc = 100 * (feedContainer.scrollTop + feedContainer.clientHeight) / feedContainer.scrollHeight;
+    percentageLine.style.setProperty('--percentage', perc + '%');
+
     churchContainer.style.top = - (churchContainer.scrollHeight - feedContainer.clientHeight) + "px";
     castleContainer.style.top = - (castleContainer.scrollHeight - feedContainer.clientHeight) + "px";
 }
@@ -57,6 +60,14 @@ function showContent(event) {
     }
     openMenu();
     feedContainer.scrollTop = scrollToPage;
+}
+
+let percentageLine = document.querySelector('nav .percentage');
+feedContainer.addEventListener('scroll', fillPercentage);
+
+function fillPercentage() {
+    let perc = 100 * (feedContainer.scrollTop + feedContainer.clientHeight) / feedContainer.scrollHeight;
+    percentageLine.style.setProperty('--percentage', perc + '%');
 }
 
 let footerArrow = document.querySelector('footer #footer_arrow');

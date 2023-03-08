@@ -6,7 +6,7 @@
 </span>
 
 <span class="right">
-    <p>Sono lieti di invitarvi al loro matrimonio.</p>
-    <p class="grey">[Sì, finalmente ci sposiamo.]</p>
+    <p class="little">Sono lieti di invitarvi al loro matrimonio.</p>
+    <p class="little grey">[Sì, finalmente ci sposiamo.]</p>
 </span>
     
