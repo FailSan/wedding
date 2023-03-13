@@ -25,6 +25,8 @@ Route::view('/signup', 'signup');
 
 Route::view('/login', 'login');
 
+Route::view('/form', 'guest.form');
+
 Route::controller(UserController::class)->prefix('user')->group(function() {
     //Basic Actions
     Route::view('/login', 'login')->name('login');
