@@ -2,22 +2,42 @@
 /***** GRAPHICS *****************************************************/
 /********************************************************************/
 
-let feedContainer = document.querySelector('main');
-let heroContainer = document.querySelector('[data-content="home"]');
+let mainDocument = document.documentElement;
 let whenContainer = document.querySelector('[data-content="when"]');
 let churchContainer = document.querySelector('[data-content="church"]');
 let castleContainer = document.querySelector('[data-content="castle"]');
 
 window.addEventListener('load', initiateWindow);
+window.addEventListener('load', hideLoader);
 window.addEventListener('resize', initiateWindow);
 window.addEventListener('orientationchange', initiateWindow);
+window.addEventListener('scroll', fillPercentage);
+
+function hideLoader() {
+    let loader = document.querySelector('.loader');
+
+    setTimeout(function() {
+        loader.classList.add('hidden');
+        setTimeout(() => loader.remove(), 2000);
+    }, 2000);
+}
+
+let percentageLine = document.querySelector('nav .percentage');
+
+function fillPercentage() {
+    let perc = 100 * (window.scrollY + mainDocument.clientHeight) / mainDocument.scrollHeight;
+    percentageLine.style.setProperty('--percentage', perc + '%');
+}
 
 function initiateWindow() {
-    let perc = 100 * (feedContainer.scrollTop + feedContainer.clientHeight) / feedContainer.scrollHeight;
-    percentageLine.style.setProperty('--percentage', perc + '%');
+    fillPercentage();
+    
+    if(whenContainer.scrollHeight > mainDocument.clientHeight) {
+        whenContainer.style.top = - (whenContainer.style.top + whenContainer.scrollHeight - mainDocument.clientHeight) + "px";
+    }
 
-    churchContainer.style.top = - (churchContainer.scrollHeight - feedContainer.clientHeight) + "px";
-    castleContainer.style.top = - (castleContainer.scrollHeight - feedContainer.clientHeight) + "px";
+    churchContainer.style.top = - (churchContainer.style.top + churchContainer.scrollHeight - mainDocument.clientHeight) + "px";
+    castleContainer.style.top = - (castleContainer.style.top + castleContainer.scrollHeight - mainDocument.clientHeight) + "px";
 }
 
 let menuOpener = document.querySelector('nav [data-open]');
@@ -59,16 +79,9 @@ function showContent(event) {
         }
     }
     openMenu();
-    feedContainer.scrollTop = scrollToPage;
+    window.scroll(0, scrollToPage);
 }
 
-let percentageLine = document.querySelector('nav .percentage');
-feedContainer.addEventListener('scroll', fillPercentage);
-
-function fillPercentage() {
-    let perc = 100 * (feedContainer.scrollTop + feedContainer.clientHeight) / feedContainer.scrollHeight;
-    percentageLine.style.setProperty('--percentage', perc + '%');
-}
 
 let footerArrow = document.querySelector('footer #footer_arrow');
 footerArrow.addEventListener('click', showHome);
@@ -76,7 +89,7 @@ footerArrow.addEventListener('click', showHome);
 function showHome(event) {
     event.preventDefault();
 
-    feedContainer.scrollTop = 0;
+    window.scroll(0, 0);
 }
 
 let faqLinks = document.querySelectorAll('.faqs .question .link');
@@ -102,7 +115,6 @@ function showAnswer(event) {
 /********************************************************************/
 
 let countContainer = document.querySelector('.countdown');
-window.addEventListener('load', runCountDown);
 
 function runCountDown() {
     let dayContainer = countContainer.querySelector('[data-time="days"]');
@@ -113,8 +125,6 @@ function runCountDown() {
     let weddingDate = new Date('Jul 13, 2023 16:30:00');
 
     setInterval(function() {
-        let scrollFix = feedContainer.scrollTop;
-
         let todayDate = new Date();
         let dateDiff = weddingDate - todayDate;
 
@@ -127,28 +137,7 @@ function runCountDown() {
         hourContainer.textContent = hours + "H";
         minuteContainer.textContent = minutes + "M";
         secondContainer.textContent = seconds + "S";
-
-        feedContainer.scrollTop = scrollFix;
     }, 1000);
 }
 
-
-/********************************************************************/
-/***** SCROLLFIX ****************************************************/
-/********************************************************************/
-
-let photos = document.querySelectorAll('.photos');
-for(let i = 0; i < photos.length; i++) {
-    photos[i].addEventListener('click', paintPhotos);
-}
-
-function paintPhotos(event) {
-    event.preventDefault();
-
-    let scrollFix = feedContainer.scrollTop;
-
-    let currentImage = event.currentTarget;
-    currentImage.classList.toggle('paint');
-
-    feedContainer.scrollTop = scrollFix;
-}
+runCountDown();

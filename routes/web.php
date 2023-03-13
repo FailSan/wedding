@@ -19,17 +19,11 @@ use App\Http\Controllers\TableController;
 |
 */
 
-Route::get('/', function () {
-    return view('landing.home');
-})->name('home');
+Route::view('/', 'landing.home')->name('home');
 
-Route::get('/signup', function() {
-    return view('signup');
-});
+Route::view('/signup', 'signup');
 
-Route::get('/login', function() {
-    return view('login');
-});
+Route::view('/login', 'login');
 
 Route::controller(UserController::class)->prefix('user')->group(function() {
     //Basic Actions

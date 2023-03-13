@@ -23,11 +23,12 @@
     <p>[presso la location di...]</p>
     <span class="title">
         <p class="big">Castello Xirumi</p>
-        <p class="big">Serravalle<img class="photos" src="{{ Storage::url('images/castle_00.png') }}"></p>
+        <p class="big">Serravalle</p>
+        <img class="photos" src="{{ Storage::url('images/castle_00.png') }}">
     </span>
 
     <span class="maps">
-        <p>SP69ii, 96016 Lentini SR</p>
+        <p>SP69ii<br>96016 Lentini SR</p>
         <a class="directions" href="https://goo.gl/maps/owFSaBEnTb4YP1kD8">
             <p>Raggiungere la location</p>
             <img src="{{ Storage::url('images/map.svg') }}">

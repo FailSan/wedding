@@ -22,14 +22,15 @@
 <div class="location">
     <p>[presso la Chiesa di...]</p>
     <span class="title">
-        <p class="big">S. Francesco<img class="photos" src="{{ Storage::url('images/church_00.png') }}"></p>
+        <p class="big">S. Francesco</p>
         <p class="big">d'Assisi All'Immacolata</p>
+        <img class="photos" src="{{ Storage::url('images/church_00.png') }}">
     </span>
 
     <span class="maps">
-        <p>Piazza S. Francesco d'Assisi, 2, 95124 Catania CT</p>
+        <p>Piazza S. Francesco d'Assisi, 2<br>95124 Catania CT</p>
         <a class="directions" href="https://goo.gl/maps/THDnKCXCdWHd2Kmw5">
-            <p>Raggiungere la location</p>
+            <p>Raggiungere la Chiesa</p>
             <img src="{{ Storage::url('images/map.svg') }}">
         </a>
     </span>

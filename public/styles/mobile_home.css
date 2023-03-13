@@ -25,22 +25,13 @@
     /********************************************************************/
     /***** GLOBAL *******************************************************/
     /********************************************************************/
+
     body {
         font-size: 14px;
-        flex-direction: column;
     }
 
-    main {
-        width: 100vw;
-        height: auto;
-    }
-
-    .photos {
-        transition: 0s linear;
-    }
-    
-    .photos.paint {
-        transition: 0s linear;
+    .pages {
+        width: 100%;
     }
 
     /********************************************************************/
@@ -185,10 +176,14 @@
         align-items: flex-start;
         gap: 16px;
 
-        padding: 0px 24px 64px 24px;
+        min-height: calc(100vh - 56px);
+
+        padding: 0px 24px 10vh 24px;
+
+        top: 56px;
     }
 
-    [data-content="home"] img {
+    [data-content="home"] > img {
         width: 150px;
 
         top: 0px;
@@ -196,11 +191,21 @@
     }
 
     [data-content="home"] .left {
-        gap: 40px;
-
         flex-grow: 0;
 
         width: 100%;
+    }
+
+    [data-content="home"] .left > .brown {
+        margin-bottom: 40px;
+    }
+
+    [data-content="home"] .left p:nth-of-type(3) > img {
+        left: calc(100% - 15px);
+    }
+
+    [data-content="home"] .left p:nth-of-type(3) > img.rings {    
+        top: -20px;
     }
     
     [data-content="home"] .right {
@@ -218,6 +223,8 @@
         gap: 64px;
 
         padding: 64px 24px 64px 24px;
+
+        top: 56px;
     }
 
     [data-content="intro"] .left {
@@ -266,7 +273,11 @@
     /********************************************************************/
 
     [data-content="when"] {
+        min-height: calc(100vh - 56px);
+
         padding: 64px 24px 64px 24px;
+
+        top: 56px;
     }
 
     [data-content="when"] > p:nth-of-type(1) {
@@ -291,14 +302,16 @@
     }
 
     [data-content="when"] .countdown img {
-        margin: 0px 0px 0px 0px;
+        margin: 0px;
     }
 
     /********************************************************************/
     /***** CHURCH AND CASTLE ********************************************/
     /********************************************************************/
 
-    /*padding-top: 72px;**/
+    [data-content="church"], [data-content="castle"] {
+        top: 56px;
+    }
 
     [data-content="church"] .head .top, [data-content="castle"] .head .top {
         align-items: flex-start;
@@ -328,10 +341,8 @@
     [data-content="church"] .content, [data-content="castle"] .content {
         width: 100%;
 
-        padding: 50px 20px 50px 20px;
+        padding: 50px 24px 50px 24px;
     }
-
-    /**margin-bot: 64px;*/
 
     [data-content="church"] .content .mid, [data-content="castle"] .content .mid {
         width: 100%;
@@ -347,60 +358,68 @@
     /********************************************************************/
 
     .location {
-        padding: 50px 20px 50px 20px;
+        padding: 50px 24px 50px 24px;
     }
 
-    .location .title .big {
-        font-size: calc(180px - ((1440px - 100vw) / 10));
+    .location .title {
+        font-size: 72px;
     }
 
-    .location .title .big:has(img) {
-        justify-content: flex-start;
-        align-items: flex-start;
-    }
-
-    [data-content="church"] .location .title .big:has(img) {
-        flex-direction: column-reverse;
-    }
-
-    [data-content="castle"] .location .title .big:has(img) {
-        flex-direction: column;
-    }
-
-    .location .title .big img {
+    .location .title img {
         width: 100%;
         height: auto;
 
-        margin-left: 0px;
-        margin-top: 10px;
-        margin-bottom: 10px;
+        position: relative;
+    }
+
+    [data-content="church"] .location .title img {
+        top: 0px;
+        left: 0px;
+    }
+    
+    [data-content="castle"] .location .title img {
+        bottom: 0px;
+        left: 0px;
     }
 
     .location .maps {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        align-items: center;
-        gap: 20px;
+        align-items: flex-start;
+        gap: 32px;
     
         width: 100%;
     }
 
-    .location .directions {
+    .location .maps .directions {
+        font-size: 10px;
+        letter-spacing: 2px;
+
         width: 100%;
+        height: 48px;
+
+        padding: 16px 24px 16px 24px;
     }
 
+    .location .maps .directions img {
+        width: 12px;
+    }
 
     /********************************************************************/
     /***** GUEST ********************************************************/
     /********************************************************************/
 
     [data-content="guest"] {
-        padding: 50px 20px 50px 20px;
+        min-height: calc(100vh - 56px);
+
+        padding: 72px 0px 72px 0px;
+
+        top: 56px;
     }
 
     [data-content="guest"] .slider {
-        padding: 20px 0px 20px 0px;
+        padding: 10px 0px 10px 0px;
     }
 
     [data-content="guest"] .container {
@@ -415,7 +434,11 @@
     }
     
     [data-content="guest"] .container .button {
+        font-size: 10px;
+        letter-spacing: 2px;
+
         width: 100%;
+        height: 48px;
     }
 
 
@@ -423,8 +446,10 @@
     /***** PRESENT ******************************************************/
     /********************************************************************/
 
-    [data-content="present"] {    
-        padding: 50px 20px 50px 20px;
+    [data-content="present"] {
+        padding: 72px 24px 72px 24px;
+
+        top: 56px;
     }
     
     [data-content="present"] .mid {
@@ -440,7 +465,7 @@
     }
     
     [data-content="present"] .iban .big {
-        font-size: calc(150px - ((1440px - 100vw) / 10));
+        font-size: 40px;
     }
 
     [data-content="present"] .separator {
@@ -460,7 +485,9 @@
         align-items: flex-start;
         gap: 120px;
 
-        padding: 50px 24px 120px 24px;
+        padding: 72px 24px 120px 24px;
+
+        top: 56px;
     }
 
     [data-content="misc"] .faqs {
@@ -476,4 +503,13 @@
     /***** FOOTER *******************************************************/
     /********************************************************************/
 
+    footer {
+        min-height: calc(100vh - 56px);
+    }
+    
+    footer > span {
+        font-size: 8px;
+
+        justify-content: space-between;
+    }
 }

@@ -55,22 +55,18 @@
 /********************************************************************/
 
 a {
-    appearance: none;
     text-decoration: none;
 }
 
 a:hover {
-    appearance: none;
     text-decoration: none;
 }
 
 a:visited {
-    appearance: none;
     text-decoration: none;
 }
 
 a:active {
-    appearance: none;
     text-decoration: none;
 }
 
@@ -91,7 +87,9 @@ a:active {
 
 html {
     width: 100%;
-    height: 100%;
+    min-height: 100vh;
+
+    scroll-behavior: smooth;
 }
 
 body {
@@ -99,50 +97,67 @@ body {
     font-size: 16px;
 
     display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-
-    width: 100%;
-    height: 100%;
-
-    overflow-x: hidden;
-    overflow-y: hidden;
-}
-
-main {
-    display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: flex-start;
+    align-items: flex-end;
 
-    flex-grow: 1;
-
-    height: 100%;
-    
-    position: relative;
-    z-index: 0;
+    width: 100%;
+    height: auto;
 
     overflow-x: hidden;
     overflow-y: auto;
+
+    position: relative;
 }
 
-main .pages {
-    flex-grow: 0;
-    flex-shrink: 0;
+.loader {
+    color:rgba(255, 255, 255, 1);
 
-    width: 100%;
+    background-color:rgba(0, 0, 0, 1);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    height: 100vh;
+    width: 100vw;
+
+    position: absolute;
+    top: 0px;
+    left: 0px;
+
+    z-index: 1000;
+
+    transition: 2s linear;
+}
+
+.loader.hidden {
+    color: transparent;
+
+    background-color: none;
+    opacity: 0;
+
+    z-index: -1;
+
+    pointer-events: none;
+
+    transition: 2s;
+}
+
+.pages {
+    width: calc(100% - 64px);
 }
 
 .photos {
     filter: grayscale(100);
-    transition: filter 0.5s linear;
+    transition: filter 1s linear;
 }
 
-.photos.paint {
+.photos:hover {
     filter: none;
-    transition: filter 0.5s linear;
+    transition: filter 1s linear;
 }
-
 
 /********************************************************************/
 /***** BUTTON *******************************************************/
@@ -168,7 +183,7 @@ main .pages {
     position: fixed;
     top: 24px;
     right: 24px;
-    z-index: 100;
+    z-index: 90;
 }
 
 
@@ -186,30 +201,25 @@ nav {
     justify-content: space-between;
     align-items: center;
 
-    flex-shrink: 0;
-    flex-grow: 0;
-
     width: 64px;
-    height: 100%;
+    height: 100vh;
 
     padding: 24px 12px 24px 12px;
 
-    position: relative;
-    z-index: 1;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    z-index: 100;
 }
 
 nav .logo {
     width: 40px;
-
     aspect-ratio: 1/1;
-
-    cursor: pointer;
 }
 
 nav .opener {
     width: 24px;
-
-    aspect-ratio: 1/1;
+    height: auto;
 
     cursor: pointer;
 }
@@ -267,7 +277,9 @@ nav menu.hidden {
 
     padding: 0px;
 
-    transition: 0.5s linear;
+    z-index: -1;
+
+    transition: 1s linear;
 }
 
 nav menu .row {
@@ -330,16 +342,16 @@ nav .percentage {
     justify-content: space-between;
     align-items: flex-end;
 
-    min-height: 100%;
+    min-height: 100vh;
 
-    padding: 0vh 8vw 10vh 8vw;
+    padding: 0vh 8vw 5vh 8vw;
 
     position: sticky;
     top: 0px;
     z-index: 1;
 }
 
-[data-content="home"] img {
+[data-content="home"] > img {
     width: calc(310px - (((1440px + 810px)  - (100vw + 100vh)) / 5));
     height: auto;
 
@@ -353,9 +365,35 @@ nav .percentage {
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-start;
-    gap: 5vh;
 
     flex-grow: 1;
+}
+
+[data-content="home"] .left > .brown {
+    margin-bottom: 72px;
+}
+
+[data-content="home"] .left p:nth-of-type(3) {
+    position: relative;
+}
+
+[data-content="home"] .left p:nth-of-type(3) > img {
+    width: 1.5ch;
+
+    position: absolute;
+    left: calc(100% - 25px);
+}
+
+[data-content="home"] .left p:nth-of-type(3) > img.rings {
+    aspect-ratio: 1 / 1;
+
+    top: -40px;
+}
+
+[data-content="home"] .left p:nth-of-type(3) > img.shadow {
+    height: 10px;
+
+    bottom: 0px;
 }
 
 [data-content="home"] .right {
@@ -387,8 +425,6 @@ nav .percentage {
     justify-content: space-between;
     align-items: flex-start;
     gap: 8vw;
-
-    min-height: 100%;
 
     padding: 120px 8vw 120px 8vw;
 
@@ -467,8 +503,6 @@ nav .percentage {
     justify-content: flex-start;
     align-items: center;
 
-    min-height: 100%;
-
     padding: 120px 8vw 120px 8vw;
 
     position: sticky;
@@ -497,6 +531,7 @@ nav .percentage {
 [data-content="when"] .countdown {
     font-family: 'Termina Medium', Arial, Helvetica, sans-serif;
     font-size: 13px;
+    font-weight: bold;
     border: 1px Solid rgba(143, 130, 94, 1);
 
     display: flex;
@@ -547,7 +582,7 @@ nav .percentage {
     align-items: flex-start;
     gap: 5vh;
 
-    min-height: 100%;
+    min-height: 100vh;
 
     padding: 72px 0px 72px 0px; 
 
@@ -605,7 +640,7 @@ nav .percentage {
     width: 100%;
     height: auto;
 
-    padding: 50px 5vw 50px 5vw;
+    padding: 50px 8vw 50px 8vw;
 }
 
 [data-content="church"] .content .mid, [data-content="castle"] .content .mid {
@@ -639,7 +674,7 @@ nav .percentage {
 
     width: 100%;
 
-    padding: 50px 5vw 50px 5vw;
+    padding: 50px 8vw 50px 8vw;
     margin-bottom: 100px;
 }
 
@@ -648,22 +683,34 @@ nav .percentage {
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
+
+    position: relative;
+}
+
+.location .title {
+    font-size: min(calc(180px - ((1440px - 100vw) / 10)), calc(180px - ((810px - 100vh) / 10)));
+    line-height: 1;
 }
 
 .location .title .big {
-    font-size: calc(180px - ((1440px - 100vw) / 10));
-    line-height: 1;
-
-    display: flex;
-    align-items: center;
+    font-size: inherit;
 }
 
-.location .title .big img {
+.location .title img {
     width: auto;
-    height: calc(140px - ((1440px - 100vw) / 10));
+    height: min(calc(130px - ((1440px - 100vw) / 10)), calc(130px - ((810px - 100vh) / 10)));
 
-    margin-left: 40px;
-    margin-bottom: 13px;
+    position: absolute;
+}
+
+[data-content="church"] .location .title img {
+    top: 3px;
+    left: 6ch;
+}
+
+[data-content="castle"] .location .title img {
+    bottom: 20px;
+    left: 5.5ch;
 }
 
 .location .maps {
@@ -678,6 +725,7 @@ nav .percentage {
     color: rgba(0, 0, 0, 1);
     font-family: 'Termina Medium', Arial, Helvetica, sans-serif;
     font-size: 13px;
+    font-weight: bold;
     letter-spacing: 3px;
     text-transform: uppercase;
 
@@ -732,9 +780,9 @@ nav .percentage {
     justify-content: space-evenly;
     align-items: center;
 
-    min-height: 100%;
+    min-height: 100vh;
 
-    padding: 50px 0vw 50px 0vw;
+    padding: 72px 0vw 72px 0vw;
 
     position: sticky;
     top: 0px;
@@ -748,7 +796,7 @@ nav .percentage {
 
     width: 100%;
 
-    padding: 50px 0px 50px 0px;
+    padding: 20px 0px 52px 0px;
 
     overflow-x: hidden;
     overflow-y: hidden;
@@ -757,10 +805,10 @@ nav .percentage {
 [data-content="guest"] .slider .big {
     white-space: pre;
 
-    animation: 10s linear infinite scrollingLeft;
+    animation: 20s linear infinite slidingLeft;
 }
 
-@keyframes scrollingLeft {
+@keyframes slidingLeft {
     0% {
         transform: translateX(0%);
     }
@@ -786,8 +834,9 @@ nav .percentage {
 [data-content="guest"] .container .button {
     font-family: 'Termina Medium', Arial, Helvetica, sans-serif;
     font-size: 13px;
-    color: rgba(0, 0, 0, 1);
+    font-weight: bold;
     letter-spacing: 3px;
+    color: rgba(0, 0, 0, 1);
 
     background-color: rgba(255, 255, 255, 1);
 
@@ -825,9 +874,7 @@ nav .percentage {
     align-items: flex-start;
     gap: 5vh;
 
-    min-height: 100%;
-
-    padding: 120px 8vw 50px 8vw;
+    padding: 120px 8vw 0px 8vw;
 
     position: relative;
     z-index: 7;
@@ -847,7 +894,7 @@ nav .percentage {
 }
 
 [data-content="present"] .iban .big {
-    font-size: calc(120px - ((1440px - 100vw) / 10));
+    font-size: min(calc(120px - ((1440px - 100vw) / 15)), calc(120px - ((810px - 100vh) / 15)));
 }
 
 [data-content="present"] .separator {
@@ -863,7 +910,7 @@ nav .percentage {
     right: 0px;
 
     margin-top: 160px;
-    margin-bottom: 160px;
+    margin-bottom: 40px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -879,10 +926,8 @@ nav .percentage {
     justify-content: flex-start;
     align-items: flex-start;
     gap: 6vw;
-    
-    min-height: 100%;
 
-    padding: 0px 8vw 120px 8vw;
+    padding: 120px 8vw 120px 8vw;
 
     position: relative;
     z-index: 8;
@@ -921,11 +966,15 @@ nav .percentage {
     width: 100%;
 
     padding: 10px 0px 16px 0px;
+
+    transition: 0.5s linear;
 }
 
 [data-content="misc"] .faqs .question .link.active {
     font-weight: bold;
     padding: 10px 0px 8px 0px;
+
+    transition: 0.5s linear;
 }
 
 [data-content="misc"] .faqs .question .link img {
@@ -997,22 +1046,58 @@ footer {
     flex-shrink: 0;
 
     width: 100%;
-    min-height: 100%;
+    min-height: 100vh;
 
     position: relative;
-    z-index: 7;
+    top: 100%;
+    z-index: 9;
 
     overflow-x: hidden;
     overflow-y: hidden;
 }
 
 footer .big {
-    font-size: calc(120px - (((1440px + 810px) - (100vw + 100vh)) / 10));
+    font-size: min(calc(120px - ((1440px - 100vw) / 15)), calc(260px - ((810px - 100vh) / 15)));
     color: rgba(255, 255, 255, 1);
     
     z-index: 1;
 
     margin-bottom: 24px;
+}
+
+footer .slider {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: -1;
+
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+footer .slider .container {
+    flex-shrink: 0;
+
+    width: 100vw;
+    height: 100%;
+
+    animation: 10s linear infinite slidingPhotos;
+}
+
+@keyframes slidingPhotos {
+    from {
+        transform: translateX(0%);
+    }
+    to {
+        transform: translateX(-100%)
+    }   
 }
 
 footer #footer_arrow {
@@ -1021,8 +1106,6 @@ footer #footer_arrow {
 
     width: 88px;
     height: 56px;
-
-    z-index: 10;
 
     cursor: pointer;
 
@@ -1033,10 +1116,6 @@ footer #footer_arrow {
 footer #footer_arrow:hover {
     filter: invert(1);
     transition: 1s linear;
-}
-
-footer .photos {
-    z-index: 0;
 }
 
 footer .top {
@@ -1075,7 +1154,7 @@ footer .right {
     right: 10%;
 }
 
-footer span {
+footer > span {
     font-family: 'Termina Medium', Arial, Helvetica, sans-serif;
     font-size: 10px;
     letter-spacing: 3px;

@@ -17,31 +17,31 @@
 
     </head>
     <body>
+        <div class="loader">
+            <p class="big">Caricamento</p>
+            <img src="{{ Storage::url('images/rings-loader.svg') }}">
+        </div>
         <nav>@include('landing.navbar')</nav>
 
-        <main>
+        <a class="fixedRSVP" href="/guest">RSVP</a>
 
-            <a class="fixedRSVP" href="/guest">RSVP</a>
+        <section data-content="home" class="pages">@include('landing.hero')</section>
 
-            <section data-content="home" class="pages">@include('landing.hero')</section>
+        <section data-content="intro" class="pages">@include('landing.intro')</section>
 
-            <section data-content="intro" class="pages">@include('landing.intro')</section>
+        <section data-content="when" class="pages">@include('landing.when')</section>
 
-            <section data-content="when" class="pages">@include('landing.when')</section>
+        <section data-content="church" class="pages">@include('landing.church')</section>
 
-            <section data-content="church" class="pages">@include('landing.church')</section>
+        <section data-content="castle" class="pages">@include('landing.castle')</section>
 
-            <section data-content="castle" class="pages">@include('landing.castle')</section>
+        <section data-content="guest" class="pages">@include('landing.guest')</section>
 
-            <section data-content="guest" class="pages">@include('landing.guest')</section>
+        <section data-content="present" class="pages">@include('landing.present')</section>
 
-            <section data-content="present" class="pages">@include('landing.present')</section>
+        <section data-content="misc" class="pages">@include('landing.misc')</section>
 
-            <section data-content="misc" class="pages">@include('landing.misc')</section>
-
-            <footer>@include('landing.footer')</footer>
-            
-        </main>
+        <footer class="pages">@include('landing.footer')</footer>
 
     </body>
 </html>
