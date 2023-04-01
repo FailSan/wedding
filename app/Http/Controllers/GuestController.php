@@ -205,10 +205,15 @@ class GuestController extends Controller
             'name' => 'sometimes|required|string',
             'surname' => 'sometimes|required|string',
 
+            'church_confirm' => 'sometimes|required|boolean',
+            'castle_confirm' => 'sometimes|required|boolean',
+
             'diet' => 'sometimes|string|nullable',
             'allergies' => 'sometimes|string|nullable',
 
-            'confirmed' => 'sometimes|required|boolean'
+            'extra_confirm' => 'sometimes|required|boolean',
+
+            'confirmed' => 'sometimes|required|boolean',
         ]);
         
         if($validator->fails()) {

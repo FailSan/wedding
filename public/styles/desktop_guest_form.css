@@ -25,28 +25,21 @@
     color: rgba(143, 130, 94, 1);
 }
 
-.grey {
-    color: rgba(161, 161, 161, 1);
-}
-
 .big {
     font-family: 'Ayer', Georgia, 'Times New Roman', Times, serif;
-    font-size: min(calc(260px - ((1440px - 100vw) / 5)), calc(260px - ((810px - 100vh) / 5)));
+    font-size: 150px;
     line-height: 0.85;
     text-transform: uppercase;
 }
 
 .mid {
     font-family: 'Ayer', Georgia, 'Times New Roman', Times, serif;
-    font-size: min(calc(64px - ((1440px - 100vw) / 20)), calc(64px - ((810px - 100vh) / 20)));
+    font-size: 64px;
     line-height: 1.125;
-    text-indent: 2.5ch;
 }
 
-.little {
-    font-family: 'NB International', Verdana, Tahoma, sans-serif;
-    font-size: 16px;
-    line-height: 24px;
+.grey {
+    color: rgba(161, 161, 161, 1);
 }
 
 
@@ -85,6 +78,11 @@ a:active {
     box-sizing: border-box;
 }
 
+:root {
+    --section-index: 0;
+    --form-index: 0;
+}
+
 html {
     width: 100%;
     height: 100vh;
@@ -110,99 +108,622 @@ body {
 /********************************************************************/
 
 main {
-    border-radius: 24px;
-    background-color: rgba(244, 243, 241, 1);
+    background-color: rgba(255, 255, 255, 1);
 
     display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 
-    width: 60%;
-    height: 60%;
+    width: 100%;
+    height: 100%;
 
     overflow-x: hidden;
     overflow-y: hidden;
+
+    position: relative;
+    z-index: 0;
 }
 
-main .form-container {
-    background-color: rgba(244, 243, 241, 1);
+.form-intro, .form-feed, .form-summary {
+    flex-shrink: 0;
+
+    width: calc(100% - 64px);
+    height: 100%;
+
+    transform: translateY(calc(var(--section-index) * 100% * -1));
+    transition: 1s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+[data-section-sel="1"] {
+    opacity: 1;
+}
+
+[data-section-sel="0"] {
+    opacity: 0;
+    pointer-events: none;
+}
+
+
+/********************************************************************/
+/***** SIDEBAR ******************************************************/
+/********************************************************************/
+
+main .sidebar {
+    border-right: 1px Solid rgba(0, 0, 0, 0.2);
+    border-bottom: 0px Solid rgba(0, 0, 0, 0);
+    background-color: rgba(255, 255, 255, 1);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 64px;
+    height: 100vh;
+
+    padding: 24px 12px 24px 12px;
+
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    z-index: 100;
+}
+
+main .sidebar .logo {
+    width: 40px;
+    aspect-ratio: 1/1;
+}
+
+main .sidebar .language {
+    font-family: 'Termina Medium', Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    letter-spacing: 3px;
+    writing-mode: vertical-lr;
+    color: rgba(161, 161, 161, 1);
+
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    transform: rotate(180deg);
+}
+
+main .sidebar .language .selected {
+    color: rgba(0, 0, 0, 1);
+}
+
+main .sidebar .percentage {
+    --percentage: 0%;
+
+    border-right: 1px Solid rgba(0, 0, 0, 1);
+
+    width: 0px;
+    height: var(--percentage);
+
+    position: absolute;
+    top: 0px;
+    right: -1px;
+}
+
+
+/********************************************************************/
+/***** NAV **********************************************************/
+/********************************************************************/
+
+main nav {
+    display: flex;
+    gap: 8px;
+
+    position: absolute;
+    bottom: 45px;
+    right: calc(25% + 5vw);
+    
+    z-index: 10;
+
+    transition: 1s;
+}
+
+main nav.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+main nav img {
+    border: 1px Solid rgba(19, 19, 19, 0.2);
+
+    width: 48px;
+    height: 48px;
+
+    padding: 12px;
+
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+main nav img:hover {
+    background-color:rgba(161, 161, 161, 1);
+}
+
+main nav img:first-of-type {
+    transform: rotate(180deg);
+}
+
+/********************************************************************/
+/***** INTRO ********************************************************/
+/********************************************************************/
+
+main .form-intro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-intro .hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 50px;
+
+    position: relative;
+    z-index: 1;
+}
+
+.form-intro .hero::after {
+    content: "";
+
+    background-image: url('../storage/images/logo.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 80% 80%;
+    background-blend-mode: hard-light;
+
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: -1;
+
+    opacity: 0.5;
+    filter: invert(1) brightness(100) drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.5));
+}
+
+.form-intro .mid {
+    text-align: center;
+
+    width: 70%;
+}
+
+.form-intro .ready-button {
+    color: rgba(255, 255, 255, 1);
+    font-family: 'Termina Medium', Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+
+    outline: 0px;
+    border: 0px;
+    background-color: rgba(143, 130, 94, 1);
+
+    height: 64px;
+
+    padding: 20px 32px 20px 32px;
+    margin-top: 50px;
+
+    cursor: pointer;
+    transition: 1s;
+}
+
+.form-intro .ready-button:hover {
+    background-color: rgba(143, 130, 94, 0.5);
+}
+
+.form-intro .ready-button:active {
+    background-color: rgba(143, 130, 94, 0.5);
+}
+
+/********************************************************************/
+/***** CONTAINER ****************************************************/
+/********************************************************************/
+
+main .form-feed {
+    display: flex;
+}
+
+.form-feed .form-container {
+    background-color: rgba(255, 255, 255, 1);
 
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
 
-    width: 80%;
+    width: 75%;
     height: 100%;
 }
 
-main .form-summary {
-    background-color: rgba(161, 161, 161, 1);
-
+.form-feed .form-container form {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
+    
+    flex-shrink: 0;
 
-    width: 20%;
+    width: 100%;
     height: 100%;
+
+    padding: 120px 8vw 45px 8vw;
+
+    position: relative;
+
+    transform: translateY(calc(var(--form-index) * 100% * -1));
+    transition: 1s cubic-bezier(0.18, 0.89, 0.32, 1.28);
 }
 
+[data-form-sel='1'] {
+    opacity: 1;
+}
+
+[data-form-sel='0'] {
+    opacity: 0;
+    pointer-events: none;
+}
 
 /********************************************************************/
 /***** FORM *********************************************************/
 /********************************************************************/
 
-main .form-container form {
+.form-container form .info-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+
+    width: 85%;
+}
+
+.form-container form .brown {
+    margin-bottom: 56px;
+}
+
+.form-container form .mid {
+    margin-bottom: 64px;
+}
+
+.form-container form input[type="text"] {
+    font-size: 20px;
+    color: rgba(0, 0, 0, 1);
+
+    outline: 0px;
+
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 1px Solid rgba(161, 161, 161, 1);
+    background-color: transparent;
+    
+    width: 100%;
+    
+    padding-bottom: 8px;
+    margin-bottom: 32px;
+}
+
+.form-container form input[type="text"]::placeholder {
+    color:rgba(161, 161, 161, 1);
+}
+
+.form-container form .radio-group {
+    border: 0px;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 32px;
+
+    margin-bottom: 32px;
+}
+
+.form-container form .radio-group .radio-label {
+    border: 1px Solid rgba(19, 19, 19, 0.2);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 250px;
+    height: 70px;
+
+    padding: 24px 16px 24px 16px;
+
+    cursor: pointer;
+    transition: 1s;
+}
+
+.form-container form .radio-group .radio-label:hover {
+    background-color: rgba(143, 130, 94, 0.5);
+}
+
+.form-container form .radio-group .radio-label img {
+    width: 12px;
+    aspect-ratio: 1 / 1;
+}
+
+.form-container form .radio-group .radio-label:has(input[type="radio"]:checked) {
+    border: 10px Solid rgba(143, 130, 94, 1);
+    background-color: rgba(143, 130, 94, 0.5);
+}
+
+.form-container form .radio-group .radio-label input[type="radio"] {
+    appearance: none;
+    visibility: hidden;
+    display: none;
+}
+
+.form-container form .error-box {
+    border-radius: 12px;
+    background-color: rgba(139, 0, 0, 0.5);
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 20px 32px 20px 32px;
+    margin-bottom: 16px;
+}
+
+.form-container form .error-box.hidden {
+    opacity: 0;
+
+    width: 0px;
+    height: 0px;
+
+    padding: 0px;
+    margin-bottom: 0px;
+}
+
+.form-container form .submit-label {
+    font-size: 14px;
+
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    margin-bottom: 120px;
+}
+
+.form-container form .submit-label input[type="submit"] {
+    color: rgba(255, 255, 255, 1);
+    font-family: 'Termina Medium', Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+
+    outline: 0px;
+    border: 0px;
+    background-color: rgba(170, 157, 121, 1);
+
     display: flex;
     justify-content: center;
     align-items: center;
 
-    flex-shrink: 0;
+    width: 200px;
+    height: 64px;
+
+    padding: 20px 40px 20px 40px;
+
+    cursor: pointer;
+    transition: 1s;
+}
+
+.form-container form .submit-label input[type="submit"]:hover {
+    background-color: rgba(143, 130, 94, 0.5);
+}
+
+.form-container form .submit-label input[type="submit"]:active {
+    background-color: rgba(143, 130, 94, 0.5);
+}
+
+/********************************************************************/
+/***** SIDEBAR ******************************************************/
+/********************************************************************/
+
+.form-feed .form-sidebar {
+    background-color: rgba(230, 227, 220, 1);
+
+    display: flex;
+    flex-direction: column;
+
+    width: 25%;
+    height: 100%;
+
+    padding: 64px 24px 64px 24px;
+    
+}
+
+.form-feed .form-sidebar .brown {
+    margin-left: 16px;
+    margin-bottom: 40px;
+}
+
+.form-feed .form-sidebar .side-field {
+    border: 1px Solid rgba(19, 19, 19, 0.2);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+
+    padding: 16px;
+    margin-bottom: 12px;
+
+    transition: 1s;
+    cursor: pointer;
+}
+
+.form-feed .form-sidebar .side-field.hidden {
+    opacity: 0;
+
+    width: 0px;
+    height: 0px;
+
+    padding: 0px;
+}
+
+.form-feed .form-sidebar .side-field:hover {
+    border: 1px Solid rgba(255, 255, 255, 1);
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.form-feed .form-sidebar .side-field[data-side-sel="1"] {
+    border: 1px Solid rgba(255, 255, 255, 1);
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.form-feed .form-sidebar .side-field.validated {
+    background-color: rgba(0, 100, 0, 0.5);
+}
+
+.form-feed .form-sidebar .side-field.error {
+    background-color: rgba(139, 0, 0, 0.5);
+}
+
+.form-feed .form-sidebar .side-field[data-side-sel="1"] .field {
+    font-weight: bold;
+}
+
+/********************************************************************/
+/***** EXTRA ********************************************************/
+/********************************************************************/
+
+.extra-guests-container {
+    outline: 0px;
+    border: 0px;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 24px;
+
+    width: 100%;
+
+    margin-bottom: 16px;
+}
+
+.extra-guests-container .extra-guest-label {
+    border: 1px Solid rgba(170, 157, 121, 0.2);
+    background-color: rgba(170, 157, 121, 0.2);
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 16px;
+
+    height: 36px;
+
+    padding: 10px;
+
+    cursor: pointer;
+    transition: 1s;
+}
+
+.extra-guests-container .extra-guest-label:hover {
+    background-color: rgba(143, 130, 94, 0.5);
+}
+
+.extra-guests-container .extra-guest-label img {
+    width: 12px;
+    aspect-ratio: 1 / 1;
+}
+
+.extra-guests-container .extra-guest-label:has(input[type="radio"]:checked) {
+    color: rgba(255, 255, 255, 1);
+
+    border: 1px Solid rgba(170, 157, 121, 1);
+    background-color: rgba(170, 157, 121, 1);
+}
+
+.extra-guests-container .extra-guest-label input[type="radio"] {
+    appearance: none;
+    visibility: hidden;
+    display: none;
+}
+
+.mini-form {
+    outline: 0px;
+    border: 0px;
+
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
+
+    width: 100%;
+}
+
+.mini-form input[type="text"].mini {
+    width: calc(50% - 12px);
+}
+
+.submit-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+
+    margin-bottom: 30px;
+}
+
+.submit-container .add-guest {
+    color: rgba(0, 0, 0, 1);
+    font-family: 'Termina Medium', Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+
+    outline: 0px;
+    border: 1px Solid rgba(19, 19, 19, 0.2);
+    background-color: rgba(255, 255, 255, 1);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 300px;
+    height: 64px;
+
+    padding: 20px 40px 20px 40px;
+
+    cursor: pointer;
+    transition: 1s;
+}
+
+.submit-container .add-guest:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.submit-container label.submit-label {
+    margin-bottom: 0px;
+}
+
+
+/********************************************************************/
+/***** SUMMARY ******************************************************/
+/********************************************************************/
+
+main .form-summary {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     width: 100%;
     height: 100%;
-}
-
-main .form-container form.swipeUp {
-    animation-name: swipeUp;
-    animation-duration: 2s;
-    animation-timing-function: linear;
-    animation-fill-mode: forwards;
-}
-
-@keyframes swipeUp {
-    from {
-        transform: translateY(0%);
-    }
-    to {
-        transform: translateY(-100%);
-    }
-}
-
-main .form-container form.swipeDown {
-    animation-name: swipeDown;
-    animation-duration: 2s;
-    animation-timing-function: linear;
-    animation-fill-mode: forwards;
-}
-
-@keyframes swipeDown {
-    from {
-        transform: translateY(0%);
-    }
-    to {
-        transform: translateY(100%);
-    }
-}
-
-main .form-container form.hidden {
-    opacity: 0;
-    transition: 2s linear;
-}
-
-main .form-container form:nth-of-type(2) {
-    background-color: black;
-}
-
-main .form-container form:nth-of-type(3) {
-    background-color: rgba(161, 161, 161, 1);
 }
