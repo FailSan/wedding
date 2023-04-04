@@ -4,7 +4,7 @@
     <p class="brown">2 / 4</p>
 
     <p class="mid">Bene! Ed il tuo <i>cognome</i>?</p>
-    <input type="text" name="surname" value="" placeholder="Cognome" autocomplete="off">
+    <input type="text" name="surname" value="{{ $guest->surname }}" placeholder="Cognome" autocomplete="off">
 
     <p class="error-box hidden"></p>
 

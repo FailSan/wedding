@@ -19,7 +19,7 @@
     <body>
         <main>
             <section class="sidebar">
-                <a href="/form"><img class="logo" src="{{ Storage::url('images/logo.svg') }}"></a>
+                <a href="/guest"><img class="logo" src="{{ Storage::url('images/logo.svg') }}"></a>
 
                 <span class="language">
                     <p data-lang="it" class="selected">IT</p>
@@ -36,13 +36,13 @@
             
             <section class="form-feed" data-section-sel="0">
                 <div class="form-container">
-                    <!-- @include('guest.form.name')
+                    @include('guest.form.name')
                     @include('guest.form.surname')
                     @include('guest.form.church')
                     @include('guest.form.castle')
                     @include('guest.form.diet')
                     @include('guest.form.allergies')
-                    @include('guest.form.extra-confirm') -->
+                    @include('guest.form.extra-confirm')
                     @include('guest.form.extra-guests')
                 </div>
 

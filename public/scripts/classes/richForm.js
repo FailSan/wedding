@@ -65,7 +65,8 @@ export class RichForm {
                     value = 0;
                 break;
             case 'extra_guests':
-                //value = mainGuest.extraGuests.length;
+                let extraGuests = this.element.querySelectorAll('.extra-guest-label');
+                value = extraGuests.length;
                 break;
             default:
                 value = this.elements[currentContent].value;
@@ -79,13 +80,16 @@ export class RichForm {
         })
             .then((servResponse) => servResponse.json())
             .then((jsonData) => {
+
                 if(jsonData.error) {
                     this.showError(jsonData.error);
                     return false;
+
                 } else {
                     this.showValidate(jsonData.success);
                     return jsonData.success[this.content];
-                }})
+                }
+            })
             .catch((servError => console.log(servError)));
 
         return result;
@@ -119,7 +123,7 @@ export class RichForm {
             default:
                 this.sideLabel.value = successList[this.content];
                 break;
-        }        
+        }
         this.sideLabel.validated = true;
     }
 }

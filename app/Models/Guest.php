@@ -15,8 +15,9 @@ class Guest extends Model
         "surname",
         "diet",
         "allergies",
-        "church_confirmed",
-        "castle_confirmed",
+        "church_confirm",
+        "castle_confirm",
+        "updated",
         "code",
     ];
 
@@ -24,8 +25,9 @@ class Guest extends Model
     ];
 
     protected $casts = [
-        "church_confirmed" => "boolean",
-        "castle_confirmed" => "boolean",
+        "church_confirm" => "boolean",
+        "castle_confirm" => "boolean",
+        "updated" => "boolean",
     ];
 
     public function uniqueIds() {

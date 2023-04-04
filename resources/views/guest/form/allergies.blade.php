@@ -5,7 +5,7 @@
 
     <p class="mid">Soffri di <i>allergie</i> particolari? Indicacele tutte scrivendo gli allergeni 
         uno dopo l'altro separandoli con una virgola.</p>
-    <input type="text" name="allergies" value="" 
+    <input type="text" name="allergies" value="{{ $guest->allergies }}" 
     placeholder="Glutine, lattosio, pesche, aglio, ecc..." 
     autocomplete="off">
 

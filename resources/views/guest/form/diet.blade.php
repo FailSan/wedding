@@ -6,7 +6,7 @@
     <p class="mid">Dicci qualcosa sul tuo <i>stile alimentare</i>.
         Qui puoi comunicarci se sei vegetariano, crudariano o hai qualche problema con 
         alcuni alimenti.</p>
-    <input type="text" name="diet" value=""
+    <input type="text" name="diet" value="{{ $guest->diet }}"
         placeholder="Onnivoro, vegetariano, non mangio pesce, ecc..." 
         autocomplete="off">
 

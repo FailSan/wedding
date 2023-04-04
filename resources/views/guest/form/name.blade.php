@@ -3,7 +3,7 @@
     <p class="brown">1 / 4</p>
     
     <p class="mid">Cominciamo con qualcosa di semplice. E' proprio questo il tuo <i>nome</i>?</p>
-    <input type="text" name="name" value="" placeholder="Nome" autocomplete="off">
+    <input type="text" name="name" value="{{ $guest->name }}" placeholder="Nome" autocomplete="off">
     
     <p class="error-box hidden"></p>
     

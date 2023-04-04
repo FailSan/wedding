@@ -25,7 +25,10 @@ class GuestController extends Controller
         $guestCode = $request->cookie('code');
         if($guestCode) {
             $authGuest = Guest::where('code', $guestCode)->first();
-            return view('guest.dashboard')->with('guest', $authGuest);
+            if($authGuest->updated)
+                return view('guest.summary')->with('guest', $authGuest);
+            else
+                return view('guest.form')->with('guest', $authGuest);
         } else {
             return view('guest.login');
         }
@@ -40,48 +43,15 @@ class GuestController extends Controller
             return response()->json($validation);
         }
         
-        $authGuest = Guest::where('name', $validation['name'])
-                            ->where('surname', $validation['surname'])
+        $authGuest = Guest::where('name', $validation['success']['name'])
+                            ->where('surname', $validation['success']['surname'])
                             ->first();
         
         if($authGuest) {
-            return response()->json(['success' => ['login' => 'Invitato Trovato. Attendi il reindirizzamento.']] )->cookie('code', $authGuest->code, 5000);
+            return response()->json(['success' => ['login' => 'Invitato Trovato. Attendi il reindirizzamento.']] )->cookie('code', $authGuest->code, 7200);
         } else {
             return response()->json(['error' => ['login' => 'Invitato non trovato. Prova di nuovo.']]);
         }
-    }
-
-    public function inviteLanding(Request $request, $guestCode) {
-        
-        if(!$request->cookie('code')) {
-            $authGuest = Guest::where('code', $guestCode)->first();
-            return view('guest.init')->with('guest', $authGuest);
-        }
-
-        if($request->cookie('code') != $guestCode)
-            return view('guest.redirect');
-
-        return redirect()->route('guest.dashboard');
-    }
-
-    //Set guest's cookie and redirect
-    public function confirm(Request $request, $guestCode) {
-        return redirect()->route('guest.dashboard')->cookie('code', $guestCode, 5000);
-    }
-
-    //Select proper guest and redirect
-    public function profile(Request $request) {
-        $guestCode = $request->cookie('code');
-        $guest = Guest::where('code', $guestCode)->first();
-
-        return view('guest.profile')->with('guest', $guest);
-    }
-
-    public function guests(Request $request) {
-        $guestCode = $request->cookie('code');
-        $guest = Guest::where('code', $guestCode)->first();
-
-        return view('guest.guests')->with('guest', $guest);
     }
 
     //Create new guest
@@ -94,16 +64,14 @@ class GuestController extends Controller
         }
         
         if($newGuest = Guest::create([
-            'name' => Str::title($validation['name']),
-            'surname' => Str::title($validation['surname']),
-            'diet' => Str::lower($validation['diet']) ?: 'nessuna',
-            'allergies' => Str::lower($validation['allergies']) ?: 'nessuna',
-            'confirmed' => $validation['confirmed'],
+            'name' => Str::title($validation['success']['name']),
+            'surname' => Str::title($validation['success']['surname']),
+            'church_confirm' => $validation['success']['church_confirm'],
+            'castle_confirm' => $validation['success']['castle_confirm'],
+            'diet' => Str::lower($validation['success']['diet']) ?: 'nessuna',
+            'allergies' => Str::lower($validation['success']['allergies']) ?: 'nessuna',
+            'updated' => $validation['success']['updated'],
         ])) {
-            if($request->cookie('code')) {
-                $host = Guest::where('code', $request->cookie('code'))->first();
-                $host->guests()->save($newGuest);
-            }
             return response()->json(['success' => ['creation' => 'Invitato Registrato']]);
         } else {
             return response()->json(['error' => ['creation' => 'Invitato non Registrato']]);
@@ -120,11 +88,12 @@ class GuestController extends Controller
         }
 
         $guest = Guest::where('code', $request->cookie('code'))->first();
-        $guest->name = Str::title($validation['name']);
-        $guest->surname = Str::title($validation['surname']);
-        $guest->diet = Str::lower($validation['diet']) ?: 'nessuna';
-        $guest->allergies = Str::lower($validation['allergies']) ?: 'nessuna';
-        $guest->confirmed = $validation['confirmed'];
+        $guest->name = Str::title($validation['success']['name']);
+        $guest->surname = Str::title($validation['success']['surname']);
+        $guest->diet = Str::lower($validation['success']['diet']) ?: 'nessuna';
+        $guest->allergies = Str::lower($validation['success']['allergies']) ?: 'nessuna';
+        $guest->church_confirm = $validation['success']['church_confirm'];
+        $guest->castle_confirm = $validation['success']['castle_confirm'];
         
         if($guest->save())
             return response()->json(['success' => ['update' => 'Invitato Aggiornato']]);
@@ -146,80 +115,98 @@ class GuestController extends Controller
         $validator = Validator::make($guestData, [
             'name' => 'sometimes|required|string',
             'surname' => 'sometimes|required|string',
+            'church_confirm' => 'sometimes|boolean',
+            'castle_confirm' => 'sometimes|boolean',
             'diet' => 'sometimes|string|nullable',
             'allergies' => 'sometimes|string|nullable',
-            'church_confirmed' => 'sometimes|boolean',
-            'castle_confirmed' => 'sometimes|boolean',
+            //Only for frontend update
+            'extra_confirm' => 'sometimes|boolean',
+            'extra_guests' => 'sometimes|numeric|max:10',
+            //Only for backoffice creation
+            'updated' => 'sometimes|boolean',
         ]);
 
         if($validator->fails())
             return ['error' => $validator->errors()];
         
-        return $validator->validated();
+        return ['success' => $validator->validated()];
+    }
+    
+    public function validationToJson(Request $request) {
+        $guestData = $request->input();
+
+        $validation = $this->validation($guestData);
+        return response()->json($validation);
     }
 
-    public function partialUpdate(Request $request) {
-        $inputData = $request->input();
+    public function multiGuestValidation(Request $request) {
+        $mainGuest = json_decode($request->input('guest'));
+        $dbGuest = Guest::where('code', $request->cookie('code'))->first();
         
-        $validation = $this->validation($inputData);
-        if(array_key_exists('error', $validation)) {
-            return response()->json(['form' => $request['form'], 'error' => $validation['error']]);
+        $flag = true;
+        $mainProperties = [
+            'name' => $mainGuest->name,
+            'surname' => $mainGuest->surname,
+            'church_confirm' => $mainGuest->church_confirm,
+            'castle_confirm' => $mainGuest->castle_confirm,
+            'diet' => $mainGuest->diet,
+            'allergies' => $mainGuest->allergies,
+            'extra_confirm' => $mainGuest->extra_confirm,
+            'extra_guests' => $mainGuest->extra_guests,
+        ];
+        $mainValidation = $this->validation($mainProperties);
+        if(array_key_exists('error', $mainValidation)) {
+            $flag = false;
         }
         
-        $guest = Guest::where('code', $request->cookie('code'))->first();
-        foreach($validation as $key => $value) {
-            switch($key) {
-                case 'name':
-                    $guest->name = Str::title($validation['name']);
-                    break;
-                case 'surname':
-                    $guest->surname = Str::title($validation['surname']);
-                    break;
-                case 'diet':
-                    $guest->diet = Str::lower($validation['diet']) ?: 'nessuna';
-                    break;
-                case 'allergies':
-                    $guest->allergies = Str::lower($validation['allergies']) ?: 'nessuna';
-                    break;
-                case 'church_confirmed':
-                    $guest->church_confirmed = $validation['church_confirmed'];
-                    break;
-                case 'castle_confirmed':
-                    $guest->castle_confirmed = $validation['castle_confirmed'];
-                default:
-                    break;
+        $extraGuests = $mainGuest->extraGuests;
+        foreach($extraGuests as $extraGuest) {
+            $extraProperties = [
+                'name' => $extraGuest->name,
+                'surname' => $extraGuest->surname,
+                'diet' => $extraGuest->diet,
+                'allergies' => $extraGuest->allergies,
+            ];
+
+            $extraValidation = $this->validation($extraProperties);
+            if(array_key_exists('error', $extraValidation)) {
+                $flag = false;
+            }
+        }
+        
+        if($flag) {
+            return $this->multiGuestUpdate($dbGuest, $mainProperties, $extraGuests); 
+        } else {
+            return response()->json(['error' => 'Qualcosa è andato storto!']);
+        }
+    }
+
+    public function multiGuestUpdate($guest, $mainProperties, $extraGuests) {
+        $guest->name = Str::title($mainProperties['name']);
+        $guest->surname = Str::title($mainProperties['surname']);
+        $guest->diet = Str::lower($mainProperties['diet']) ?: 'nessuna';
+        $guest->allergies = Str::lower($mainProperties['allergies']) ?: 'nessuna';
+        $guest->church_confirm = $mainProperties['church_confirm'];
+        $guest->castle_confirm = $mainProperties['castle_confirm'];
+        $guest->updated = true;
+
+        foreach($extraGuests as $extraGuest) {
+            $newGuest = Guest::create([
+                'name' => Str::title($extraGuest->name),
+                'surname' => Str::title($extraGuest->surname),
+                'diet' => Str::lower($extraGuest->diet) ?: 'nessuna',
+                'allergies' => Str::lower($extraGuest->allergies) ?: 'nessuna',
+            ]);
+
+            if($newGuest) {
+                $guest->guests()->save($newGuest);
             }
         }
 
-        if($guest->save())
-            return response()->json(['success' => true, 'form' => $request['form']]);
-        else
-            return response()->json(['error' => true, 'form' => $request['form']]);
-    }
-
-    
-    public function inputValidation(Request $request) {
-        $inputData = $request->input();
-
-        $validator = Validator::make($inputData, [
-            'name' => 'sometimes|required|string',
-            'surname' => 'sometimes|required|string',
-
-            'church_confirm' => 'sometimes|required|boolean',
-            'castle_confirm' => 'sometimes|required|boolean',
-
-            'diet' => 'sometimes|string|nullable',
-            'allergies' => 'sometimes|string|nullable',
-
-            'extra_confirm' => 'sometimes|required|boolean',
-
-            'confirmed' => 'sometimes|required|boolean',
-        ]);
-        
-        if($validator->fails()) {
-            return response()->json(['error' => $validator->errors()]);
+        if($guest->save()) {
+            return response()->json(['success' => 'Invitato Aggiornato']);
+        } else {
+            return response()->json(['error' => 'Invitato NON Aggiornato']);
         }
-
-        return response()->json(['success' => $validator->validated()]);
     }
 }

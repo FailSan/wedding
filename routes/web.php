@@ -20,12 +20,13 @@ use App\Http\Controllers\TableController;
 */
 
 Route::view('/', 'landing.home')->name('home');
-
 Route::view('/signup', 'signup');
-
 Route::view('/login', 'login');
 
-Route::view('/form', 'guest.form');
+Route::get('/{locale}', function($locale) {
+    App::setLocale($locale);
+    return redirect()->back();
+});
 
 Route::controller(UserController::class)->prefix('user')->group(function() {
     //Basic Actions
@@ -44,22 +45,16 @@ Route::controller(GuestController::class)->prefix('guest')->group(function() {
     //Basic Actions
     Route::post('/create', 'create');
     Route::post('/update', 'update');
-    Route::post('/partialUpdate', 'partialUpdate');
     Route::get('/delete/{guest_id}', 'delete');
     Route::post('/search', 'search');
 
     //Views
-    Route::get('/', 'landing')->name('guest.dashboard');
-    Route::get('/profile', 'profile');
-    Route::get('/guests', 'guests');
-
-    //Invite Path
-    Route::get('/invite/{guest_code}', 'landing');
-    Route::get('/invite/{guest_code}/confirm', 'confirm');
+    Route::get('/', 'landing')->name('guest.landing');
     
     //API
     Route::get('/data', 'data');
-    Route::post('/validate', 'inputValidation');
+    Route::post('/validate', 'validationToJson');
+    Route::post('/multivalidate', 'multiGuestValidation');
 });
 
 Route::controller(TableController::class)->prefix('table')->group(function() {
