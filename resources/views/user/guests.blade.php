@@ -65,7 +65,9 @@
             <label for="create_surname">Cognome Invitato</label>
             <label for="create_diet">Dieta Invitato</label>
             <label for="create_allergies">Allergie Invitato</label>
-            <label for="create_confirmed">Conferma Invitato</label>
+            <label for="create_church_confirm">Presenza Chiesa</label>
+            <label for="create_castle_confirm">Presenza Castello</label>
+            <label for="create_updated">Confermato</label>
         </div>
 
         <div class="inputs">
@@ -73,7 +75,9 @@
             <input type="text" name="surname" id="create_surname" placeholder="(Es: Rossi, Biagi, ecc.)">
             <input type="text" name="diet" id="create_diet" placeholder="(Es: vegetariana, vegana, onnivora, ecc.)">
             <input type="text" name="allergies" id="create_allergies" placeholder="(Es: lattosio, glutine, ecc.)">
-            <input type="checkbox" name="confirmed" id="create_confirmed">
+            <input type="checkbox" name="church_confirm" id="create_church_confirm">
+            <input type="checkbox" name="castle_confirm" id="create_castle_confirm">
+            <input type="checkbox" name="updated" id="create_updated">
         </div>
         
         <input type="submit" value="Crea Invitato">

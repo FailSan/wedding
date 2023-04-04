@@ -20,7 +20,9 @@ function guestCreation(event) {
     let guestSurname = guestForm.elements['surname'].value;
     let guestDiet = guestForm.elements['diet'].value;
     let guestAllergies = guestForm.elements['allergies'].value;
-    let guestConfirmed = guestForm.elements['confirmed'].checked ? 1 : 0;
+    let guestChurchConfirm = guestForm.elements['church_confirm'].checked ? 1 : 0;
+    let guestCastleConfirm = guestForm.elements['castle_confirm'].checked ? 1 : 0;
+    let guestUpdated = guestForm.elements['updated'].checked ? 1 : 0;
 
     let formToken = guestForm.elements['_token'].value;
 
@@ -29,7 +31,9 @@ function guestCreation(event) {
     guestData.append('surname', guestSurname);
     guestData.append('diet', guestDiet);
     guestData.append('allergies', guestAllergies);
-    guestData.append('confirmed', guestConfirmed);
+    guestData.append('church_confirm', guestChurchConfirm);
+    guestData.append('castle_confirm', guestCastleConfirm);
+    guestData.append('updated', guestUpdated);
     guestData.append('_token', formToken);
 
     fetch('/guest/create', {
@@ -50,7 +54,9 @@ function onGuestCreation(serverResponse) {
         guestForm.elements['surname'].value = "";
         guestForm.elements['diet'].value = "";
         guestForm.elements['allergies'].value = "";
-        guestForm.elements['confirmed'].checked = false;
+        guestForm.elements['church_confirm'].checked = false;
+        guestForm.elements['castle_confirm'].checked = false;
+        guestForm.elements['updated'].checked = false;
 
         //Retrieve Data and Populate Table
         retrieveData().then((guestData) => createTable(guestData));

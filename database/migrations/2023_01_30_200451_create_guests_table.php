@@ -19,7 +19,9 @@ return new class extends Migration
             $table->string('surname');
             $table->string('diet')->default('nessuna');
             $table->string('allergies')->default('nessuna');
-            $table->boolean('confirmed')->default(0);
+            $table->boolean('church_confirm')->default(0);
+            $table->boolean('castle_confirm')->default(0);
+            $table->boolean('updated')->default(0);
             $table->foreignId('guest_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();
             $table->ulid('code')->unique();
             $table->timestamps();

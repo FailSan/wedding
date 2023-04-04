@@ -23,10 +23,12 @@ Route::view('/', 'landing.home')->name('home');
 Route::view('/signup', 'signup');
 Route::view('/login', 'login');
 
+/*
 Route::get('/{locale}', function($locale) {
     App::setLocale($locale);
     return redirect()->back();
 });
+*/
 
 Route::controller(UserController::class)->prefix('user')->group(function() {
     //Basic Actions
