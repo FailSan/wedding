@@ -41,15 +41,15 @@ export class RichLabel {
     }
 
     get enabled() {
-        return this.element.classList.contains('hidden') ? false : true;
+        return this.element.classList.contains('disabled') ? false : true;
     }
 
     set enabled(value) {
         if(value) {
-            this.element.classList.remove('hidden');
+            this.element.classList.remove('disabled');
         }
         else {
-            this.element.classList.add('hidden');
+            this.element.classList.add('disabled');
             this.value = "";
         }
             

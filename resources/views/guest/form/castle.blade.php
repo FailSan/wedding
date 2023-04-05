@@ -9,20 +9,20 @@
         <label class="radio-label">
             <p>Sì, ci sarò!</p>
             <img src="{{ Storage::url('images/yes.svg') }}">
-            <input type="radio" name="castle_confirm" value="true">
+            <input type="radio" name="castle_confirm" value="true" tabindex="-1">
         </label>
 
         <label class="radio-label">
             <p>No, mi spiace.</p>
             <img src="{{ Storage::url('images/no.svg') }}">
-            <input type="radio" name="castle_confirm" value="false">
+            <input type="radio" name="castle_confirm" value="false" tabindex="-1">
         </label>
     </fieldset>
 
     <p class="error-box hidden"></p>
 
     <label class="submit-label">
-        <input type="submit" value="Ok!">
+        <input type="submit" value="Ok!" tabindex="-1">
         <p>premi <strong>Invio &crarr;</strong></p>
     </label>
 

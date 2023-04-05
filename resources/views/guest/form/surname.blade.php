@@ -4,12 +4,12 @@
     <p class="brown">2 / 4</p>
 
     <p class="mid">Bene! Ed il tuo <i>cognome</i>?</p>
-    <input type="text" name="surname" value="{{ $guest->surname }}" placeholder="Cognome" autocomplete="off">
+    <input type="text" name="surname" value="{{ $guest->surname }}" placeholder="Cognome" autocomplete="off" tabindex="-1">
 
     <p class="error-box hidden"></p>
 
     <label class="submit-label">
-        <input type="submit" value="Ok!">
+        <input type="submit" value="Ok!" tabindex="-1">
         <p>premi <strong>Invio &crarr;</strong></p>
     </label>
 

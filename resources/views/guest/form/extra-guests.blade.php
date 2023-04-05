@@ -8,22 +8,22 @@
     <fieldset class="extra-guests-container"></fieldset>
 
     <fieldset class="mini-form">
-        <input class="mini" type="text" name="name" placeholder="Nome" autocomplete="off">
-        <input class="mini" type="text" name="surname" placeholder="Cognome" autocomplete="off">
-        <input class="mini" type="text" name="diet" placeholder="Onnivoro, vegetariano, non mangio pesce, ecc..." autocomplete="off">
-        <input class="mini" type="text" name="allergies" placeholder="Glutine, lattosio, pesche, aglio, ecc..." autocomplete="off">
+        <input class="mini" type="text" name="name" placeholder="Nome" autocomplete="off"  tabindex="-1">
+        <input class="mini" type="text" name="surname" placeholder="Cognome" autocomplete="off"  tabindex="-1">
+        <input class="mini" type="text" name="diet" placeholder="Onnivoro, vegetariano, non mangio pesce, ecc..." autocomplete="off" tabindex="-1">
+        <input class="mini" type="text" name="allergies" placeholder="Glutine, lattosio, pesche, aglio, ecc..." autocomplete="off" tabindex="-1">
     </fieldset>
 
     <p class="error-box hidden"></p>
 
     <div class="submit-container">
-        <button class="add-guest">
+        <button class="add-guest" tabindex="-1">
             <p>Aggiungi Ospite</p>
             <p>+</p>
         </button>
 
         <label class="submit-label">
-            <input type="submit" value="Ok!">
+            <input type="submit" value="Ok!" tabindex="-1">
             <p>premi <strong>Invio &crarr;</strong></p>
         </label>
     </div>

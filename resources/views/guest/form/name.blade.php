@@ -3,12 +3,12 @@
     <p class="brown">1 / 4</p>
     
     <p class="mid">Cominciamo con qualcosa di semplice. E' proprio questo il tuo <i>nome</i>?</p>
-    <input type="text" name="name" value="{{ $guest->name }}" placeholder="Nome" autocomplete="off">
+    <input type="text" name="name" value="{{ $guest->name }}" placeholder="Nome" autocomplete="off" tabindex="-1">
     
     <p class="error-box hidden"></p>
     
     <label class="submit-label">
-        <input type="submit" value="Ok!">
+        <input type="submit" value="Ok!" tabindex="-1">
         <p>premi <strong>Invio &crarr;</strong></p>
     </label>
 

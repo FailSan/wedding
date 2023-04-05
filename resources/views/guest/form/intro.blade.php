@@ -9,4 +9,4 @@
     ci fornisca qualche informazione.</p>
 <p class="mid">Quando sei pronto possiamo cominciare!</p>
 
-<button class="ready-button">Cominciamo!</button>
+<button class="ready-button"  tabindex="-1">Cominciamo!</button>

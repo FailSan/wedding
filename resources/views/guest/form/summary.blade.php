@@ -70,7 +70,7 @@
     </div>
 </div>
 
-<button class="confirm-button">
+<button class="confirm-button" tabindex="-1">
     @csrf
     Conferma!
 </button>

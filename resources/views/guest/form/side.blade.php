@@ -11,36 +11,64 @@
     </span>
 
     <span class="side-field" data-side-sel="0" data-content="surname">
+        <div class="side-square">
+            <div class="inner-square"></div>
+        </div>
+
         <p class="field">Cognome</p>
         <p class="value"></p>
     </span>
 
     <span class="side-field" data-side-sel="0" data-content="church_confirm">
+        <div class="side-square">
+            <div class="inner-square"></div>
+        </div>
+
         <p class="field">Presente alla Cerimonia</p>
         <p class="value"></p>
     </span>
 
     <span class="side-field" data-side-sel="0" data-content="castle_confirm">
+        <div class="side-square">
+            <div class="inner-square"></div>
+        </div>
+
         <p class="field">Presente al Ricevimento</p>
         <p class="value"></p>
     </span>
 
-    <span class="side-field hidden" data-side-sel="0" data-content="diet">
+    <span class="side-field disabled" data-side-sel="0" data-content="diet">
+        <div class="side-square">
+            <div class="inner-square"></div>
+        </div>
+
         <p class="field">Dieta</p>
         <p class="value"></p>
     </span>
 
-    <span class="side-field hidden" data-side-sel="0" data-content="allergies">
+    <span class="side-field disabled" data-side-sel="0" data-content="allergies">
+        <div class="side-square">
+            <div class="inner-square"></div>
+        </div>
+
         <p class="field">Allergie</p>
         <p class="value"></p>
     </span>
 
-    <span class="side-field hidden" data-side-sel="0" data-content="extra_confirm">
+    <span class="side-field disabled" data-side-sel="0" data-content="extra_confirm">
+        <div class="side-square">
+            <div class="inner-square"></div>
+        </div>
+
         <p class="field">Ospiti Extra</p>
         <p class="value"></p>
     </span>
 
-    <span class="side-field hidden" data-side-sel="0" data-content="extra_guests">
+    <span class="side-field disabled" data-side-sel="0" data-content="extra_guests">
+        <div class="side-square">
+            <div class="inner-square"></div>
+        </div>
+
         <p class="field">Numero Ospiti</p>
         <p class="value"></p>
     </span>

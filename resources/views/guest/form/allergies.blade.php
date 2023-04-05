@@ -5,14 +5,12 @@
 
     <p class="mid">Soffri di <i>allergie</i> particolari? Indicacele tutte scrivendo gli allergeni 
         uno dopo l'altro separandoli con una virgola.</p>
-    <input type="text" name="allergies" value="{{ $guest->allergies }}" 
-    placeholder="Glutine, lattosio, pesche, aglio, ecc..." 
-    autocomplete="off">
+    <input type="text" name="allergies" placeholder="Glutine, lattosio, pesche, aglio, ecc..." autocomplete="off" tabindex="-1">
 
     <p class="error-box hidden"></p>
 
     <label class="submit-label">
-        <input type="submit" value="Ok!">
+        <input type="submit" value="Ok!" tabindex="-1">
         <p>premi <strong>Invio &crarr;</strong></p>
     </label>
 
