@@ -86,7 +86,7 @@ export class RichForm {
                     return false;
 
                 } else {
-                    this.showValidate(jsonData.success);
+                    this.showValidate();
                     return jsonData.success[this.content];
                 }
             })
@@ -105,25 +105,17 @@ export class RichForm {
             this.errorBox.appendChild(message);
         }
 
-        this.sideLabel.value = "";
-        this.sideLabel.validated = false;
+        if(this.content != "extra_guests") {
+            this.sideLabel.validated = false;
+        }
     }
 
-    showValidate(successList) {
+    showValidate() {
         this.errorBox.innerHTML = "";
         this.errorBox.classList.add('hidden');
 
-        switch(successList[this.content]) {
-            case "1":
-                this.sideLabel.value = "Sì"
-                break;
-            case "0":
-                this.sideLabel.value = "No"
-                break;
-            default:
-                this.sideLabel.value = successList[this.content];
-                break;
+        if(this.content != "extra_guests") {
+            this.sideLabel.validated = true;
         }
-        this.sideLabel.validated = true;
     }
 }

@@ -19,6 +19,7 @@ class Guest extends Model
         "castle_confirm",
         "updated",
         "code",
+        "password",
     ];
 
     protected $hidden = [

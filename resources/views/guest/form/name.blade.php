@@ -1,21 +1,26 @@
 <form action="#" method="post" id="name_form" data-form-sel="1" data-content="name">
     @csrf
-    <p class="brown">1 / 4</p>
-    
-    <p class="mid">Cominciamo con qualcosa di semplice. E' proprio questo il tuo <i>nome</i>?</p>
-    <input type="text" name="name" value="{{ $guest->name }}" placeholder="Nome" autocomplete="off" tabindex="-1">
-    
-    <p class="error-box hidden"></p>
-    
-    <label class="submit-label">
-        <input type="submit" value="Ok!" tabindex="-1">
-        <p>premi <strong>Invio &crarr;</strong></p>
-    </label>
 
-    <span class="info-box">
+    <span class="top-section">
+        <p class="brown">1 / 4</p>
+        <p class="mid">Cominciamo con qualcosa di semplice. E' proprio questo il tuo <i>nome</i>?</p>
+    </span>
+    
+    <div class="mid-section">
+        <label class="main-input">
+            <p>Nome</p>
+            <input type="text" name="name" value="{{ $guest->name }}" placeholder=" " autocomplete="off" tabindex="-1">
+        </label>
+        
+        <span class="error-box hidden"></span>
+        
+        <input type="submit" value="Conferma" tabindex="-1">
+    </div>
+
+    <span class="bot-section">
         <img src="{{ Storage::url('images/info.svg') }}">
         <p class="grey">Ti chiederemo di confermare i tuoi dati anagrafici principali.
             <br>Se i dati pre-inseriti dovessero essere corretti, puoi premere
-            Ok e andare avanti.</p>
+            <strong>Conferma</strong> e andare avanti.</p>
     </span>
 </form>

@@ -32,14 +32,6 @@ export class RichLabel {
         }
     }
 
-    get value() {
-        return this.element.querySelector('.value').textContent;
-    }
-
-    set value(text) {
-        this.element.querySelector('.value').textContent = text;
-    }
-
     get enabled() {
         return this.element.classList.contains('disabled') ? false : true;
     }
@@ -50,8 +42,6 @@ export class RichLabel {
         }
         else {
             this.element.classList.add('disabled');
-            this.value = "";
         }
-            
     }
 }

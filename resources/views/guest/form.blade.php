@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" style="--section-index: 0; --form-index: 0;">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -56,8 +56,8 @@
             </section>
 
             <nav class="hidden">
-                <img data-action="prev" src="{{ Storage::url('images/faq_arrow.svg') }}">
-                <img data-action="next" src="{{ Storage::url('images/faq_arrow.svg') }}">
+                <img data-action="prev" src="{{ Storage::url('images/up-arrow.svg') }}">
+                <img data-action="next" src="{{ Storage::url('images/down-arrow.svg') }}">
             </nav>
 
         </main>

@@ -1,3 +1,7 @@
+/********************************************************************/
+/***** FONT *********************************************************/
+/********************************************************************/
+
 @font-face {
     font-family: 'Ayer';
     src: url('../storage/fonts/Ayer.otf');
@@ -13,37 +17,25 @@
     src: url('../storage/fonts/Termina-Medium.otf');
 }
 
+
 /********************************************************************/
-/***** FONT *********************************************************/
+/***** LINK *********************************************************/
 /********************************************************************/
 
-.brown {
-    font-family: 'Termina Medium', Arial, Helvetica, sans-serif;
-    font-size: 15px;
-    color: rgba(143, 130, 94, 1);
-    letter-spacing: 3px;
-    text-transform: uppercase;
+a {
+    text-decoration: none;
 }
 
-.grey {
-    color: rgba(161, 161, 161, 1);
+a:hover {
+    text-decoration: none;
 }
 
-.big {
-    font-family: 'Ayer', Georgia, 'Times New Roman', Times, serif;
-    font-size: calc(220px - (((1440px + 810px) - (100vw + 100vh)) / 10));
-    line-height: 0.9;
-    text-transform: uppercase;
+a:active {
+    text-decoration: none;
 }
 
-.mid {
-    font-family: 'Ayer', Georgia, 'Times New Roman', Times, serif;
-    font-size: calc(80px - ((1440px - 100vw) / 25));
-    text-indent: 3ch;
-}
-
-.mid::first-letter {
-    color: rgba(143, 130, 94, 1);
+a:visited {
+    text-decoration: none;
 }
 
 
@@ -54,9 +46,6 @@
 * {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-
-    font-family: 'NB International', Verdana, Tahoma, sans-serif;
-    font-size: 20px;
     
     margin: 0px;
     padding: 0px;
@@ -66,17 +55,23 @@
 
 html {
     width: 100%;
-    height: 100%;
+    height: 100vh;
 }
 
 body {
+    font-family: 'NB International', Verdana, Tahoma, sans-serif;
+    font-size: 16px;
+    color: rgba(19, 19, 19, 1);
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
     width: 100%;
-    min-height: 100%;
+    height: 100%;
+
+    overflow: hidden;
 }
 
 /********************************************************************/
@@ -85,102 +80,242 @@ body {
 
 main {
     display: flex;
-    justify-content: center;
-    align-items: center;
 
     width: 100%;
-
-    padding: 5vh 5vw 5vh 5vw;
+    height: 100%;
 }
 
 main .left {
+    background-color: rgba(255, 255, 255, 1);
+
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 5vh;
+    justify-content: space-between;
 
-    flex-grow: 1;
+    flex-shrink: 0;
+
+    width: 65%;
+    height: 100%;
 }
 
 main .right {
-    border-radius: 50px;
     background-color: rgba(244, 243, 241, 1);
 
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 5vh;
 
-    width: 40%;
+    flex-shrink: 0;
 
-    padding: 50px;
+    width: 35%;
+    height: 100%;
 
-    position: relative;
+    padding: 64px 40px;
+
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;    
 }
 
-main .right form {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-end;
-    gap: 50px;
-
-    width: 100%;
+main .right::-webkit-scrollbar {
+    display: none;
 }
 
-main .right form input[type="text"] {
-    outline: 0px;
+/********************************************************************/
+/***** LEFT *********************************************************/
+/********************************************************************/
 
-    border-top: 0px;
-    border-left: 0px;
-    border-right: 0px;
-    border-bottom: 1px Solid rgba(143, 130, 94, 1);
-    background-color: transparent;
+.left .top-logo {
+    width: 40px;
+    height: 40px;
 
-    width: 100%;
-
-    padding-bottom: 20px;
+    margin-top: 24px;
+    margin-left: 12px;
 }
 
-main .right form input[type="submit"] {
-    color: rgba(255, 255, 255, 1);
-    font-family: 'Termina Medium', Arial, Helvetica, sans-serif;
-    font-size: 15px;
-    letter-spacing: 3px;
+.left .mid-title {
+    font-family: 'Ayer', Georgia, 'Times New Roman', Times, serif;
+    font-size: min(calc(260px - ((1440px - 100vw) / 5)), calc(260px - ((810px - 100vh) / 5)));
+    line-height: 0.85;
     text-transform: uppercase;
 
-    outline: 0px;
+    display: flex;
+    flex-direction: column;
 
-    border: 0px;
-    background-color: rgba(143, 130, 94, 1);
+    margin-left: 60px;
+}
 
-    width: 100%;
+.left .bot-button {
+    margin-bottom: 64px;
+    margin-left: 60px;
+}
 
-    padding: 20px;
+.left .bot-button button {
+    font-family: 'Termina Medium', Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+
+    border: 1px Solid rgba(19, 19, 19, 0.2);
+    background-color: rgba(255, 255, 255, 1);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 312px;
+    height: 64px;
 
     cursor: pointer;
 }
 
-main .right .dialog {
+
+/********************************************************************/
+/***** RIGHT ********************************************************/
+/********************************************************************/
+
+.right .top-title {
+    font-family: 'Termina Medium', Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(143, 130, 94, 1);
+    
+    margin-bottom: 48px;
+}
+
+.right .mid-label {
+    color: rgba(19, 19, 19, 0.4);
+
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    gap: 8px;
+
+    width: 100%;
+
+    margin-bottom: 56px;
+}
+
+.right .mid-label .question {
+    font-family: 'Ayer', Georgia, 'Times New Roman', Times, serif;
+    font-size: 40px;
+    line-height: 1.125;
+    color: rgba(19, 19, 19, 1);
+}
+
+.right #guest-login {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    width: 100%;
+}
+
+#guest-login .text-label {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    width: 100%;
+    height: 60px;
+
+    position: relative;
+}
+
+#guest-login .text-label > p {
+    font-size: 12px;
+    line-height: 18px;
+    color: rgba(19, 19, 19, 0.4);
+    
+    position: relative;
+}
+
+#guest-login .text-label:focus-within > p{
+    font-size: 12px !important;
+    line-height: 18px !important;
+    color: rgba(19, 19, 19, 0.4) !important;
+    
+    position: relative !important;
+}
+
+#guest-login .text-label:has(input:placeholder-shown) > p {
+    font-size: 16px;
+    line-height: 24px;
+    color: rgba(19, 19, 19, 0.4);
+
+    background-color: rgba(244, 243, 241, 1);
+
+    width: 100%;
+
+    margin-bottom: 8px;
+
+    position: absolute;
+}
+
+#guest-login .text-label input[type="text"] {
+    font-size: 16px;
+    line-height: 24px;
+    
+    outline: 0px;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 1px Solid rgba(19, 19, 19, 0.4);
+    background-color: transparent;
+
+    width: 100%;
+
+    padding-bottom: 8px;
+}
+
+#guest-login .text-label:hover input[type="text"] {
+    border-bottom: 2px Solid rgba(19, 19, 19, 0.4);
+}
+
+#guest-login .text-label input[type="text"]:focus {
+    border-bottom: 2px Solid rgba(19, 19, 19, 1);
+}
+
+#guest-login input[type="submit"] {
+    color: rgba(255, 255, 255, 1);
+    font-family: 'Termina Medium', Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+
+    outline: 0px;
+    border: 0px;
+    background-color: rgba(170, 157, 121, 1);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 64px;
+
+    margin-top: 16px;
+
+    cursor: pointer;
+}
+
+.right .bot-dialog {
+    display: flex;
+    flex-direction: column;
     gap: 10px;
 
     width: 100%;
+
+    margin-top: 48px;
 }
 
-main .right .dialog > span {
+.right .bot-dialog > span {
+    color: rgba(228, 20, 20, 1);
+
+    background-image: url("../storage/images/red-info.svg");
+    background-size: 16px 16px;
+    background-position: 0px 10px;
+    background-repeat: no-repeat;
+
     width: 100%;
-    padding: 20px;
-}
-
-.error {
-    background-color: rgba(139, 0, 0, 0.5);
-}
-
-.success {
-    background-color: rgba(0, 100, 0, 0.5);
+    padding: 10px 28px;
 }

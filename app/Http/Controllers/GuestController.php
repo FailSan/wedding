@@ -45,6 +45,7 @@ class GuestController extends Controller
         
         $authGuest = Guest::where('name', $validation['success']['name'])
                             ->where('surname', $validation['success']['surname'])
+                            ->where('password', Str::upper($validation['success']['password']))
                             ->first();
         
         if($authGuest) {
@@ -71,6 +72,7 @@ class GuestController extends Controller
             'diet' => Str::lower($validation['success']['diet']) ?: 'nessuna',
             'allergies' => Str::lower($validation['success']['allergies']) ?: 'nessuna',
             'updated' => $validation['success']['updated'],
+            'password' => Str::upper(Str::random(8)),
         ])) {
             return response()->json(['success' => ['creation' => 'Invitato Registrato']]);
         } else {
@@ -124,6 +126,8 @@ class GuestController extends Controller
             'extra_guests' => 'sometimes|numeric|max:10',
             //Only for backoffice creation
             'updated' => 'sometimes|boolean',
+            //Only for login
+            'password' => 'sometimes|required|string|size:8',
         ]);
 
         if($validator->fails())
@@ -196,6 +200,7 @@ class GuestController extends Controller
                 'surname' => Str::title($extraGuest->surname),
                 'diet' => Str::lower($extraGuest->diet) ?: 'nessuna',
                 'allergies' => Str::lower($extraGuest->allergies) ?: 'nessuna',
+                'password' => Str::upper(Str::random(8)),
             ]);
 
             if($newGuest) {

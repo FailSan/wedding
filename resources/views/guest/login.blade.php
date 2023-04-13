@@ -21,30 +21,50 @@
         <main>
 
             <div class="left">
-                <img src="{{ Storage::url('images/logo.svg') }}">
-                <p class="big">Chiara</p>
-                <p class="big">&amp; Aurelio</p>
-                <a href="/"><p class="grey">Torna al sito.</p></a>
+                <img class="top-logo" src="{{ Storage::url('images/logo.svg') }}">
+                
+                <span class="mid-title">
+                    <p>Chiara</p>
+                    <p>&amp; Aurelio</p>
+                </span>
+
+                <a class="bot-button" href="/">
+                    <button>Torna alla home</button>
+                </a>
             </div>
 
             <div class="right">
-                <p class="brown">Area Invitati</p>
+                <p class="top-title">Area Invitati</p>
 
-                <span>
-                    <p>Sei un invitato?</p>
-                    <p class="grey">Dicci come ti chiami per accedere alla tua area personale. Lì
-                        potrai fornirci alcuni dettagli che ci serviranno per organizzare al meglio
-                        l'evento.</p>
+                <span class="mid-label">
+                    <p class="question">Sei un invitato?</p>
+                    <p>Inserisci il tuo nome e cognome e il codice che ti è stato inviato via messaggio.
+                    Potrai cosi fornirci alcuni dettagli che ci serviranno per organizzare al meglio l'evento.</p>
                 </span>
 
-                <form action="#" method="post" id="guestLogin">
+                <form action="#" method="post" id="guest-login">
                     @csrf
-                    <input type="text" id="guest_name" name="guest_name" placeholder="Nome">
-                    <input type="text" id="guest_surname" name="guest_surname" placeholder="Cognome">
+
+                    <label class="text-label">
+                        <p>Nome</p>
+                        <input type="text" id="guest_name" name="guest_name" placeholder=" ">
+                    </label>
+                    
+                    <label class="text-label">
+                        <p>Cognome</p>
+                        <input type="text" id="guest_surname" name="guest_surname" placeholder=" ">
+                    </label>
+
+                    <label class="text-label">
+                        <p>Parola d'ordine</p>
+                        <input type="text" id="guest_password" name="guest_password" placeholder=" ">
+                    </label>
+                    
                     <input type="submit" value="Entra">
+
                 </form>
 
-                <span class="dialog"></span>
+                <span class="bot-dialog"></span>
             </div>
 
         </main>

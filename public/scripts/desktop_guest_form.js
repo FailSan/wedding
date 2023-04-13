@@ -33,6 +33,22 @@ for(let i = 0; i < sections.length; i++) {
     richSections.push(richSection);
 }
 
+let sidePercentage = {
+    element: document.querySelector('.percentage'),
+    updateLength() {
+        let sectionIndexProp = parseInt(document.documentElement.style.getPropertyValue('--section-index'));
+        let formIndexProp = parseInt(document.documentElement.style.getPropertyValue('--form-index'));
+        let sidePercentageProp = (formIndexProp+sectionIndexProp+1)*10;
+        
+        if(sidePercentageProp > 100 || sectionIndexProp == 2)
+            sidePercentageProp = 100;
+        if(sidePercentageProp < 10 || sectionIndexProp == 0)
+            sidePercentageProp = 10;
+
+        sidePercentage.element.style.setProperty("--percentage", sidePercentageProp + "%");
+    }
+};
+
 function sectionSwipeUp() {
     let currentSection = richSections.find(section => section.selected);
     let currentIndex = richSections.indexOf(currentSection);
@@ -51,6 +67,7 @@ function sectionSwipeUp() {
         newSection.selected = true;
 
         document.documentElement.style.setProperty('--section-index', ++currentIndex);
+        sidePercentage.updateLength();
     }
 }
 
@@ -76,6 +93,7 @@ function sectionSwipeDown() {
         newSection.selected = true;
 
         document.documentElement.style.setProperty('--section-index', --currentIndex);
+        sidePercentage.updateLength();
     }
 }
 
@@ -98,6 +116,7 @@ function formSwipeUp() {
         newForm.selected = true;
 
         document.documentElement.style.setProperty('--form-index', ++currentIndex);
+        sidePercentage.updateLength();
     } else {
         sectionSwipeUp();
         prevAction.removeEventListener('click', formSwipeDown);
@@ -127,6 +146,7 @@ function formSwipeDown() {
         newForm.selected = true;
 
         document.documentElement.style.setProperty('--form-index', --currentIndex);
+        sidePercentage.updateLength();
     } else {
         sectionSwipeDown();
     }
@@ -239,13 +259,11 @@ function onNewExtraValidation(jsonData) {
     } else {
         let extraGuest = {};
         for(let property in jsonData.success) {
-            extraGuest[property] = jsonData.success[property]
+            extraGuest[property] = jsonData.success[property];
         }
         mainGuest.extraGuests.push(extraGuest);
 
-        let textSuccess = mainGuest.extraGuests.length;
-        let successList = {'guestsLength': [textSuccess]};
-        currentForm.showValidate(successList);
+        currentForm.showValidate();
         currentForm.element.reset();
 
         createGuestLabel(extraGuest);
@@ -259,10 +277,9 @@ function createGuestLabel(extraGuest) {
 
     let fullName = document.createElement('p');
     fullName.textContent = extraGuest.name + " " + extraGuest.surname;
-    fullName.addEventListener('click', toggleGuestDetails)
+    fullName.addEventListener('click', toggleGuestDetails);
 
-    let deleteGuestButton = document.createElement('img');
-    deleteGuestButton.src = '../storage/images/no.svg';
+    let deleteGuestButton = document.createElement('p');
     deleteGuestButton.addEventListener('click', deleteExtraGuest);
 
     let hiddenInput = document.createElement('input');
@@ -290,7 +307,7 @@ function toggleGuestDetails(event) {
         currentForm.element.reset();
 
         addExtraButton.firstElementChild.textContent = 'Aggiungi Ospite';
-        addExtraButton.lastElementChild.textContent = '+';
+        addExtraButton.classList.remove('edit-mode');
         addExtraButton.removeEventListener('click', editExtraGuest);
         addExtraButton.addEventListener('click', addExtraGuest);
     }
@@ -303,7 +320,7 @@ function toggleGuestDetails(event) {
         extraInputs.forEach(input => input.value = currentGuest[input.name]);
 
         addExtraButton.firstElementChild.textContent = 'Modifica Ospite';
-        addExtraButton.lastElementChild.textContent = '';
+        addExtraButton.classList.add('edit-mode');
         addExtraButton.removeEventListener('click', addExtraGuest);
         addExtraButton.addEventListener('click', editExtraGuest);
     }
@@ -347,11 +364,11 @@ function onEditExtraValidation(jsonData) {
         currentLabel.firstElementChild.textContent = currentGuest.name + ' ' + currentGuest.surname;
         
         jsonData.success.guestsLength = mainGuest.extraGuests.length;
-        currentForm.showValidate(jsonData.success);
+        currentForm.showValidate();
         currentForm.element.reset();
 
         addExtraButton.firstElementChild.textContent = 'Aggiungi Ospite';
-        addExtraButton.lastElementChild.textContent = '+';
+        addExtraButton.classList.remove('edit-mode');
         addExtraButton.removeEventListener('click', editExtraGuest);
         addExtraButton.addEventListener('click', addExtraGuest);
     }
@@ -371,7 +388,7 @@ function deleteExtraGuest(event) {
         currentForm.element.reset();
 
         addExtraButton.firstElementChild.textContent = 'Aggiungi Ospite';
-        addExtraButton.lastElementChild.textContent = '+';
+        addExtraButton.classList.remove('edit-mode');
         addExtraButton.removeEventListener('click', editExtraGuest);
         addExtraButton.addEventListener('click', addExtraGuest);
     }
@@ -464,5 +481,11 @@ function updateGuest(event) {
 }
 
 function onGuestUpdate(jsonData) {
-    console.log(jsonData);
+    if(jsonData.error) {
+        console.log(jsonData);
+    }
+
+    else {
+        location.href = '/guest/thanks';
+    }
 }

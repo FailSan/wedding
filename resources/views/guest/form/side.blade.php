@@ -7,7 +7,6 @@
         </div>
         
         <p class="field">Nome</p>
-        <p class="value"></p>
     </span>
 
     <span class="side-field" data-side-sel="0" data-content="surname">
@@ -16,7 +15,6 @@
         </div>
 
         <p class="field">Cognome</p>
-        <p class="value"></p>
     </span>
 
     <span class="side-field" data-side-sel="0" data-content="church_confirm">
@@ -25,7 +23,6 @@
         </div>
 
         <p class="field">Presente alla Cerimonia</p>
-        <p class="value"></p>
     </span>
 
     <span class="side-field" data-side-sel="0" data-content="castle_confirm">
@@ -34,7 +31,6 @@
         </div>
 
         <p class="field">Presente al Ricevimento</p>
-        <p class="value"></p>
     </span>
 
     <span class="side-field disabled" data-side-sel="0" data-content="diet">
@@ -43,7 +39,6 @@
         </div>
 
         <p class="field">Dieta</p>
-        <p class="value"></p>
     </span>
 
     <span class="side-field disabled" data-side-sel="0" data-content="allergies">
@@ -52,7 +47,6 @@
         </div>
 
         <p class="field">Allergie</p>
-        <p class="value"></p>
     </span>
 
     <span class="side-field disabled" data-side-sel="0" data-content="extra_confirm">
@@ -61,7 +55,6 @@
         </div>
 
         <p class="field">Ospiti Extra</p>
-        <p class="value"></p>
     </span>
 
     <span class="side-field disabled" data-side-sel="0" data-content="extra_guests">
@@ -69,8 +62,7 @@
             <div class="inner-square"></div>
         </div>
 
-        <p class="field">Numero Ospiti</p>
-        <p class="value"></p>
+        <p class="field">Dati Ospiti</p>
     </span>
 </div>
 
