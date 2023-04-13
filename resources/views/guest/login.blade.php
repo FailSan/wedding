@@ -19,10 +19,17 @@
     <body>
 
         <main>
+            <section class="sidebar">
+                <a href="/guest"><img class="logo" src="{{ Storage::url('images/logo.svg') }}"></a>
 
-            <div class="left">
-                <img class="top-logo" src="{{ Storage::url('images/logo.svg') }}">
-                
+                <span class="language">
+                    <p data-lang="it" class="selected">IT</p>
+                    <p>\</p>
+                    <p data-lang="en">EN</p>
+                </span>
+            </section>
+
+            <section class="left">
                 <span class="mid-title">
                     <p>Chiara</p>
                     <p>&amp; Aurelio</p>
@@ -31,9 +38,9 @@
                 <a class="bot-button" href="/">
                     <button>Torna alla home</button>
                 </a>
-            </div>
+            </section>
 
-            <div class="right">
+            <section class="right">
                 <p class="top-title">Area Invitati</p>
 
                 <span class="mid-label">
@@ -59,13 +66,12 @@
                         <p>Parola d'ordine</p>
                         <input type="text" id="guest_password" name="guest_password" placeholder=" ">
                     </label>
+
+                    <span class="bot-dialog hidden"></span>
                     
-                    <input type="submit" value="Entra">
-
+                    <input type="submit" value="Accedi">
                 </form>
-
-                <span class="bot-dialog"></span>
-            </div>
+            </section>
 
         </main>
 

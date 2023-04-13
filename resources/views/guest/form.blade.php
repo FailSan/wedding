@@ -10,7 +10,7 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('styles/desktop_guest_form.css') }}">
-        <!-- <link rel="stylesheet" href="{{ asset('styles/mobile_guest_form.css') }}"> -->
+        <link rel="stylesheet" href="{{ asset('styles/mobile_guest_form.css') }}">
 
         <!-- Scripts -->
         <script type="module" src="{{ asset('scripts/desktop_guest_form.js') }}" defer></script>

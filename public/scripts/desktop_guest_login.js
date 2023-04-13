@@ -37,8 +37,10 @@ function onGuestLogin(serverResponse) {
     dialogBox.innerHTML = "";
 
     if(serverResponse['error']) {
+        dialogBox.classList.remove('hidden');
+        
         for(let message in serverResponse['error']) {
-            let messageBox = document.createElement('span');
+            let messageBox = document.createElement('p');
             messageBox.textContent = serverResponse['error'][message];
             dialogBox.appendChild(messageBox);
         }

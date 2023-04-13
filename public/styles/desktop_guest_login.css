@@ -80,9 +80,56 @@ body {
 
 main {
     display: flex;
+    justify-content: flex-end;
 
     width: 100%;
     height: 100%;
+
+    position: relative;
+}
+
+main .sidebar {
+    border-right: 1px Solid rgba(0, 0, 0, 0.2);
+    border-bottom: 0px Solid rgba(0, 0, 0, 0);
+    background-color: rgba(255, 255, 255, 1);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 64px;
+    height: 100vh;
+
+    padding: 24px 12px 24px 12px;
+
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    z-index: 100;
+}
+
+main .sidebar .logo {
+    width: 40px;
+    aspect-ratio: 1/1;
+}
+
+main .sidebar .language {
+    font-family: 'Termina Medium', Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    letter-spacing: 3px;
+    writing-mode: vertical-lr;
+    color: rgba(161, 161, 161, 1);
+
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    transform: rotate(180deg);
+}
+
+main .sidebar .selected {
+    color: rgba(0, 0, 0, 1);
 }
 
 main .left {
@@ -94,8 +141,12 @@ main .left {
 
     flex-shrink: 0;
 
-    width: 65%;
+    width: calc(65% - 64px);
     height: 100%;
+
+    padding-top: min(200px, 25vh);
+    padding-bottom: 64px;
+    padding-left: 32px;
 }
 
 main .right {
@@ -124,14 +175,6 @@ main .right::-webkit-scrollbar {
 /***** LEFT *********************************************************/
 /********************************************************************/
 
-.left .top-logo {
-    width: 40px;
-    height: 40px;
-
-    margin-top: 24px;
-    margin-left: 12px;
-}
-
 .left .mid-title {
     font-family: 'Ayer', Georgia, 'Times New Roman', Times, serif;
     font-size: min(calc(260px - ((1440px - 100vw) / 5)), calc(260px - ((810px - 100vh) / 5)));
@@ -140,13 +183,6 @@ main .right::-webkit-scrollbar {
 
     display: flex;
     flex-direction: column;
-
-    margin-left: 60px;
-}
-
-.left .bot-button {
-    margin-bottom: 64px;
-    margin-left: 60px;
 }
 
 .left .bot-button button {
@@ -225,14 +261,19 @@ main .right::-webkit-scrollbar {
     font-size: 12px;
     line-height: 18px;
     color: rgba(19, 19, 19, 0.4);
+
+    background-color: rgba(244, 243, 241, 1);
+
+    width: 100%;
+
+    margin-bottom: 8px;
     
     position: relative;
 }
 
-#guest-login .text-label:focus-within > p{
+#guest-login .text-label:focus-within > p {
     font-size: 12px !important;
     line-height: 18px !important;
-    color: rgba(19, 19, 19, 0.4) !important;
     
     position: relative !important;
 }
@@ -240,13 +281,6 @@ main .right::-webkit-scrollbar {
 #guest-login .text-label:has(input:placeholder-shown) > p {
     font-size: 16px;
     line-height: 24px;
-    color: rgba(19, 19, 19, 0.4);
-
-    background-color: rgba(244, 243, 241, 1);
-
-    width: 100%;
-
-    margin-bottom: 8px;
 
     position: absolute;
 }
@@ -254,6 +288,7 @@ main .right::-webkit-scrollbar {
 #guest-login .text-label input[type="text"] {
     font-size: 16px;
     line-height: 24px;
+    color: rgba(19, 19, 19, 1);
     
     outline: 0px;
     border-top: 0px;
@@ -269,10 +304,12 @@ main .right::-webkit-scrollbar {
 
 #guest-login .text-label:hover input[type="text"] {
     border-bottom: 2px Solid rgba(19, 19, 19, 0.4);
+    padding-bottom: 7px;
 }
 
-#guest-login .text-label input[type="text"]:focus {
+#guest-login form input[type="text"]:focus {
     border-bottom: 2px Solid rgba(19, 19, 19, 1);
+    padding-bottom: 7px;
 }
 
 #guest-login input[type="submit"] {
@@ -293,8 +330,6 @@ main .right::-webkit-scrollbar {
     width: 100%;
     height: 64px;
 
-    margin-top: 16px;
-
     cursor: pointer;
 }
 
@@ -304,18 +339,24 @@ main .right::-webkit-scrollbar {
     gap: 10px;
 
     width: 100%;
-
-    margin-top: 48px;
 }
 
-.right .bot-dialog > span {
+.right .bot-dialog.hidden {
+    opacity: 0;
+
+    width: 0px;
+    height: 0px;
+}
+
+.right .bot-dialog > p {
     color: rgba(228, 20, 20, 1);
 
     background-image: url("../storage/images/red-info.svg");
     background-size: 16px 16px;
-    background-position: 0px 10px;
+    background-position: left center;
     background-repeat: no-repeat;
 
     width: 100%;
-    padding: 10px 28px;
+    
+    padding-left: 28px;
 }
