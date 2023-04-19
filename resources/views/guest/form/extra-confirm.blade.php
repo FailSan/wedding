@@ -3,30 +3,28 @@
 
     <span class="top-section">
         <p class="brown">7 / 7</p>
-        <p class="mid">Pensi di portare altri <i>ospiti</i> con te?</p>
-    </span>
+        <p class="mid">{{ __("Pensi di portare altri") }} <i>{{ __("Ospiti") }}</i> {{ __("con te?") }}</p>
 
-    <div class="mid-section">
         <fieldset class="radio-group">
             <label class="radio-label yes">
-                <p>Sì, ho qualche ospite!</p>
+                <p>{{ __("Sì, ho qualche ospite!") }}</p>
                 <input type="radio" name="extra_confirm" value="true" tabindex="-1">
             </label>
 
             <label class="radio-label no">
-                <p>No, non porto nessuno con me.</p>
+                <p>{{ __("No, non porto nessuno con me.") }}</p>
                 <input type="radio" name="extra_confirm" value="false" tabindex="-1">
             </label>
         </fieldset>
 
         <span class="error-box hidden"></span>
 
-        <input type="submit" value="Conferma" tabindex="-1">
-    </div>
+        <input type="submit" value="{{ __('Conferma') }}" tabindex="-1">
+    </span>
 
     <span class="bot-section">
         <img src="{{ Storage::url('images/info.svg') }}">
-        <p class="grey">Puoi portare con te qualcuno se vuoi, assicurati però di inserire i
-            suoi dati corretti.</p>
+        <p class="grey">{{ __("Puoi portare con te qualcuno se vuoi, assicurati però di inserire i
+            suoi dati corretti.") }}</p>
     </span>
 </form>

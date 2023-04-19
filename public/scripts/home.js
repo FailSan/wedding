@@ -41,7 +41,7 @@ function onUserLogin(serverResponse) {
     } else {
         dialogShow(serverResponse['success'], true);
         setTimeout(function() {
-            location.href = "/user/dashboard";
+            location.href = "/user/administration";
         }, 2000);
     }
 }
@@ -82,7 +82,7 @@ function onUserSignup(serverResponse) {
     } else {
         dialogShow(serverResponse['success'], true);
         setTimeout(function() {
-            location.href = '/login';
+            location.href = '/user/login';
         }, 2000);
     }
 }

@@ -28,17 +28,16 @@
 
     body {
         font-size: 14px;
-    }
 
-    .pages {
-        width: 100%;
+        padding-left: 0px;
+        padding-top: 56px;
     }
 
     /********************************************************************/
     /***** BUTTON *******************************************************/
     /********************************************************************/
 
-    .fixedRSVP {
+    a.fixedRSVP {
         width: 64px;
 
         top: auto;
@@ -179,8 +178,6 @@
         min-height: calc(100vh - 56px);
 
         padding: 0px 24px 10vh 24px;
-
-        top: 56px;
     }
 
     [data-content="home"] > img {
@@ -223,8 +220,6 @@
         gap: 64px;
 
         padding: 64px 24px 64px 24px;
-
-        top: 56px;
     }
 
     [data-content="intro"] .left {
@@ -250,7 +245,7 @@
         width: 100%;
     }
 
-    [data-content="intro"] .right .dialog > p {
+    [data-content="intro"] .right .little-dialog > p {
         width: 75%;
     }
 
@@ -276,8 +271,6 @@
         min-height: calc(100vh - 56px);
 
         padding: 64px 24px 64px 24px;
-
-        top: 56px;
     }
 
     [data-content="when"] > p:nth-of-type(1) {
@@ -295,8 +288,6 @@
     [data-content="when"] .countdown {
         font-size: 10px;
 
-        justify-content: space-between;
-
         width: 100%;
         height: 48px;
     }
@@ -309,9 +300,6 @@
     /***** CHURCH AND CASTLE ********************************************/
     /********************************************************************/
 
-    [data-content="church"], [data-content="castle"] {
-        top: 56px;
-    }
 
     [data-content="church"] .head .top, [data-content="castle"] .head .top {
         align-items: flex-start;
@@ -344,7 +332,7 @@
         padding: 50px 24px 50px 24px;
     }
 
-    [data-content="church"] .content .mid, [data-content="castle"] .content .mid {
+    [data-content="church"] .content .mid-dialog, [data-content="castle"] .content .mid-dialog {
         width: 100%;
     }
 
@@ -368,6 +356,8 @@
     .location .title img {
         width: 100%;
         height: auto;
+
+        margin-top: 24px;
 
         position: relative;
     }
@@ -414,8 +404,6 @@
         min-height: calc(100vh - 56px);
 
         padding: 72px 0px 72px 0px;
-
-        top: 56px;
     }
 
     [data-content="guest"] .slider {
@@ -429,7 +417,7 @@
         gap: 5vh;
     }
 
-    [data-content="guest"] .container > p {
+    [data-content="guest"] .container .little-dialog {
         width: 100%;
     }
     
@@ -448,12 +436,16 @@
 
     [data-content="present"] {
         padding: 72px 24px 72px 24px;
-
-        top: 56px;
     }
     
-    [data-content="present"] .mid {
+    [data-content="present"] > .mid-dialog {
         width: 100%;
+    }
+
+    [data-content="present"] > .little-dialog {
+        width: 75%;
+
+        margin-left: 25%;
     }
     
     [data-content="present"] .iban {
@@ -486,8 +478,6 @@
         gap: 120px;
 
         padding: 72px 24px 120px 24px;
-
-        top: 56px;
     }
 
     [data-content="misc"] .faqs {
@@ -511,5 +501,10 @@
         font-size: 8px;
 
         justify-content: space-between;
+    }
+
+    footer #footer_arrow {
+        width: 48px;
+        height: 48px;
     }
 }

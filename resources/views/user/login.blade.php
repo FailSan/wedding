@@ -1,4 +1,4 @@
-@extends('structure')
+@extends('user.structure')
 
 @section('title', "Pagina di Login")
 

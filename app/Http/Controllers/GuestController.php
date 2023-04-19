@@ -26,7 +26,7 @@ class GuestController extends Controller
         if($guestCode) {
             $authGuest = Guest::where('code', $guestCode)->first();
             if($authGuest->updated)
-                return view('guest.summary')->with('guest', $authGuest);
+                return view('guest.thanks');
             else
                 return view('guest.form')->with('guest', $authGuest);
         } else {

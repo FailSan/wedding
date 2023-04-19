@@ -1,13 +1,13 @@
 <div class="left">
-    <p class="brown">Intro</p>
+    <p class="brown">{{ __("Intro") }}</p>
     <img class="photos" src="{{ Storage::url('images/intro_01.png') }}">
 </div>
 
 <div class="right">
-    <p class="mid">Avete capito bene. Dopo 7 anni dovevo pur cedere. Anche perchè si portava la testa già da un po' che poi ne faceva &ldquo;anta&rdquo; e bla bla bla...</p>
-    <span class="dialog">
-        <p class="little">Scherzi a parte, siamo emozionati e felici nell'invitarvi al più importante giorno della nostra vita!</p>
-        <p class="little grey">[Più importante dopo l'uscita dell'iPhone, naturalmente.]</p>
+    <p class="mid">{{ __("Avete capito bene. Dopo 7 anni dovevo pur cedere. Anche perchè, lei aveva cominciato a lamentarsi del fatto che stanno arrivando gli “anta” ...") }}</p>
+    <span class="little-dialog">
+        <p class="little">{{ __("Tornando seri: siamo emozionati e felici di invitarvi al giorno più importante della nostra vita!") }}</p>
+        <p class="little grey">{{ __("Più importante dopo quello dell'uscita dell'iPhone, naturalmente.") }}</p>
     </span>
 </div>
 

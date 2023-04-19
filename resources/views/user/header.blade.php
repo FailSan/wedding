@@ -1,13 +1,9 @@
 <navbar>
     <a href="/">Landing</a>
-    
-    @if(request()->cookie('code'))
-    <a href="/guest">Area Invitato</a>
-    @endif
 
     @guest
-    <a href="/login">Login</a>
-    <a href="/signup">Registrazione</a>
+    <a href="/user/login">Login</a>
+    <a href="/user/signup">Registrazione</a>
     @endguest
 
     @auth

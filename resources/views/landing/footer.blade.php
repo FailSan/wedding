@@ -1,5 +1,5 @@
-<p class="big">Torna</p>
-<p class="big">all'inizio</p>
+<p class="big">{{ __("Torna") }}</p>
+<p class="big">{{ __("all'inizio") }}</p>
 <img id="footer_arrow" src="{{ Storage::url('images/footer_arrow.svg') }}">
 
 <div class="slider">

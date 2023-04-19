@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Il Matrimonio di C&amp;A</title>
+        <title>{{ __("Il Matrimonio di C&A") }}</title>
 
         <!-- Fonts -->
 
@@ -17,14 +17,18 @@
 
     </head>
     <body>
+        <div class="loader">
+            <img src="{{ Storage::url('images/rings-loader.svg') }}">
+        </div>
+        
         <main>
             <section class="sidebar">
                 <a href="/guest"><img class="logo" src="{{ Storage::url('images/logo.svg') }}"></a>
 
                 <span class="language">
-                    <p data-lang="it" class="selected">IT</p>
+                    <p data-lang="it" @class(["selected" => app()->getLocale() == "it"])><a href="/lang/it">IT</a></p>
                     <p>\</p>
-                    <p data-lang="en">EN</p>
+                    <p data-lang="en" @class(["selected" => app()->getLocale() == "en"])><a href="/lang/en">EN</a></p>
                 </span>
 
                 <div class="percentage"></div>

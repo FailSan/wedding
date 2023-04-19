@@ -3,22 +3,27 @@
 /********************************************************************/
 
 let mainDocument = document.documentElement;
+let bodyDocument = mainDocument.querySelector('body');
+let loaderDocument = bodyDocument.querySelector('.loader');
 let whenContainer = document.querySelector('[data-content="when"]');
 let churchContainer = document.querySelector('[data-content="church"]');
 let castleContainer = document.querySelector('[data-content="castle"]');
 
-window.addEventListener('load', initiateWindow);
 window.addEventListener('load', hideLoader);
 window.addEventListener('resize', initiateWindow);
 window.addEventListener('orientationchange', initiateWindow);
+window.addEventListener('scroll', initiateWindow);
 window.addEventListener('scroll', fillPercentage);
 
 function hideLoader() {
-    let loader = document.querySelector('.loader');
-
     setTimeout(function() {
-        loader.classList.add('hidden');
-        setTimeout(() => loader.remove(), 2000);
+        loaderDocument.classList.add('hidden');
+
+        initiateWindow();
+
+        setTimeout(function() {
+            loaderDocument.remove();
+        }, 2000);
     }, 2000);
 }
 
@@ -32,12 +37,15 @@ function fillPercentage() {
 function initiateWindow() {
     fillPercentage();
     
-    if(whenContainer.scrollHeight > mainDocument.clientHeight) {
-        whenContainer.style.top = - (whenContainer.style.top + whenContainer.scrollHeight - mainDocument.clientHeight) + "px";
-    }
+    let churchFix = -(churchContainer.scrollHeight-mainDocument.clientHeight) + "px";
+    let castleFix = -(castleContainer.scrollHeight-mainDocument.clientHeight) + "px";
 
-    churchContainer.style.top = - (churchContainer.style.top + churchContainer.scrollHeight - mainDocument.clientHeight) + "px";
-    castleContainer.style.top = - (castleContainer.style.top + castleContainer.scrollHeight - mainDocument.clientHeight) + "px";
+    churchContainer.style.setProperty('--topFix', churchFix);
+    castleContainer.style.setProperty('--topFix', castleFix);
+    /*
+    churchContainer.style.top = - (churchContainer.scrollHeight - mainDocument.clientHeight) + "px";
+    castleContainer.style.top = - (castleContainer.scrollHeight - mainDocument.clientHeight) + "px";
+    */
 }
 
 let menuOpener = document.querySelector('nav [data-open]');

@@ -2,66 +2,82 @@
     <p class="big">FAQ</p>
     <div class="question">
         <span class="link">
-            <p>Che si mangia?</p>
+            <p>{{ __("Che si mangia?") }}</p>
             <img src="{{ Storage::url('images/faq_arrow.svg') }}">
         </span>
-        <span class="answer hidden"></span>
+        <span class="answer hidden">
+            <p class="little">{{ __("Aurelio non mangia pesce, quindi almeno al matrimonio ci sarà la carne.") }}</p>
+            <p class="little grey">{{ __("Nel form di partecipazione, però,
+                potrete indicare eventuali esigenze particolari sul menù.") }}</p>
+        </span>
     </div>
 
     <div class="question">
         <span class="link">
-            <p>Posso portare i miei figli?</p>
+            <p>{{ __("Posso portare i miei figli?") }}</p>
             <img src="{{ Storage::url('images/faq_arrow.svg') }}">
         </span>
-        <span class="answer hidden"></span>
+        <span class="answer hidden">
+            <p class="little">{{ __("Certo che puoi, ma sei sicur* che reggano open bar e festa dopo cena?") }}</p>
+            <p class="little grey">{{ __("Speriamo che tutti vi godiate la giornata, ma non abbiamo potuto 
+                organizzare un servizio di intrattenimento dedicato anche a bambini e bambine.") }}</p>
+        </span>
     </div>
     
     <div class="question">
         <span class="link">
-            <p>Posso portare il mio fidanzato/a?</p>
+            <p>{{ __("Posso portare il mio fidanzato/a?") }}</p>
             <img src="{{ Storage::url('images/faq_arrow.svg') }}">
         </span>
-        <span class="answer hidden"></span>
+        <span class="answer hidden">
+            <p class="little">{{ __("Certo! Ma vale lo stesso discorso dei figli: sei sicur* che regga open bar e festa dopo cena?") }}</p>
+        </span>
     </div>
     
     <div class="question">
         <span class="link">
-            <p>Ho intolleranze alimentari, verrò ggiàmmangiato?</p>
+            <p>{{ __("Ho intolleranze alimentari, verrò ggiàmmangiato?") }}</p>
             <img src="{{ Storage::url('images/faq_arrow.svg') }}">
         </span>
-        <span class="answer hidden"></span>
+        <span class="answer hidden">
+            <p class="little grey">{{ __("Non ti preoccupare! Nel form di partecipazione potrai indicare tutte le intolleranze o le eventuali richieste,
+                 in modo che il catering possa organizzarsi al meglio!") }}</p>
+        </span>
     </div>
 
     <div class="question">
         <span class="link">
-            <p>C'è un dress code?</p>
+            <p>{{ __("C'è un dress code?") }}</p>
             <img src="{{ Storage::url('images/faq_arrow.svg') }}">
         </span>
-        <span class="answer hidden">Lorem Ipsum è un testo segnaposto utilizzato nel settore della tipografia e della stampa. Lorem Ipsum è considerato il testo segnaposto standard sin dal sedicesimo secolo, quando un anonimo tipografo prese una cassetta di caratteri e li assemblò per preparare un testo campione. È sopravvissuto non solo a più di cinque secoli, ma anche al passaggio alla videoimpaginazione, pervenendoci sostanzialmente inalterato. Fu reso popolare, negli anni 
-            ’60, con la diffusione dei fogli di caratteri trasferibili “Letraset”, che contenevano passaggi del Lorem Ipsum, e più recentemente da software di impaginazione come Aldus PageMaker, che includeva versioni del Lorem Ipsum.
-</span>
+        <span class="answer hidden">
+            <p class="little grey">{{ __("Puoi vestirti come preferisci.") }}</p>
+            <p class="little">{{ __("Anche con le Birkenstock.") }}</p>
+        </span>
     </div>
 
     <div class="question">
         <span class="link">
-            <p>C'è una lista nozze?</p>
+            <p>{{ __("C'è una lista nozze?") }}</p>
             <img src="{{ Storage::url('images/faq_arrow.svg') }}">
         </span>
-        <span class="answer hidden"></span>
+        <span class="answer hidden">
+            <p class="little grey">{{ __("C'è l'Iban di Chiara, così la smette di lamentarsi che è senza soldi.") }}</p>
+        </span>
     </div>
 
 </span>
 
 <span class="contacts">
-    <p class="big">Contatti</p>
+    <p class="big">{{ __("Contatti") }}</p>
     <span class="numbers">
         <span>
-            <p>+39 3470975162</p>
+            <a href="tel:+393470975162"><p>+39 3470975162</p></a>
             <p class="grey">[Chiara]</p>
         </span>
 
         <span>
-            <p>+39 3484255170</p>
+            <a href="tel:+393484255170"><p>+39 3484255170</p></a>
             <p class="grey">[Aurelio]</p>
         </span>
     </span>

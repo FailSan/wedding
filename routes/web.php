@@ -20,24 +20,23 @@ use App\Http\Controllers\TableController;
 */
 
 Route::view('/', 'landing.home')->name('home');
-Route::view('/signup', 'signup');
-Route::view('/login', 'login');
 
-/*
-Route::get('/{locale}', function($locale) {
-    App::setLocale($locale);
+Route::get('/lang/{locale}', function($locale) {
+    app()->setLocale($locale);
+    session()->put('locale', $locale);
+
     return redirect()->back();
 });
-*/
 
 Route::controller(UserController::class)->prefix('user')->group(function() {
     //Basic Actions
-    Route::view('/login', 'login')->name('login');
     Route::post('/login', 'login');
     Route::get('/logout', 'logout')->middleware('auth');
     Route::post('/create', 'create');
 
     //Views
+    Route::view('/signup', 'user.signup');
+    Route::view('/login', 'user.login');
     Route::view('/administration', 'user.dashboard')->middleware('auth');
     Route::get('/administration/guests', 'guestsView')->middleware('auth');
     Route::get('/administration/tables', 'tablesView')->middleware('auth');
@@ -52,7 +51,6 @@ Route::controller(GuestController::class)->prefix('guest')->group(function() {
 
     //Views
     Route::get('/', 'landing')->name('guest.landing');
-    Route::view('/thanks', 'guest.thanks');
     
     //API
     Route::get('/data', 'data');

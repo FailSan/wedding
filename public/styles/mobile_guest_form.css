@@ -1,10 +1,19 @@
-@media (max-width: 600px) {
+@media (max-width: 640px) {
+
+    body {
+        font-size: 14px;
+    }
 
     main {
         align-items: center;
 
         padding-top: 56px;
     }
+
+    .form-intro, .form-feed, .form-summary {
+        width: 100%;
+    }
+
 
     /********************************************************************/
     /***** NAVBAR *******************************************************/
@@ -54,6 +63,7 @@
         right: auto;
     }
 
+
     /********************************************************************/
     /***** SIDEBAR ******************************************************/
     /********************************************************************/
@@ -62,4 +72,258 @@
         display: none;
     }
 
+
+    /********************************************************************/
+    /***** INTRO ********************************************************/
+    /********************************************************************/
+
+    .form-intro .hero {
+        font-size: 72px;
+    }
+
+    .form-intro .hero img {
+        height: 72px;
+    }
+
+    .form-intro .mid-dialog {
+        text-align: left;
+
+        align-items: flex-start;
+    }
+
+    .form-intro .ready-button {
+        font-size: 10px;
+
+        width: 100%;
+        height: 48px;
+    }
+
+
+    /********************************************************************/
+    /***** NAV **********************************************************/
+    /********************************************************************/
+
+    main nav {
+        gap: 4px;
+
+        bottom: 12px;
+        right: auto;
+        left: 12px;
+    }
+
+    main nav img {
+        width: 40px;
+        height: 40px;
+    }
+
+
+    /********************************************************************/
+    /***** FORM *********************************************************/
+    /********************************************************************/
+
+    .form-feed .form-container {
+        width: 100%;
+    }
+
+    .form-feed .form-container form {
+        padding: 20px 24px 80px 24px;
+    }
+
+    .mid {
+        font-size: 40px;
+    }
+
+    .form-container form .top-section {
+        gap: 16px;
+
+        margin-top: 0px;
+    }
+
+    .form-container form .top-section .brown {
+        margin-bottom: 0px;
+    }
+
+    .form-container form .top-section .mid {
+        margin-bottom: 0px;
+    }
+
+    .grey {
+        font-size: 12px;
+    }
+
+    .form-container form .bot-section {
+        width: 100%;
+    }
+
+    .form-container form .error-box {
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+    .form-container form .error-box > p {
+        padding: 5px 28px;
+    }
+
+    .form-container form input[type="submit"] {
+        font-size: 10px;
+
+        width: 100%;
+        height: 48px;
+    }
+
+    .form-container form .radio-group {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .form-container form .radio-group .radio-label {
+        width: 100%;
+        height: 56px;
+    }
+
+
+    /********************************************************************/
+    /***** EXTRA ********************************************************/
+    /********************************************************************/
+
+    #extra_guests_form .top-section {
+        gap: 16px;
+    }
+
+    #extra_guests_form .top-section .brown {
+        margin-bottom: 0px;
+    }
+
+    #extra_guests_form .top-section .mid {
+        margin-bottom: 0px;
+    }
+
+    #extra_guests_form .top-section > p:last-of-type {
+        display: none;
+        visibility: hidden;
+        opacity: 0;
+    }
+    
+    .extra-guests-container {
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+
+        height: 32px;
+
+        margin-top: 0px;
+        margin-bottom: 12px;
+
+        overflow-x: auto;
+        overflow-y: hidden;
+
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .extra-guests-container::-webkit-scrollbar {
+        display: none;
+    }
+
+    .extra-guests-container .extra-guest-label {
+        font-size: 12px;
+
+        height: 28px;
+    }
+
+    .extra-guest-label > p:first-of-type {
+        display: flex;
+        align-items: center;
+
+        padding: 4px;
+    }
+
+    .extra-guest-label > p:last-of-type {
+        width: 28px;
+        height: 28px;
+    }
+
+    .mini-form {
+        gap: 10px;
+    }
+
+    .form-container form .mini-form .main-input {
+        width: calc(50% - 5px);
+    }
+
+    .form-container form .mini-form .main-input > p {
+        font-size: 12px;
+        line-height: 16px;
+
+        margin-bottom: 4px;
+    }
+
+    .form-container form .mini-form .main-input:focus-within > p {
+        font-size: 12px !important;
+        line-height: 16px !important;
+    }
+
+    .form-container form .mini-form .main-input:has(input:placeholder-shown) > p {
+        font-size: 14px;
+        line-height: 18px;
+    }
+
+    .form-container form .mini-form input[type="text"] {
+        font-size: 14px;
+        line-height: 18px;
+
+        padding-bottom: 4px;
+    }
+
+    .form-container form .mini-form .main-input:hover input[type="text"] {
+        padding-bottom: 3px;
+    }
+
+    .form-container form input[type="text"]:focus {
+        padding-bottom: 3px;
+    }
+
+    .form-container #extra_guests_form .error-box {
+        gap: 10px;
+
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+    .form-container #extra_guests_form .error-box > p {
+        padding: 0px 0px 0px 28px;
+    }
+
+    .submit-container {
+        gap: 8px;
+    }
+
+    .submit-container .add-guest {
+        font-size: 8px;
+
+        background-image: none;
+
+        justify-content: center;
+
+        width: 50%;
+        height: 48px;
+
+        padding-left: 0px;
+    }
+
+    .submit-container .add-guest.edit-mode {
+        background-image: none;
+    }
+
+    #extra_guests_form .submit-container input[type="submit"] {
+        font-size: 8px;
+
+        width: 50%;
+    }
+
+    #extra_guests_form .bot-section {
+        display: none;
+        visibility: hidden;
+        opacity: 0;
+    }
 }

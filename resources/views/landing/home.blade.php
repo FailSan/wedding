@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Il Matrimonio di C&amp;A</title>
+        <title>{{ __("Il Matrimonio di C&A") }}</title>
 
         <!-- Fonts -->
 
@@ -16,11 +16,12 @@
         <script src="{{ asset('scripts/desktop_home.js') }}" defer></script>
 
     </head>
-    <body>
+    <body class="hidden">
+        
         <div class="loader">
-            <p class="big">Caricamento</p>
             <img src="{{ Storage::url('images/rings-loader.svg') }}">
         </div>
+        
         <nav>@include('landing.navbar')</nav>
 
         <a class="fixedRSVP" href="/guest">RSVP</a>

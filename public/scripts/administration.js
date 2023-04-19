@@ -50,6 +50,7 @@ function onGuestCreation(serverResponse) {
         dialogShow(serverResponse['success'], true);
 
         //Clean Form
+        /*
         guestForm.elements['name'].value = "";
         guestForm.elements['surname'].value = "";
         guestForm.elements['diet'].value = "";
@@ -57,6 +58,8 @@ function onGuestCreation(serverResponse) {
         guestForm.elements['church_confirm'].checked = false;
         guestForm.elements['castle_confirm'].checked = false;
         guestForm.elements['updated'].checked = false;
+        */
+       guestForm.reset();
 
         //Retrieve Data and Populate Table
         retrieveData().then((guestData) => createTable(guestData));
@@ -96,7 +99,9 @@ async function retrieveData() {
 let searchForm = document.querySelector('#search_form');
 searchForm.elements['search_string'].addEventListener('input', filterData);
 searchForm.elements['veg_flag'].addEventListener('change', filterData);
-searchForm.elements['confirm_flag'].addEventListener('change', filterData);
+searchForm.elements['church_flag'].addEventListener('change', filterData);
+searchForm.elements['castle_flag'].addEventListener('change', filterData);
+searchForm.elements['updated_flag'].addEventListener('change', filterData);
 searchForm.addEventListener('submit', filterData);
 
 //Filter and Sort Data
@@ -106,7 +111,9 @@ function filterData(event) {
     
     let searchString = searchForm.elements['search_string'].value.toLowerCase();
     let vegFlag = searchForm.elements['veg_flag'].checked;
-    let confirmFlag = searchForm.elements['confirm_flag'].checked;
+    let churchFlag = searchForm.elements['church_flag'].checked;
+    let castleFlag = searchForm.elements['castle_flag'].checked;
+    let updatedFlag = searchForm.elements['updated_flag'].checked;
 
     let currentHead = document.querySelector('th:not([data-order="none"])');
     let currentSort = currentHead.dataset.sort.toLowerCase();
@@ -159,16 +166,16 @@ function filterData(event) {
                     }
                 });
                 break;
-            case 'confirmed':
+            case 'updated':
                 serverData.sort((first, second) => {
-                    if(first.confirmed === second.confirmed) {
+                    if(first.updated === second.updated) {
                         if(first.id < second.id)
                             return -1;
                         if(first.id > second.id)
                             return 1;
                         return 0;
                     }
-                    return second.confirmed - first.confirmed;
+                    return second.updated - first.updated;
                 });
                 break;
             case 'host':
@@ -228,10 +235,24 @@ function filterData(event) {
                     return true;
             });
         }
-        
-        if(confirmFlag) {
+
+        if(churchFlag) {
             filteredData = filteredData.filter((guest) => {
-                if(guest.confirmed)
+                if(guest.church_confirm)
+                    return true;
+            });
+        }
+
+        if(castleFlag) {
+            filteredData = filteredData.filter((guest) => {
+                if(guest.castle_confirm)
+                    return true;
+            });
+        }
+        
+        if(updatedFlag) {
+            filteredData = filteredData.filter((guest) => {
+                if(guest.updated)
                     return true;
             });
         }
@@ -291,12 +312,30 @@ function createTable(guestData) {
         diet_cell.textContent = guestData[i]['allergies'];
         guestRow.appendChild(diet_cell);
 
-        let confirm_cell = document.createElement('td');
-        if(guestData[i]['confirmed'])
-            confirm_cell.textContent = 'Sì';
+        let church_confirm_cell = document.createElement('td');
+        if(guestData[i]['church_confirm'])
+            church_confirm_cell.textContent = 'Sì';
         else
-            confirm_cell.textContent = 'No';
-        guestRow.appendChild(confirm_cell);
+            church_confirm_cell.textContent = 'No';
+        guestRow.appendChild(church_confirm_cell);
+
+        let castle_confirm_cell = document.createElement('td');
+        if(guestData[i]['castle_confirm'])
+            castle_confirm_cell.textContent = 'Sì';
+        else
+            castle_confirm_cell.textContent = 'No';
+        guestRow.appendChild(castle_confirm_cell);
+
+        let updated_cell = document.createElement('td');
+        if(guestData[i]['updated'])
+            updated_cell.textContent = 'Sì';
+        else
+            updated_cell.textContent = 'No';
+        guestRow.appendChild(updated_cell);
+
+        let password_cell = document.createElement('td');
+        password_cell.textContent = guestData[i]['password'];
+        guestRow.appendChild(password_cell);
 
         let host_cell = document.createElement('td');
         if(guestData[i]['host'])
@@ -304,15 +343,6 @@ function createTable(guestData) {
         else
             host_cell.textContent = 'Aurelio e Chiara';
         guestRow.appendChild(host_cell);
-
-        let invite_cell = document.createElement('td');
-        invite_cell.dataset.link = 'invite';
-        let invite_link = document.createElement('a');
-        invite_link.textContent = "Link";
-        invite_link.href = '/guest/invite/' + guestData[i]['code'];
-        invite_link.addEventListener('click', copyLink);
-        invite_cell.appendChild(invite_link);
-        guestRow.appendChild(invite_cell);
 
         let delete_cell = document.createElement('td');
         delete_cell.dataset.link = 'delete';
@@ -324,19 +354,6 @@ function createTable(guestData) {
         guestRow.appendChild(delete_cell);
 
     }
-}
-
-//Copy Link
-let guestInvites = document.querySelectorAll('[data-link="invite"] a');
-for(let i = 0; i < guestInvites.length; i++) {
-    guestInvites[i].addEventListener('click', copyLink);
-}
-
-function copyLink(event) {
-    event.preventDefault();
-
-    let link = event.currentTarget.href;
-    navigator.clipboard.writeText(link);
 }
 
 let guestDeletes = document.querySelectorAll('[data-link="delete"] a');

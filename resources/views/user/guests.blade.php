@@ -14,12 +14,16 @@
 
         <div class="labels">
             <label for="veg_flag">Solo Vegetariani</label>
-            <label for="confirm_flag">Solo Confermati</label>
+            <label for="church_flag">Solo Presenti in Chiesa</label>
+            <label for="castle_flag">Solo Presenti al Castello</label>
+            <label for="updated_flag">Solo Confermati</label>
         </div>
 
         <div class="inputs">
             <input type="checkbox" name="veg_flag" id="veg_flag">
-            <input type="checkbox" name="confirm_flag" id="confirm_flag">
+            <input type="checkbox" name="church_flag" id="church_flag">
+            <input type="checkbox" name="castle_flag" id="castle_flag">
+            <input type="checkbox" name="updated_flag" id="updated_flag">
         </div>
 
         <input type="text" name="search_string" placeholder="Cerca...">
@@ -33,9 +37,11 @@
                 <th data-sort="surname" data-order="none">COGNOME</th>
                 <th data-sort="diet" data-order="none">DIETA</th>
                 <th data-sort="allergies" data-order="none">ALLERGIE</th>
-                <th data-sort="confirmed" data-order="none">CONFERMATO</th>
+                <th data-sort="church_confirm" data-order="none">IN CHIESA</th>
+                <th data-sort="castle_confirm" data-order="none">AL CASTELLO</th>
+                <th data-sort="updated" data-order="none">CONFERMATO</th>
+                <th data-sort="password" data-order="none">CODICE</th>
                 <th data-sort="host" data-order="none">INVITATO DA</th>
-                <th data-sort="link" data-order="none">LINK</th>
                 <th data-sort="delete" data-order="none">CANCELLA</th>
             </tr>
         </thead>
@@ -48,9 +54,11 @@
                 <td>{{ $guest->surname }}</td>
                 <td>{{ $guest->diet }}</td>
                 <td>{{ $guest->allergies }}</td>
-                <td>{{ $guest->confirmed ? 'Sì' : 'No'}}</td>
+                <td>{{ $guest->church_confirm ? 'Sì' : 'No' }}</td>
+                <td>{{ $guest->castle_confirm ? 'Sì' : 'No' }}</td>
+                <td>{{ $guest->updated ? 'Sì' : 'No'}}</td>
+                <td>{{ $guest->password }}</td>
                 <td>{{ $guest->host ? $guest->host->name . ' ' . $guest->host->surname : 'Aurelio e Chiara' }}</td>
-                <td data-link="invite"><a href="/guest/invite/{{ $guest->code }}">Link</a></td>
                 <td data-link="delete"><a href="/guest/delete/{{ $guest->id }}">Cancella</a></td>
             </tr>
             @endforeach

@@ -9,18 +9,21 @@
 </span>
 
 <span class="content">
-    <p class="brown">Ricevimento</p>
-    <p class="mid">Dopo la combo "attesa/cerimonia/caldo torrido", abbiamo ben pensato di eliminare
-            il riso in favore delle innocue bolle di sapone (in realtà non volevamo finire al pronto soccorso),
-            e vi invitiamo ad aspettarci per il ricevimento.</p>
+    <p class="brown">{{ __("Ricevimento") }}</p>
+    <span class="mid-dialog">
+        <p class="mid">{{ __("Ho visto in una puntata dei Simpson che il riso crudo fa esplodere gli uccelli. 
+            E quindi vediamo se è vero.") }}</p>
+        <p class="mid">{{ __("Dopo le eventuali esplosioni, vi invitiamo ad aspettarci per il ricevimento.") }}</p>
+    </span>
+
     <span class="hour">
-        <p>[dalle ore...]</p>
+        <p>[{{ __("dalle ore") }}]</p>
         <p class="big">19.00</p>
     </span>
 </span>
 
 <div class="location">
-    <p>[presso la location di...]</p>
+    <p>[{{ __("al") }}]</p>
     <span class="title">
         <p class="big">Castello Xirumi</p>
         <p class="big">Serravalle</p>
@@ -30,7 +33,7 @@
     <span class="maps">
         <p>SP69ii<br>96016 Lentini SR</p>
         <a class="directions" href="https://goo.gl/maps/owFSaBEnTb4YP1kD8">
-            <p>Raggiungere la location</p>
+            <p>{{ __("Raggiungere il Castello") }}</p>
             <img src="{{ Storage::url('images/map.svg') }}">
         </a>
     </span>

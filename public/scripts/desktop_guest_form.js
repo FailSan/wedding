@@ -1,3 +1,15 @@
+window.addEventListener('load', hideLoader);
+function hideLoader() {
+    let loaderDocument = document.querySelector('.loader');
+    setTimeout(function() {
+        loaderDocument.classList.add('hidden');
+
+        setTimeout(function() {
+            loaderDocument.remove();
+        }, 2000);
+    }, 2000);
+}
+
 let mainGuest = {
     name: '',
     surname: '',
@@ -486,6 +498,6 @@ function onGuestUpdate(jsonData) {
     }
 
     else {
-        location.href = '/guest/thanks';
+        location.reload();
     }
 }

@@ -17,7 +17,7 @@
 
     </head>
     <body>
-        @include('header')
+        @include('user.header')
 
         <div>@yield('title')</div>
 

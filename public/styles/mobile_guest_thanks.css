@@ -1,21 +1,14 @@
 @media (max-width: 640px) {
+
     body {
         font-size: 14px;
     }
 
     main {
-        flex-direction: column;
-    }
+        justify-content: center;
+        align-items: center;
 
-    main .left {
-        display: none;
-    }
-
-    main .right {
-        width: 100%;
-        height: calc(100% - 56px);
-
-        padding: 20px 24px;
+        padding-top: 56px;
     }
 
     /********************************************************************/
@@ -51,30 +44,51 @@
         transform: none;
     }
 
+    main .sidebar .percentage {
+        --percentage: 100%;
+    
+        border-right: 0px Solid rgba(0, 0, 0, 1);
+        border-bottom: 1px Solid rgba(0, 0, 0, 1);
+    
+        width: var(--percentage);
+        height: 0px;
+    
+        position: absolute;
+        top: 55px;
+        left: 0px;
+        right: auto;
+    }
+
 
     /********************************************************************/
-    /***** RIGHT ********************************************************/
+    /***** MAIN *********************************************************/
     /********************************************************************/
 
-    main .right .top-title {
-        margin-bottom: 20px;
+    main .thanks {
+        width: 100%;
+
+        padding: 40px 24px;
     }
 
-    main .right .mid-label {
-        margin-bottom: 10px;
+    .thanks .hero {
+        font-size: 72px;
+        text-align: left;
+
+        justify-content: left;
     }
 
-    main .right .mid-label .question {
-        font-size: 32px;
+    .thanks .hero img {
+        height: 72px;
     }
 
-    main .right #guest-login {
-        gap: 16px;
+    .thanks > p {
+        text-align: left;
     }
 
-    #guest-login .text-label:has(input:placeholder-shown) > p {
-        font-size: 14px;
-        line-height: 20px;
-    }
+    .thanks .home-button {
+        font-size: 10px;
 
+        width: 100%;
+        height: 48px;
+    }
 }
