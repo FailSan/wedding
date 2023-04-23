@@ -1,4 +1,5 @@
 <a href="/"><img class="logo" src="{{ Storage::url('images/logo.svg') }}"></a>
+
 <img class="opener" data-open="0" src="{{ Storage::url('images/menu_open.svg') }}">
 
 <span class="language">

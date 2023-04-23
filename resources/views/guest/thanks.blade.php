@@ -10,33 +10,42 @@
         <link rel="stylesheet" href="{{ asset('styles/desktop_guest_thanks.css') }}">
         <link rel="stylesheet" href="{{ asset('styles/mobile_guest_thanks.css') }}">
 
+        <!-- Scripts -->
+        <script src="{{ asset('scripts/desktop_guest_thanks.js') }}" defer></script>
+
     </head>
     <body>
+
+        <div class="modal-loading">
+            <img src="{{ Storage::url('images/rings-loader.svg') }}">
+        </div>
+
+        <nav class="sidebar">
+            <a href="/"><img class="logo" src="{{ Storage::url('images/logo.svg') }}"></a>
+
+            <span class="language">
+                <p data-lang="it" @class(["selected" => app()->getLocale() == "it"])><a href="/lang/it">IT</a></p>
+                <p>\</p>
+                <p data-lang="en" @class(["selected" => app()->getLocale() == "en"])><a href="/lang/en">EN</a></p>
+            </span>
+
+            <div class="percentage"></div>
+        </nav>
+
         <main>
-            <section class="sidebar">
-                <a href="/"><img class="logo" src="{{ Storage::url('images/logo.svg') }}"></a>
+            <span class="hero">
+                <p class="main-title">{{ __("Grazie!") }}</p>
+                <img src="{{ Storage::url('images/thanks-animation.png') }}">
+            </span>
 
-                <span class="language">
-                    <p data-lang="it" @class(["selected" => app()->getLocale() == "it"])><a href="/lang/it">IT</a></p>
-                    <p>\</p>
-                    <p data-lang="en" @class(["selected" => app()->getLocale() == "en"])><a href="/lang/en">EN</a></p>
-                </span>
+            <p>{{ __("Ci vediamo il 13 Luglio al matrimonio!") }}
+                <br>{{ __("Per qualsiasi informazione non esitare a contattarci") }}</p>
 
-                <div class="percentage"></div>
-            </section>
-
-            <section class="thanks">
-                <span class="hero">
-                    <p>{{ __("Grazie!") }}</p>
-                    <img src="{{ Storage::url('images/thanks-animation.png') }}">
-                </span>
-
-                <p>{{ __("Ci vediamo il 13 Luglio al matrimonio!") }}
-                    <br>{{ __("Per qualsiasi informazione non esitare a contattarci") }}</p>
-
-                <a href="/"><button class="home-button">{{ __("Torna alla Home") }}</button></a>
-                
-            </section>
+            <a href="/">
+                <button class="cta-button input-button">
+                    {{ __("Torna alla Home") }}
+                </button>
+            </a>
         </main>
     </body>
 </html>

@@ -6,8 +6,6 @@
 
         <title>{{ __("Il Matrimonio di C&A") }}</title>
 
-        <!-- Fonts -->
-
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('styles/desktop_guest_login.css') }}">
         <link rel="stylesheet" href="{{ asset('styles/mobile_guest_login.css') }}">
@@ -17,34 +15,38 @@
 
     </head>
     <body>
-        <div class="loader">
+
+        <div class="modal-loading">
             <img src="{{ Storage::url('images/rings-loader.svg') }}">
         </div>
 
-        <main>
-            <section class="sidebar">
-                <a href="/guest"><img class="logo" src="{{ Storage::url('images/logo.svg') }}"></a>
+        <nav class="sidebar">
+            <a href="/guest"><img class="logo" src="{{ Storage::url('images/logo.svg') }}"></a>
 
-                <span class="language">
-                    <p data-lang="it" @class(["selected" => app()->getLocale() == "it"])><a href="/lang/it">IT</a></p>
-                    <p>\</p>
-                    <p data-lang="en" @class(["selected" => app()->getLocale() == "en"])><a href="/lang/en">EN</a></p>
-                </span>
-            </section>
+            <span class="language">
+                <p data-lang="it" @class(["selected" => app()->getLocale() == "it"])><a href="/lang/it">IT</a></p>
+                <p>\</p>
+                <p data-lang="en" @class(["selected" => app()->getLocale() == "en"])><a href="/lang/en">EN</a></p>
+            </span>
+        </nav>
+
+        <main>
 
             <section class="left">
                 <span class="mid-title">
-                    <p>Chiara</p>
-                    <p>&amp; Aurelio</p>
+                    <p class="main-title">Chiara</p>
+                    <p class="main-title">&amp; Aurelio</p>
                 </span>
 
-                <a class="bot-button" href="/">
-                    <button>{{ __("Torna alla Home") }}</button>
+                <a href="/">
+                    <button class="cta-button white-button">
+                        {{ __("Torna alla Home") }}
+                    </button>
                 </a>
             </section>
 
             <section class="right">
-                <p class="top-title">{{ __("Area Invitati") }}</p>
+                <p class="brown-heading">{{ __("Area Invitati") }}</p>
 
                 <span class="mid-label">
                     <p class="question">{{ __("Sei un invitato?") }}</p>
@@ -70,9 +72,9 @@
                         <input type="text" id="guest_password" name="guest_password" placeholder=" ">
                     </label>
 
-                    <span class="bot-dialog hidden"></span>
+                    <span class="error-dialog hidden"></span>
                     
-                    <input type="submit" value="{{ __('Accedi') }}">
+                    <input class="cta-button input-button" type="submit" value="{{ __('Accedi') }}">
                 </form>
             </section>
 

@@ -1,6 +1,6 @@
 window.addEventListener('load', hideLoader);
 function hideLoader() {
-    let loaderDocument = document.querySelector('.loader');
+    let loaderDocument = document.querySelector('.modal-loading');
     setTimeout(function() {
         loaderDocument.classList.add('hidden');
 
@@ -45,7 +45,7 @@ function onError(error) {
 }
 
 function onGuestLogin(serverResponse) {
-    let dialogBox = document.querySelector('.bot-dialog');
+    let dialogBox = document.querySelector('.error-dialog');
     dialogBox.innerHTML = "";
 
     if(serverResponse['error']) {

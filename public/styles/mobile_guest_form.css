@@ -1,69 +1,4 @@
 @media (max-width: 640px) {
-
-    body {
-        font-size: 14px;
-    }
-
-    main {
-        align-items: center;
-
-        padding-top: 56px;
-    }
-
-    .form-intro, .form-feed, .form-summary {
-        width: 100%;
-    }
-
-
-    /********************************************************************/
-    /***** NAVBAR *******************************************************/
-    /********************************************************************/
-
-    main .sidebar {
-        border-right: 0px Solid rgba(0, 0, 0, 0);
-        border-bottom: 1px Solid rgba(0, 0, 0, 0.2);
-
-        flex-direction: row;
-
-        width: 100vw;
-        height: 56px;
-
-        padding: 12px 18px 12px 18px;
-    }
-
-    main .sidebar .logo {
-        width: 32px;
-
-        position: absolute;
-        top: 0px;
-        bottom: 0px;
-        left: 0px;
-        right: 0px;
-
-        margin: auto auto auto auto;
-    }
-
-    main .sidebar .language {
-        writing-mode: horizontal-tb;
-        transform: none;
-    }
-
-    main .sidebar .percentage {
-        --percentage: 10%;
-    
-        border-right: 0px Solid rgba(0, 0, 0, 1);
-        border-bottom: 1px Solid rgba(0, 0, 0, 1);
-    
-        width: var(--percentage);
-        height: 0px;
-    
-        position: absolute;
-        top: 55px;
-        left: 0px;
-        right: auto;
-    }
-
-
     /********************************************************************/
     /***** SIDEBAR ******************************************************/
     /********************************************************************/
@@ -77,10 +12,6 @@
     /***** INTRO ********************************************************/
     /********************************************************************/
 
-    .form-intro .hero {
-        font-size: 72px;
-    }
-
     .form-intro .hero img {
         height: 72px;
     }
@@ -91,19 +22,12 @@
         align-items: flex-start;
     }
 
-    .form-intro .ready-button {
-        font-size: 10px;
-
-        width: 100%;
-        height: 48px;
-    }
-
 
     /********************************************************************/
-    /***** NAV **********************************************************/
+    /***** ARROWS *******************************************************/
     /********************************************************************/
 
-    main nav {
+    .arrows {
         gap: 4px;
 
         bottom: 12px;
@@ -111,7 +35,7 @@
         left: 12px;
     }
 
-    main nav img {
+    .arrows > div {
         width: 40px;
         height: 40px;
     }
@@ -129,25 +53,21 @@
         padding: 20px 24px 80px 24px;
     }
 
-    .mid {
-        font-size: 40px;
-    }
-
     .form-container form .top-section {
         gap: 16px;
 
         margin-top: 0px;
     }
 
-    .form-container form .top-section .brown {
+    .form-container form .top-section .brown-heading {
         margin-bottom: 0px;
     }
 
-    .form-container form .top-section .mid {
+    .form-container form .top-section .main-dialog {
         margin-bottom: 0px;
     }
 
-    .grey {
+    .grey-dialog {
         font-size: 12px;
     }
 
@@ -155,28 +75,21 @@
         width: 100%;
     }
 
-    .form-container form .error-box {
+    .error-dialog {
         margin-top: 5px;
         margin-bottom: 5px;
     }
 
-    .form-container form .error-box > p {
+    .error-dialog > p {
         padding: 5px 28px;
     }
 
-    .form-container form input[type="submit"] {
-        font-size: 10px;
-
-        width: 100%;
-        height: 48px;
-    }
-
-    .form-container form .radio-group {
+    .radio-group {
         flex-direction: column;
         gap: 8px;
     }
 
-    .form-container form .radio-group .radio-label {
+    .radio-group .radio-label {
         width: 100%;
         height: 56px;
     }
@@ -190,11 +103,11 @@
         gap: 16px;
     }
 
-    #extra_guests_form .top-section .brown {
+    #extra_guests_form .top-section .brown-heading {
         margin-bottom: 0px;
     }
 
-    #extra_guests_form .top-section .mid {
+    #extra_guests_form .top-section .main-dialog {
         margin-bottom: 0px;
     }
 
@@ -232,10 +145,8 @@
     }
 
     .extra-guest-label > p:first-of-type {
-        display: flex;
-        align-items: center;
-
-        padding: 4px;
+        padding-left: 4px;
+        padding-right: 4px;
     }
 
     .extra-guest-label > p:last-of-type {
@@ -247,30 +158,26 @@
         gap: 10px;
     }
 
-    .form-container form .mini-form .main-input {
+    .mini-form .text-label {
         width: calc(50% - 5px);
     }
 
-    .form-container form .mini-form .main-input > p {
+    .mini-form .text-label > p {
         font-size: 12px;
-        line-height: 16px;
 
         margin-bottom: 4px;
     }
 
-    .form-container form .mini-form .main-input:focus-within > p {
+    .mini-form .text-label:focus-within > p {
         font-size: 12px !important;
-        line-height: 16px !important;
     }
 
-    .form-container form .mini-form .main-input:has(input:placeholder-shown) > p {
+    .mini-form .text-label:has(input:placeholder-shown) > p {
         font-size: 14px;
-        line-height: 18px;
     }
 
-    .form-container form .mini-form input[type="text"] {
+    .mini-form input[type="text"] {
         font-size: 14px;
-        line-height: 18px;
 
         padding-bottom: 4px;
     }
@@ -283,14 +190,14 @@
         padding-bottom: 3px;
     }
 
-    .form-container #extra_guests_form .error-box {
+    .form-container #extra_guests_form .error-dialog {
         gap: 10px;
 
         margin-top: 5px;
         margin-bottom: 5px;
     }
 
-    .form-container #extra_guests_form .error-box > p {
+    .form-container #extra_guests_form .error-dialog > p {
         padding: 0px 0px 0px 28px;
     }
 
@@ -298,32 +205,53 @@
         gap: 8px;
     }
 
-    .submit-container .add-guest {
+    .add-guest {
         font-size: 8px;
 
         background-image: none;
 
         justify-content: center;
 
-        width: 50%;
         height: 48px;
 
         padding-left: 0px;
+        padding-right: 0px;
     }
 
-    .submit-container .add-guest.edit-mode {
+    .add-guest.edit-mode {
         background-image: none;
     }
 
     #extra_guests_form .submit-container input[type="submit"] {
         font-size: 8px;
-
-        width: 50%;
     }
 
     #extra_guests_form .bot-section {
         display: none;
         visibility: hidden;
         opacity: 0;
+    }
+
+    /********************************************************************/
+    /***** SUMMARY ******************************************************/
+    /********************************************************************/
+
+    .form-summary .submit-container {
+        margin-top: 24px;
+        row-gap: 20px;
+    }
+
+    .summary-field {
+        gap: 4px;
+    }
+
+    .form-summary .submit-container .add-guest {
+        min-width: auto;
+        width: 50%;
+    }
+
+    .form-summary .submit-container .cta-button.input-button {
+        min-width: auto;
+        width: 50%;
     }
 }

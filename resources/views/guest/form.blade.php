@@ -6,8 +6,6 @@
 
         <title>{{ __("Il Matrimonio di C&A") }}</title>
 
-        <!-- Fonts -->
-
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('styles/desktop_guest_form.css') }}">
         <link rel="stylesheet" href="{{ asset('styles/mobile_guest_form.css') }}">
@@ -17,22 +15,23 @@
 
     </head>
     <body>
-        <div class="loader">
+        <div class="modal-loading">
             <img src="{{ Storage::url('images/rings-loader.svg') }}">
         </div>
+
+        <nav class="sidebar">
+            <a href="/guest"><img class="logo" src="{{ Storage::url('images/logo.svg') }}"></a>
+
+            <span class="language">
+                <p data-lang="it" @class(["selected" => app()->getLocale() == "it"])><a href="/lang/it">IT</a></p>
+                <p>\</p>
+                <p data-lang="en" @class(["selected" => app()->getLocale() == "en"])><a href="/lang/en">EN</a></p>
+            </span>
+
+            <div class="percentage"></div>
+        </nav>
         
         <main>
-            <section class="sidebar">
-                <a href="/guest"><img class="logo" src="{{ Storage::url('images/logo.svg') }}"></a>
-
-                <span class="language">
-                    <p data-lang="it" @class(["selected" => app()->getLocale() == "it"])><a href="/lang/it">IT</a></p>
-                    <p>\</p>
-                    <p data-lang="en" @class(["selected" => app()->getLocale() == "en"])><a href="/lang/en">EN</a></p>
-                </span>
-
-                <div class="percentage"></div>
-            </section>
 
             <section class="form-intro" data-section-sel="1">
                 @include('guest.form.intro')
@@ -59,10 +58,10 @@
                 @include('guest.form.summary')
             </section>
 
-            <nav class="hidden">
-                <img data-action="prev" src="{{ Storage::url('images/up-arrow.svg') }}">
-                <img data-action="next" src="{{ Storage::url('images/down-arrow.svg') }}">
-            </nav>
+            <div class="arrows hidden">
+                <div data-action="prev"></div>
+                <div data-action="next"></div>
+            </div>
 
         </main>
     </body>

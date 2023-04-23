@@ -1,44 +1,12 @@
 @media (max-width: 600px) {
 
     /********************************************************************/
-    /***** FONT *********************************************************/
-    /********************************************************************/
-
-    .brown {
-        font-size: 10px;
-    }
-
-    .big {
-        font-size: 104px;
-    }
-
-    .mid {
-        font-size: 40px;
-        line-height: 1.125;
-    }
-
-    .little {
-        font-size: 14px;
-        line-height: 21px;
-    }
-
-    /********************************************************************/
-    /***** GLOBAL *******************************************************/
-    /********************************************************************/
-
-    body {
-        font-size: 14px;
-
-        padding-left: 0px;
-        padding-top: 56px;
-    }
-
-    /********************************************************************/
     /***** BUTTON *******************************************************/
     /********************************************************************/
 
     a.fixedRSVP {
         width: 64px;
+        height: 64px;
 
         top: auto;
         left: 0px;
@@ -51,49 +19,10 @@
 
     
     /********************************************************************/
-    /***** NAVBAR *******************************************************/
+    /***** MENU *********************************************************/
     /********************************************************************/
 
-    nav {
-        border-right: 0px Solid rgba(0, 0, 0, 0);
-        border-bottom: 1px Solid rgba(0, 0, 0, 0.2);
-
-        flex-direction: row;
-
-        width: 100vw;
-        height: 56px;
-
-        padding: 12px 18px 12px 18px;
-    }
-
-    nav .logo {
-        width: 32px;
-
-        position: absolute;
-        top: 0px;
-        bottom: 0px;
-        left: 0px;
-        right: 0px;
-
-        margin: auto auto auto auto;
-    }
-
-    nav .opener {
-        position: absolute;
-        top: 0px;
-        bottom: 0px;
-        left: 12px;
-
-        margin-top: auto;
-        margin-bottom: auto;
-    }
-
-    nav .language {
-        writing-mode: horizontal-tb;
-        transform: none;
-    }
-
-    nav menu {
+    menu {
         justify-content: flex-start;
         align-items: flex-start;
 
@@ -107,31 +36,31 @@
         padding: 40px 24px 40px 24px;
     }
 
-    nav menu.hidden {
+    menu.hidden {
         width: 100vw;
         height: 0px;
     }
 
-    nav menu .row {
+    menu .row {
         flex-direction: column;
 
         height: auto;
     }
 
-    nav menu .row:nth-of-type(1) {
+    menu .row:nth-of-type(1) {
         border-top: 0px Solid rgba(0, 0, 0, 0.2);
     }
     
-    nav menu .row:nth-of-type(2) {
+    menu .row:nth-of-type(2) {
         border-top: 0px Solid rgba(0, 0, 0, 0.2);
         border-bottom: 0px Solid rgba(0, 0, 0, 0.2);
     }
     
-    nav menu .row:nth-of-type(3) {
+    menu .row:nth-of-type(3) {
         border-bottom: 0px Solid rgba(0, 0, 0, 0.2);
     }
 
-    nav menu .row .link {
+    menu .row .link {
         border-bottom: 1px Solid rgba(0, 0, 0, 0.2);
 
         flex-grow: 0;
@@ -144,24 +73,9 @@
         padding-bottom: 4px;
     }
 
-    nav menu .row .link .big {
+    menu .row .link .main-title.section-name {
         font-size: 64px;
-        line-height: 64px;
-    }
-
-    nav .percentage {
-        --percentage: 0%;
-    
-        border-right: 0px Solid rgba(0, 0, 0, 1);
-        border-bottom: 1px Solid rgba(0, 0, 0, 1);
-    
-        width: var(--percentage);
-        height: 0px;
-    
-        position: absolute;
-        top: 55px;
-        left: 0px;
-        right: auto;
+        line-height: 1;
     }
 
 
@@ -178,6 +92,8 @@
         min-height: calc(100vh - 56px);
 
         padding: 0px 24px 10vh 24px;
+
+        top: 56px;
     }
 
     [data-content="home"] > img {
@@ -193,7 +109,7 @@
         width: 100%;
     }
 
-    [data-content="home"] .left > .brown {
+    [data-content="home"] .left > .brown-heading {
         margin-bottom: 40px;
     }
 
@@ -241,7 +157,7 @@
         height: auto;
     }
 
-    [data-content="intro"] .right .mid {
+    [data-content="intro"] .right .main-dialog {
         width: 100%;
     }
 
@@ -271,6 +187,8 @@
         min-height: calc(100vh - 56px);
 
         padding: 64px 24px 64px 24px;
+    
+        top: 56px;
     }
 
     [data-content="when"] > p:nth-of-type(1) {
@@ -290,10 +208,6 @@
 
         width: 100%;
         height: 48px;
-    }
-
-    [data-content="when"] .countdown img {
-        margin: 0px;
     }
 
     /********************************************************************/
@@ -362,12 +276,12 @@
         position: relative;
     }
 
-    [data-content="church"] .location .title img {
+    [data-content="church"] .location .title > img {
         top: 0px;
         left: 0px;
     }
     
-    [data-content="castle"] .location .title img {
+    [data-content="castle"] .location .title > img {
         bottom: 0px;
         left: 0px;
     }
@@ -382,20 +296,6 @@
         width: 100%;
     }
 
-    .location .maps .directions {
-        font-size: 10px;
-        letter-spacing: 2px;
-
-        width: 100%;
-        height: 48px;
-
-        padding: 16px 24px 16px 24px;
-    }
-
-    .location .maps .directions img {
-        width: 12px;
-    }
-
     /********************************************************************/
     /***** GUEST ********************************************************/
     /********************************************************************/
@@ -404,6 +304,8 @@
         min-height: calc(100vh - 56px);
 
         padding: 72px 0px 72px 0px;
+
+        top: 56px;
     }
 
     [data-content="guest"] .slider {
@@ -421,14 +323,6 @@
         width: 100%;
     }
     
-    [data-content="guest"] .container .button {
-        font-size: 10px;
-        letter-spacing: 2px;
-
-        width: 100%;
-        height: 48px;
-    }
-
 
     /********************************************************************/
     /***** PRESENT ******************************************************/
@@ -456,7 +350,7 @@
         width: 100%;
     }
     
-    [data-content="present"] .iban .big {
+    [data-content="present"] .iban .main-title {
         font-size: 40px;
     }
 

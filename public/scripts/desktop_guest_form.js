@@ -1,6 +1,6 @@
 window.addEventListener('load', hideLoader);
 function hideLoader() {
-    let loaderDocument = document.querySelector('.loader');
+    let loaderDocument = document.querySelector('.modal-loading');
     setTimeout(function() {
         loaderDocument.classList.add('hidden');
 
@@ -73,6 +73,10 @@ function sectionSwipeUp() {
             prevAction.removeEventListener('click', formSwipeDown);
         }
 
+        if(currentIndex == 1) {
+            navArrows.classList.add('hidden');
+        }
+
         let newSection = richSections[currentIndex + 1];
 
         currentSection.selected = false;
@@ -93,6 +97,8 @@ function sectionSwipeDown() {
         }
 
         if(currentIndex == (richSections.length - 1)) {
+            navArrows.classList.remove('hidden');
+
             prevAction.removeEventListener('click', sectionSwipeDown);
             prevAction.addEventListener('click', formSwipeDown);
             nextAction.classList.remove('disabled');
@@ -164,10 +170,10 @@ function formSwipeDown() {
     }
 }
 
-let readyButton = document.querySelector('.ready-button');
+let readyButton = document.querySelector('#ready');
 readyButton.addEventListener('click', sectionSwipeUp);
 
-let navArrows = document.querySelector('nav');
+let navArrows = document.querySelector('.arrows');
 let nextAction = navArrows.querySelector('[data-action="next"]');
 let prevAction = navArrows.querySelector('[data-action="prev"]');
 nextAction.addEventListener('click', inputControl);
@@ -242,7 +248,8 @@ function addExtraGuest(event) {
 
     let currentForm = richForms.find(form => form.content == 'extra_guests');
     let extraToken = currentForm.elements['_token'];
-    let extraInputs = Array.prototype.filter.call(currentForm.elements, (input => input.type == 'text'));
+    let extraFieldset = currentForm.element.querySelector(".mini-form");
+    let extraInputs = extraFieldset.elements;
 
     if(mainGuest.extraGuests.length >= 10) {
         let textError = 'Non puoi aggiungere più di 10 ospiti.';
@@ -251,7 +258,12 @@ function addExtraGuest(event) {
     } else {
         let extraGuestData = new FormData();
         extraGuestData.append('_token', extraToken.value);
-        extraInputs.forEach(input => extraGuestData.append(input.name, input.value));
+        Array.prototype.forEach.call(extraInputs, input => {
+            if(input.type == "checkbox")
+                extraGuestData.append(input.name, input.checked ? 1 : 0);
+            else
+                extraGuestData.append(input.name, input.value)
+        });
 
         fetch('/guest/validate', {
             method: 'post',
@@ -328,8 +340,14 @@ function toggleGuestDetails(event) {
         currentRadio.checked = true;
 
         let currentGuest = mainGuest.extraGuests[currentLabel.dataset.guestIndex];
-        let extraInputs = Array.prototype.filter.call(currentForm.elements, (input => input.type == 'text'));
-        extraInputs.forEach(input => input.value = currentGuest[input.name]);
+        let extraFieldset = currentForm.element.querySelector('.mini-form');
+        let extraInputs = extraFieldset.elements;
+        Array.prototype.forEach.call(extraInputs, input => {
+            if(input.type == "checkbox")
+                input.checked = currentGuest[input.name];
+            else
+                input.value = currentGuest[input.name]
+        });
 
         addExtraButton.firstElementChild.textContent = 'Modifica Ospite';
         addExtraButton.classList.add('edit-mode');
@@ -342,12 +360,18 @@ function editExtraGuest(event) {
     event.preventDefault();
 
     let currentForm = richForms.find(form => form.content == 'extra_guests');
+    let extraFieldset = currentForm.element.querySelector('.mini-form');
     let extraToken = currentForm.elements['_token'];
-    let extraInputs = Array.prototype.filter.call(currentForm.elements, (input => input.type == 'text'));
+    let extraInputs = extraFieldset.elements;
 
     let extraGuestData = new FormData();
     extraGuestData.append('_token', extraToken.value);
-    extraInputs.forEach(input => extraGuestData.append(input.name, input.value));
+    Array.prototype.forEach.call(extraInputs, input => {
+        if(input.type == "checkbox")
+            extraGuestData.append(input.name, input.checked ? 1 : 0);
+        else
+            extraGuestData.append(input.name, input.value)
+    });
 
     fetch('/guest/validate', {
         method: 'post',
@@ -360,15 +384,21 @@ function editExtraGuest(event) {
 
 function onEditExtraValidation(jsonData) {
     let currentForm = richForms.find(form => form.content == 'extra_guests');
+    let extraFieldset = currentForm.element.querySelector('.mini-form');
     let currentLabel = currentForm.element.querySelector('.extra-guest-label:has(input[type="radio"]:checked)');
     let currentGuest = mainGuest.extraGuests[currentLabel.dataset.guestIndex];
 
     if(jsonData.error) {
-        let extraInputs = Array.prototype.filter.call(currentForm.elements, (input => input.type == 'text'));
-        extraInputs.forEach(input => input.value = currentGuest[input.name]);
-
+        let extraInputs = extraFieldset.elements;
+        Array.prototype.forEach.call(extraInputs, input => {
+            if(input.type == "checkbox")
+                input.checked = currentGuest[input.name];
+            else
+                input.value = currentGuest[input.name];
+        });
         jsonData.error.editGuest = ['Sono stati caricati i dati precedentemente validati.'];
         currentForm.showError(jsonData.error);
+
     } else {
         for(let property in jsonData.success) {
             currentGuest[property] = jsonData.success[property]
@@ -411,16 +441,14 @@ function deleteExtraGuest(event) {
     for(let i = 0; i < guestLabels.length; i++) {
         guestLabels[i].dataset.guestIndex = i;
     }
-
-    currentForm.sideLabel.value = mainGuest.extraGuests.length;
 }
 
 function summaryUpdate() {
     let summarySection = richSections[richSections.length - 1];
-    let mainSummary = summarySection.element.querySelector('.main-summary');
+    let summaryContainer = summarySection.element.querySelector('.summary-container');
 
     for(let property in mainGuest) {
-        let propertyValue = mainSummary.querySelector('[data-content="' + property + '"] .value');
+        let propertyValue = summaryContainer.querySelector('[data-content="' + property + '"] .value');
 
         switch(property) {
             case 'church_confirm':
@@ -429,17 +457,24 @@ function summaryUpdate() {
                 break;
             case 'diet':
             case 'allergies':
+                propertyValue.textContent = mainGuest[property] ? mainGuest[property] : "nessuna";
+                break;
             case 'extra_confirm':
-            case 'extra_guests':
-                if(mainGuest['castle_confirm'] == '1') {
-                    let propertyContainer = propertyValue.parentElement;
-                    propertyContainer.classList.remove('hidden');
-                    if(property == 'extra_confirm') {
-                        propertyValue.textContent = (mainGuest[property] == '1') ? 'Sì' : 'No';
-                    } else {
-                        propertyValue.textContent = mainGuest[property];
-                    }
+                let fullNameCollections = "";
+                if(mainGuest["extra_guests"] > 0) {
+                    mainGuest.extraGuests.forEach(guest => {
+                        fullNameCollections += guest.name + " " + guest.surname;
+                        if(mainGuest["extraGuests"].indexOf(guest) != (mainGuest["extraGuests"].length - 1))
+                            fullNameCollections += " ,";
+                    });
                 }
+                if(fullNameCollections) {
+                    propertyValue.textContent = mainGuest["extra_guests"] + " (" + fullNameCollections + ")";
+                } else {
+                    propertyValue.textContent = "Nessuno";
+                }
+                break;
+            case 'extra_guests':
                 break;
             case 'extraGuests':
                 break;
@@ -447,32 +482,9 @@ function summaryUpdate() {
                 propertyValue.textContent = mainGuest[property];
         }
     }
-
-    if(mainGuest.extraGuests.length > 0) {
-        let extraSummaryContainer = summarySection.element.querySelector('.extra-summary-container');
-        extraSummaryContainer.classList.remove('hidden');
-
-        let originalSummary = extraSummaryContainer.querySelector('.extra-summary');
-        for(let i = 0; i < mainGuest.extraGuests.length; i++) {
-            let extraSummary;
-            if(i == 0) {
-                extraSummary = originalSummary;
-            } else {
-                extraSummary = originalSummary.cloneNode(true);
-                extraSummary.dataset.guestIndex = i;
-                extraSummaryContainer.appendChild(extraSummary);
-            }
-
-            for(let property in mainGuest.extraGuests[i]) {
-                let valueContainer = extraSummary.querySelector('[data-content="' + property + '"]');
-                let value = valueContainer.querySelector('.value');
-                value.textContent = mainGuest.extraGuests[i][property];
-            }
-        }
-    }
 }
 
-let confirmButton = document.querySelector('.confirm-button');
+let confirmButton = document.querySelector('.form-summary .input-button');
 confirmButton.addEventListener('click', updateGuest);
 
 function updateGuest(event) {
@@ -494,10 +506,26 @@ function updateGuest(event) {
 
 function onGuestUpdate(jsonData) {
     if(jsonData.error) {
-        console.log(jsonData);
+        location.reload();
     }
 
     else {
-        location.reload();
+        location.href="/guest/thanks";
     }
+}
+
+let modifyButton = document.querySelector('.form-summary .action-button');
+modifyButton.addEventListener('click', backToForm);
+
+function backToForm(event) {
+    event.preventDefault();
+
+    let formIndex = document.documentElement.style.getPropertyValue('--form-index');
+    sectionSwipeDown();
+
+    do {
+        formSwipeDown();
+        --formIndex;
+    }
+    while(formIndex != 0)
 }

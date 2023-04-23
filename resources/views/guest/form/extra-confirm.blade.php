@@ -2,8 +2,8 @@
     @csrf
 
     <span class="top-section">
-        <p class="brown">7 / 7</p>
-        <p class="mid">{{ __("Pensi di portare altri") }} <i>{{ __("Ospiti") }}</i> {{ __("con te?") }}</p>
+        <p class="brown-heading">7 / 7</p>
+        <p class="main-dialog">{{ __("Pensi di portare altri") }} <i>{{ __("Ospiti") }}</i> {{ __("con te?") }}</p>
 
         <fieldset class="radio-group">
             <label class="radio-label yes">
@@ -17,14 +17,14 @@
             </label>
         </fieldset>
 
-        <span class="error-box hidden"></span>
+        <span class="error-dialog hidden"></span>
 
-        <input type="submit" value="{{ __('Conferma') }}" tabindex="-1">
+        <input class="cta-button input-button" type="submit" value="{{ __('Conferma') }}" tabindex="-1">
     </span>
 
     <span class="bot-section">
         <img src="{{ Storage::url('images/info.svg') }}">
-        <p class="grey">{{ __("Puoi portare con te qualcuno se vuoi, assicurati però di inserire i
+        <p class="grey-dialog">{{ __("Puoi portare con te qualcuno se vuoi, assicurati però di inserire i
             suoi dati corretti.") }}</p>
     </span>
 </form>

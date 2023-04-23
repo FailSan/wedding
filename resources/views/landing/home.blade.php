@@ -6,8 +6,6 @@
 
         <title>{{ __("Il Matrimonio di C&A") }}</title>
 
-        <!-- Fonts -->
-
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('styles/desktop_home.css') }}">
         <link rel="stylesheet" href="{{ asset('styles/mobile_home.css') }}">
@@ -16,13 +14,13 @@
         <script src="{{ asset('scripts/desktop_home.js') }}" defer></script>
 
     </head>
-    <body class="hidden">
+    <body>
         
-        <div class="loader">
+        <div class="modal-loading">
             <img src="{{ Storage::url('images/rings-loader.svg') }}">
         </div>
         
-        <nav>@include('landing.navbar')</nav>
+        <nav class="sidebar">@include('landing.navbar')</nav>
 
         <a class="fixedRSVP" href="/guest">RSVP</a>
 

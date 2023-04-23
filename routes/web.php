@@ -51,6 +51,7 @@ Route::controller(GuestController::class)->prefix('guest')->group(function() {
 
     //Views
     Route::get('/', 'landing')->name('guest.landing');
+    Route::view('/thanks', 'guest.thanks');
     
     //API
     Route::get('/data', 'data');

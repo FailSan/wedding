@@ -1,5 +1,5 @@
 <span class="hero">
-    <p>{{ __("Ciao :Name!", ['Name' => $guest->name ]) }}</p>
+    <p class="main-title">{{ __("Ciao :Name!", ['Name' => $guest->name ]) }}</p>
     <img src="{{ Storage::url('images/hello-animation.png') }}">
 </span>
 
@@ -9,4 +9,6 @@
     <p>{{ __("Quando sei pronto possiamo cominciare!") }}</p>
 </span>
 
-<button class="ready-button" tabindex="-1">{{ __("Cominciamo") }}</button>
+<button id="ready" class="cta-button input-button" tabindex="-1">
+    {{ __("Cominciamo") }}
+</button>

@@ -1,0 +1,56 @@
+@import url("shared-style.css");
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    width: 100%;
+    height: 100%;
+
+    padding: min(48px, 6vh) min(110px, 8vw);
+}
+
+.brown-heading {
+    margin-bottom: 68px;
+}
+
+.summary-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    row-gap: 40px;
+
+    width: 100%;
+}
+
+.summary-field {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 8px;
+
+    width: 50%;
+}
+
+.field {
+    font-weight: bold;
+}
+
+.summary-field[data-content="extra"] {
+    width: 100%;
+}
+
+.contact-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    width: 100%;
+
+    margin-top: 110px;
+}

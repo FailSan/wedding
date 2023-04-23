@@ -2,8 +2,8 @@
     @csrf
 
     <span class="top-section">
-        <p class="brown">3 / 4</p>
-        <p class="mid">{{ __("Sarai presente alla") }} <i>{{ __("Cerimonia") }}</i>?</p>
+        <p class="brown-heading">3 / 4</p>
+        <p class="main-dialog">{{ __("Sarai presente alla") }} <i>{{ __("Cerimonia") }}</i>?</p>
 
         <fieldset class="radio-group">
             <label class="radio-label yes">
@@ -17,14 +17,14 @@
             </label>
         </fieldset>
 
-        <span class="error-box hidden"></span>
+        <span class="error-dialog hidden"></span>
 
-        <input type="submit" value="{{ __('Conferma') }}" tabindex="-1">
+        <input class="cta-button input-button" type="submit" value="{{ __('Conferma') }}" tabindex="-1">
     </span>
 
     <span class="bot-section">
         <img src="{{ Storage::url('images/info.svg') }}">
-        <p class="grey">{{ __("La cerimonia si svolgerà alle 16.30 presso la Chiesa di San Francesco d'Assisi
+        <p class="grey-dialog">{{ __("La cerimonia si svolgerà alle 16.30 presso la Chiesa di San Francesco d'Assisi
             All'Immacolata. Abbiamo bisogno di sapere in anticipo se ci sarai.") }}</p>
     </span>
 </form>

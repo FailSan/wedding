@@ -26,7 +26,7 @@ class GuestController extends Controller
         if($guestCode) {
             $authGuest = Guest::where('code', $guestCode)->first();
             if($authGuest->updated)
-                return view('guest.thanks');
+                return view('guest.summary')->with('guest', $authGuest);
             else
                 return view('guest.form')->with('guest', $authGuest);
         } else {
@@ -122,6 +122,7 @@ class GuestController extends Controller
             'diet' => 'sometimes|string|nullable',
             'allergies' => 'sometimes|string|nullable',
             //Only for frontend update
+            'child_menu' => 'sometimes|boolean',
             'extra_confirm' => 'sometimes|boolean',
             'extra_guests' => 'sometimes|numeric|max:10',
             //Only for backoffice creation
@@ -170,6 +171,7 @@ class GuestController extends Controller
                 'surname' => $extraGuest->surname,
                 'diet' => $extraGuest->diet,
                 'allergies' => $extraGuest->allergies,
+                'child_menu' => $extraGuest->child_menu,
             ];
 
             $extraValidation = $this->validation($extraProperties);
@@ -200,6 +202,7 @@ class GuestController extends Controller
                 'surname' => Str::title($extraGuest->surname),
                 'diet' => Str::lower($extraGuest->diet) ?: 'nessuna',
                 'allergies' => Str::lower($extraGuest->allergies) ?: 'nessuna',
+                'child_menu' => $extraGuest->child_menu,
                 'password' => Str::upper(Str::random(8)),
             ]);
 

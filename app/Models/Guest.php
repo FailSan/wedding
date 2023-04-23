@@ -17,6 +17,7 @@ class Guest extends Model
         "allergies",
         "church_confirm",
         "castle_confirm",
+        "child_menu",
         "updated",
         "code",
         "password",
@@ -28,6 +29,7 @@ class Guest extends Model
     protected $casts = [
         "church_confirm" => "boolean",
         "castle_confirm" => "boolean",
+        "child_menu" => "boolean",
         "updated" => "boolean",
     ];
 

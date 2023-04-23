@@ -1,5 +1,5 @@
-<p class="big">{{ __("Torna") }}</p>
-<p class="big">{{ __("all'inizio") }}</p>
+<p class="main-title">{{ __("Torna") }}</p>
+<p class="main-title">{{ __("all'inizio") }}</p>
 <img id="footer_arrow" src="{{ Storage::url('images/footer_arrow.svg') }}">
 
 <div class="slider">
@@ -26,6 +26,6 @@
 </div>
 
 <span>
-    <p class="grey">Privacy Policy</p>
-    <p class="grey">Cookie Policy</p>
+    <p class="grey-dialog">Privacy Policy</p>
+    <p class="grey-dialog">Cookie Policy</p>
 </span>

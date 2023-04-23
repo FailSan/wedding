@@ -4,7 +4,7 @@
 
 let mainDocument = document.documentElement;
 let bodyDocument = mainDocument.querySelector('body');
-let loaderDocument = bodyDocument.querySelector('.loader');
+let loaderDocument = bodyDocument.querySelector('.modal-loading');
 let whenContainer = document.querySelector('[data-content="when"]');
 let churchContainer = document.querySelector('[data-content="church"]');
 let castleContainer = document.querySelector('[data-content="castle"]');

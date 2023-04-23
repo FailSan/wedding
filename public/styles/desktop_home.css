@@ -1,93 +1,8 @@
-@font-face {
-    font-family: 'Ayer';
-    src: url('../storage/fonts/Ayer.otf');
-}
-
-@font-face {
-    font-family: 'NB International';
-    src: url('../storage/fonts/NB-International-Regular.ttf');
-}
-
-@font-face {
-    font-family: 'Termina Medium';
-    src: url('../storage/fonts/Termina-Medium.otf');
-}
-
-/********************************************************************/
-/***** FONT *********************************************************/
-/********************************************************************/
-
-.brown {
-    font-family: 'Termina Medium', Arial, Helvetica, sans-serif;
-    font-size: 12px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: rgba(143, 130, 94, 1);
-}
-
-.grey {
-    color: rgba(19, 19, 19, 0.4);
-}
-
-.big {
-    font-family: 'Ayer', Georgia, 'Times New Roman', Times, serif;
-    font-size: min(calc(260px - ((1440px - 100vw) / 5)), calc(260px - ((810px - 100vh) / 5)));
-    line-height: 0.85;
-    text-transform: uppercase;
-}
-
-.mid {
-    font-family: 'Ayer', Georgia, 'Times New Roman', Times, serif;
-    font-size: min(calc(64px - ((1440px - 100vw) / 20)), calc(64px - ((810px - 100vh) / 20)));
-    line-height: 1.125;
-    text-indent: 2.5ch;
-}
-
-.little {
-    font-family: 'NB International', Verdana, Tahoma, sans-serif;
-    font-size: 16px;
-    line-height: 24px;
-}
-
-
-/********************************************************************/
-/***** LINKS ********************************************************/
-/********************************************************************/
-
-a {
-    text-decoration: none;
-    color: unset;
-}
-
-a:hover {
-    text-decoration: none;
-    color: unset;
-}
-
-a:visited {
-    text-decoration: none;
-    color: unset;
-}
-
-a:active {
-    text-decoration: none;
-    color: unset;
-}
-
+@import url("shared-style.css");
 
 /********************************************************************/
 /***** GLOBAL *******************************************************/
 /********************************************************************/
-
-* {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    
-    margin: 0px;
-    padding: 0px;
-
-    box-sizing: border-box;
-}
 
 html {
     width: 100%;
@@ -97,58 +12,15 @@ html {
 }
 
 body {
-    font-family: 'NB International', Verdana, Tahoma, sans-serif;
-    font-size: 16px;
-
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-end;
 
-    width: 100%;
     height: auto;
-
-    padding-left: 64px;
 
     overflow-x: hidden;
     overflow-y: auto;
-
-    position: relative;
-}
-
-.loader {
-    color:rgba(255, 255, 255, 1);
-
-    background-color:rgba(170, 157, 121, 1);
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    
-    height: 100vh;
-    width: 100vw;
-
-    position: fixed;
-    top: 0px;
-    left: 0px;
-
-    z-index: 1000;
-
-    transition: 2s linear;
-}
-
-.loader.hidden {
-    color: transparent;
-
-    background-color: transparent;
-    opacity: 0;
-
-    z-index: -1;
-
-    pointer-events: none;
-
-    transition: 2s;
 }
 
 .pages {
@@ -184,7 +56,7 @@ a.fixedRSVP {
     align-items: center;
 
     width: 80px;
-    aspect-ratio: 1 / 1;
+    height: 80px;
 
     position: fixed;
     top: 24px;
@@ -194,61 +66,10 @@ a.fixedRSVP {
 
 
 /********************************************************************/
-/***** NAVBAR *******************************************************/
+/***** MENU *********************************************************/
 /********************************************************************/
 
-nav {
-    border-right: 1px Solid rgba(19, 19, 19, 0.2);
-    border-bottom: 0px Solid rgba(19, 19, 19, 0);
-    background-color: rgba(255, 255, 255, 1);
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-
-    width: 64px;
-    height: 100vh;
-
-    padding: 24px 12px 24px 12px;
-
-    position: fixed;
-    left: 0px;
-    top: 0px;
-    z-index: 100;
-}
-
-nav .logo {
-    width: 40px;
-    aspect-ratio: 1/1;
-}
-
-nav .opener {
-    width: 24px;
-    height: auto;
-
-    cursor: pointer;
-}
-
-nav .language {
-    font-family: 'Termina Medium', Arial, Helvetica, sans-serif;
-    font-size: 10px;
-    letter-spacing: 3px;
-    writing-mode: vertical-lr;
-    color: rgba(19, 19, 19, 0.4);
-
-    display: flex;
-    align-items: center;
-    gap: 5px;
-
-    transform: rotate(180deg);
-}
-
-nav .language .selected {
-    color: rgba(19, 19, 19, 1);
-}
-
-nav menu {
+menu {
     white-space: nowrap;
     color: rgba(19, 19, 19, 1);
 
@@ -275,7 +96,7 @@ nav menu {
     transition: 0.5s linear, color 1s linear 0.5s;
 }
 
-nav menu.hidden {
+menu.hidden {
     color: transparent;
 
     width: 0px;
@@ -288,7 +109,7 @@ nav menu.hidden {
     transition: 1s linear;
 }
 
-nav menu .row {
+menu .row {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -297,47 +118,35 @@ nav menu .row {
     height: 30%;
 }
 
-nav menu .row:nth-of-type(1) {
+menu .row:nth-of-type(1) {
     border-top: 1px Solid rgba(19, 19, 19, 0.2);
 }
 
-nav menu .row:nth-of-type(2) {
+menu .row:nth-of-type(2) {
     border-top: 1px Solid rgba(19, 19, 19, 0.2);
     border-bottom: 1px Solid rgba(19, 19, 19, 0.2);
 }
 
-nav menu .row:nth-of-type(3) {
+menu .row:nth-of-type(3) {
     border-bottom: 1px Solid rgba(19, 19, 19, 0.2);
 }
 
-nav menu .row .link {
+menu .row .link {
     display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
     gap: 16px;
 
     cursor: pointer;
 }
 
-nav menu .row .link .big {
+menu .row .link .main-title.section-name {
     font-size: min(calc((100vw / 35) * 3), calc((100vh / 7) + 20px));
 }
 
-nav menu .row .link:hover .big {
+menu .row .link:hover .main-title.section-name {
     font-style: italic;
 }
-
-nav .percentage {
-    --percentage: 0%;
-
-    border-right: 1px Solid rgba(19, 19, 19, 1);
-
-    width: 0px;
-    height: var(--percentage);
-
-    position: absolute;
-    top: 0px;
-    right: -1px;
-}
-
 
 /********************************************************************/
 /***** HOME *********************************************************/
@@ -375,7 +184,7 @@ nav .percentage {
     flex-grow: 1;
 }
 
-[data-content="home"] .left > .brown {
+[data-content="home"] .left > .brown-heading {
     margin-bottom: 72px;
 }
 
@@ -403,8 +212,6 @@ nav .percentage {
 }
 
 [data-content="home"] .right {
-    font-size: 18px;
-    line-height: 27px;
     text-align: right;
 
     display: flex;
@@ -463,8 +270,8 @@ nav .percentage {
     flex-grow: 1;
 }
 
-[data-content="intro"] .right .mid {
-    width: max(75%, 20ch);
+[data-content="intro"] .right .main-dialog {
+    width: min(75%, 20ch);
 }
 
 [data-content="intro"] .right .little-dialog {
@@ -538,7 +345,8 @@ nav .percentage {
 
 [data-content="when"] .countdown {
     font-family: 'Termina Medium', Arial, Helvetica, sans-serif;
-    font-size: 13px;
+    font-size: 12px;
+    letter-spacing: 0.2em;
     font-weight: bold;
     border: 1px Solid rgba(143, 130, 94, 1);
 
@@ -557,14 +365,6 @@ nav .percentage {
     text-align: center;
     min-width: 3ch;
 }
-
-[data-content="when"] .countdown > img {
-    height: 56px;
-    width: auto;
-
-    margin: 0px 24px 0px 24px;
-}
-
 
 /********************************************************************/
 /***** CHURCH AND CASTLE ********************************************/
@@ -669,7 +469,7 @@ nav .percentage {
     width: 100%;
 }
 
-[data-content="church"] .content .hour .big, [data-content="castle"] .content .hour .big {
+[data-content="church"] .content .hour .main-dialog, [data-content="castle"] .content .hour .main-dialog {
     font-size: min(calc(120px - ((1440px - 100vw) / 15)), calc(120px - ((810px - 100vh) / 15)));
 }
 
@@ -692,6 +492,9 @@ nav .percentage {
 }
 
 .location .title {
+    font-size: min(calc(180px - ((1440px - 100vw) / 10)), calc(180px - ((810px - 100vh) / 10)));
+    line-height: 1;
+
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -700,28 +503,23 @@ nav .percentage {
     position: relative;
 }
 
-.location .title {
-    font-size: min(calc(180px - ((1440px - 100vw) / 10)), calc(180px - ((810px - 100vh) / 10)));
-    line-height: 1;
-}
-
-.location .title .big {
+.location .main-title {
     font-size: inherit;
 }
 
-.location .title img {
+.location .title > img {
     width: auto;
     height: min(calc(130px - ((1440px - 100vw) / 10)), calc(130px - ((810px - 100vh) / 10)));
 
     position: absolute;
 }
 
-[data-content="church"] .location .title img {
+[data-content="church"] .location .title > img {
     top: 3px;
     left: 6ch;
 }
 
-[data-content="castle"] .location .title img {
+[data-content="castle"] .location .title > img {
     bottom: 20px;
     left: 5.5ch;
 }
@@ -735,41 +533,11 @@ nav .percentage {
 }
 
 .location .maps .directions {
-    color: rgba(19, 19, 19, 1);
-    font-family: 'Termina Medium', Arial, Helvetica, sans-serif;
-    font-size: 12px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-
-    border: 1px Solid rgba(19, 19, 19, 0.2);
-    background-color: transparent;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 24px;
-
-    height: 64px;
-
-    padding: 32px 24px;
-
-    transition: 0.5s linear;
+    background-image: url("../storage/images/map.svg");
 }
 
 .location .maps .directions:hover {
-    color: rgba(255, 255, 255, 1);
-
-    border: 1px Solid rgba(143, 130, 94, 1);
-    background-color: rgba(143, 130, 94, 1);
-}
-
-.location .maps .directions img {
-    filter: none;
-    transition: 0.5s linear;
-}
-
-.location .maps .directions:hover img {
-    filter: grayscale(1) brightness(2);
+    background-image: url("../storage/images/white-map.svg");
 }
 
 /********************************************************************/
@@ -810,7 +578,7 @@ nav .percentage {
     overflow-y: hidden;
 }
 
-[data-content="guest"] .slider .big {
+[data-content="guest"] .slider .main-title {
     white-space: pre;
 
     animation: 30s linear infinite slidingLeft;
@@ -841,29 +609,6 @@ nav .percentage {
 
 [data-content="guest"] .container .little-dialog .grey {
     color: rgba(255, 255, 255, 0.5);
-}
-
-[data-content="guest"] .container .button {
-    font-family: 'Termina Medium', Arial, Helvetica, sans-serif;
-    font-size: 13px;
-    letter-spacing: 3px;
-    color: rgba(19, 19, 19, 1);
-
-    background-color: rgba(255, 255, 255, 1);
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    width: 35%;
-    height: 64px;
-
-    transition: 0.5s linear;
-}
-
-[data-content="guest"] .container .button:hover {
-    background-color: rgba(143, 130, 94, 1);
-    color: rgba(255, 255, 255, 1);
 }
 
 /********************************************************************/
@@ -906,7 +651,7 @@ nav .percentage {
     width: 100%;
 }
 
-[data-content="present"] .iban .big {
+[data-content="present"] .iban .main-title {
     font-size: min(calc(120px - ((1440px - 100vw) / 15)), calc(120px - ((810px - 100vh) / 15)));
 }
 
@@ -946,7 +691,7 @@ nav .percentage {
     z-index: 8;
 }
 
-[data-content="misc"] .big {
+[data-content="misc"] .main-title {
     font-size: min(calc(180px - ((1440px - 100vw) / 10)), calc(180px - ((810px - 100vh) / 10)));
     margin-bottom: 48px;
 }
@@ -1065,7 +810,7 @@ footer {
     overflow-y: hidden;
 }
 
-footer .big {
+footer .main-title {
     font-size: min(calc(120px - ((1440px - 100vw) / 15)), calc(120px - ((810px - 100vh) / 15)));
     color: rgba(255, 255, 255, 1);
     

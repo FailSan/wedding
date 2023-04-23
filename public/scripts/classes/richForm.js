@@ -44,7 +44,7 @@ export class RichForm {
     }
 
     get errorBox() {
-        return this.element.querySelector('.error-box');
+        return this.element.querySelector('.error-dialog');
     }
 
     async inputValidation() {

@@ -1,4 +1,4 @@
-<p class="brown">{{ __("Riepilogo") }}</p>
+<p class="brown-heading">{{ __("Riepilogo") }}</p>
 
 <div class="side-field-container">
     <span class="side-field" data-side-sel="1" data-content="name">

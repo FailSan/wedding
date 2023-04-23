@@ -1,8 +1,4 @@
 @media (max-width: 640px) {
-    body {
-        font-size: 14px;
-    }
-
     main {
         flex-direction: column;
     }
@@ -13,50 +9,14 @@
 
     main .right {
         width: 100%;
-        height: calc(100% - 56px);
-
         padding: 20px 24px;
     }
-
-    /********************************************************************/
-    /***** NAVBAR *******************************************************/
-    /********************************************************************/
-
-    main .sidebar {
-        border-right: 0px Solid rgba(0, 0, 0, 0);
-        border-bottom: 1px Solid rgba(0, 0, 0, 0.2);
-
-        flex-direction: row;
-
-        width: 100vw;
-        height: 56px;
-
-        padding: 12px 18px 12px 18px;
-    }
-
-    main .sidebar .logo {
-        width: 32px;
-
-        position: absolute;
-        top: 0px;
-        bottom: 0px;
-        left: 0px;
-        right: 0px;
-
-        margin: auto auto auto auto;
-    }
-
-    main .sidebar .language {
-        writing-mode: horizontal-tb;
-        transform: none;
-    }
-
 
     /********************************************************************/
     /***** RIGHT ********************************************************/
     /********************************************************************/
 
-    main .right .top-title {
+    main .right .brown-heading {
         margin-bottom: 20px;
     }
 
@@ -70,11 +30,6 @@
 
     main .right #guest-login {
         gap: 16px;
-    }
-
-    #guest-login .text-label:has(input:placeholder-shown) > p {
-        font-size: 14px;
-        line-height: 20px;
     }
 
 }

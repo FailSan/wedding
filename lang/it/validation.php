@@ -150,6 +150,7 @@ return [
         'birthday'                 => 'compleanno',
         'body'                     => 'corpo',
         'castle_confirm'           => 'Presenza Ricevimento',
+        'child_menu'               => 'Menu bambino',
         'church_confirm'           => 'Presenza Cerimonia',
         'city'                     => 'città',
         'content'                  => 'contenuto',
