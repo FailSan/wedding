@@ -1,7 +1,5 @@
 @extends('user.dashboard')
 
-@section('title', "Pagina di Amministrazione Tavoli")
-
 @section('scripts')
     <script src="{{ asset('scripts/tables.js') }}" defer></script>
 @endsection

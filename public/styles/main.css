@@ -1,88 +1,229 @@
-* {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    
-    margin: 0px;
-    padding: 0px;
-
-    box-sizing: border-box;
-}
+@import url("shared-style.css");
 
 body {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    gap: 50px;
 
     height: 100vh;
     width: 100%;
+
+    padding: 0px;
 }
 
-navbar {
+main {
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
+
+    flex-grow: 1;
+
+    width: 100%;
+
+    padding-top: 6vh;
+}
+
+/********************************************************************/
+/***** NAVBAR *******************************************************/
+/********************************************************************/
+
+.top-nav {
+    font-weight: bold;
+
+    background-color: rgba(244, 243, 241, 1);
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 30px;
+
+    flex-shrink: 0;
 
     height: 50px;
     width: 100%;
+
+    padding-right: 8vw;
 }
 
-form {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
-
-    width: 50%;
+.top-nav a:hover {
+    text-decoration: underline;
 }
 
-.labels {
+/********************************************************************/
+/***** LOGIN - SIGNUP ***********************************************/
+/********************************************************************/
+
+#login_form, #signup_form {
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+
+    max-width: 350px;
+}
+
+.check-label {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 32px;
+
+    width: 100%;
+    height: 40px;
+
+    cursor: pointer;
+}
+
+.check-label > p {
+    font-size: 12px;
+    color: rgba(19, 19, 19, 0.4)
+}
+
+input[type="checkbox"] {
+    appearance: none;
+
+    border: 1px Solid rgba(19, 19, 19, 0.2);
+    background-color: transparent;
+    background-size: 12px 12px;
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    width: 24px;
+    height: 24px;
+
+    transition: 0.5s linear;
+}
+
+input[type="checkbox"]:hover {
+    background-color: rgba(143, 130, 94, 0.5);
+    background-image: url("../storage/images/white-yes.svg");
+}
+
+input[type="checkbox"]:checked {
+    background-color:rgba(143, 130, 94, 1);
+    background-image: url("../storage/images/white-yes.svg")
+}
+
+
+/********************************************************************/
+/***** GUEST FORM ***************************************************/
+/********************************************************************/
+.forms-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+
+#guest_form {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    width: 50%;
+    min-height: 500px;
+
+    padding: 1vh 2vw;
+}
+
+#guest_form fieldset {
+    border: 1px Solid rgba(19, 19, 19, 0.2);
+    border-radius: 24px;
+
+    display: flex;
     justify-content: flex-start;
     align-items: flex-end;
-    gap: 10px;
+    flex-wrap: wrap;
+    gap: 20px;
 
-    width: 40%;
+    width: 100%;
+    height: 100%;
+
+    padding: 2vh 4vw;
 }
 
-.inputs {
+#guest_form fieldset legend {
+    font-weight: bold;
+
+    padding: 12px;
+}
+
+#guest_form fieldset .text-label {
+    width: calc(50% - 10px);
+}
+
+#guest_form fieldset .check-label {
+    justify-content: space-between;
+
+    width: calc(50% - 10px);
+}
+
+#guest_form fieldset .cta-button.input-button {
+    width: 100%;
+}
+
+/********************************************************************/
+/***** SEARCH FORM **************************************************/
+/********************************************************************/
+
+#search_form {
     display: flex;
-    flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    gap: 10px;
-
-    width: 40%;
-}
-
-.flags {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 10px;
-
-    width: 10%;
-}
-
-.dialogs {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
 
     width: 50%;
+    min-height: 500px;
+
+    padding: 1vh 2vw;
 }
 
-.dialogs .error {
-    color: darkred;
+#search_form fieldset {
+    border: 1px Solid rgba(19, 19, 19, 0.2);
+    border-radius: 24px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: 20px;
+
+    width: 100%;
+    height: 100%;
+
+    padding: 2vh 4vw;
 }
 
-.dialogs .success {
-    color: darkgreen;
+#search_form fieldset legend {
+    font-weight: bold;
+
+    padding: 12px;
+}
+
+#search_form fieldset .check-label {
+    justify-content: space-between;
+}
+
+
+/********************************************************************/
+/***** GUEST TABLE **************************************************/
+/********************************************************************/
+
+.table-container {
+    display: flex;
+    justify-content: flex-start;
+
+    flex-grow: 1;
+
+    width: 100%;
+
+    padding: 2vh 4vw;
+
+    overflow-y: hidden;
+    overflow-x: auto;
 }
 
 table {
@@ -90,14 +231,30 @@ table {
     border: 1px Solid Black;
     border-collapse: collapse;
 
-    width: 70%;
+    min-width: 100%;
+}
+
+caption {
+    font-weight: bold;
+    text-transform: uppercase;
+
+    margin-bottom: 20px;
+}
+
+thead {
+    background-color: rgba(143, 130, 94, 0.8);
 }
 
 th {
-    border: 1px Solid Black;
-    width: 10%;
-
     text-align: center;
+    vertical-align: middle;
+    border: 1px Solid Black;
+
+    width: auto;
+    height: 50px;
+
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 th:hover {
@@ -106,15 +263,35 @@ th:hover {
 }
 
 th:not([data-order='none']) {
-    background-color: grey;
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(143, 130, 94, 1);
 }
 
 tr {
     border: 1px Solid Black;
 }
 
-td {
+tbody tr:nth-child(odd) {
+    background: rgba(244, 243, 241, 1);
+}
+
+tbody tr:nth-child(even) {
+    background-color: rgba(233, 231, 226, 1);
+}
+
+tbody td {
+    text-align: center;
+    vertical-align: middle;
+
     border: 1px Solid Black;
 
-    text-align: center;
+    height: 40px;
+
+    padding: 10px;
 }
+
+tbody tr td:last-of-type {
+    color: rgba(228, 20, 20, 1);
+    text-decoration: underline;
+}
+

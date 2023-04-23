@@ -1,7 +1,5 @@
 @extends('user.structure')
 
-@section('title', "Pagina di Registrazione")
-
 @section('scripts')
     <script src="{{ asset('scripts/home.js') }}" defer></script>
 @endsection
@@ -11,25 +9,34 @@
     <form action="#" method="post" name="signup_form" id="signup_form">
         @csrf
 
-        <div class="labels">
-            <label for="signup_name">Nome</label>
-            <label for="signup_surname">Cognome</label>
-            <label for="signup_email">E-Mail</label>
-            <label for="signup_password">Password</label>
-            <label for="signup_password_confirmation">Conferma Password</label>
-        </div>
-        
-        <div class="inputs">
-            <input type="text" name="name" id="signup_name" placeholder="Nome">
-            <input type="text" name="surname" id="signup_surname" placeholder="Cognome">
-            <input type="mail" name="email" id="signup_email" placeholder="esempio@gmail.com">
-            <input type="password" name="password" id="signup_password" placeholder="******">
-            <input type="password" name="password_confirmation" id="signup_password_confirmation" placeholder="******">
-        </div>
-        
-        <input type="submit" value="Registrati">
-    </form>
+        <label class="text-label">
+            <p>Nome</p>
+            <input type="text" name="name" placeholder=" ">
+        </label>
 
-    <div class="dialogs"></div>
+        <label class="text-label">
+            <p>Cognome</p>
+            <input type="text" name="surname" placeholder=" ">
+        </label>
+
+        <label class="text-label">
+            <p>E-Mail</p>
+            <input type="mail" name="email" placeholder=" ">
+        </label>
+
+        <label class="text-label">
+            <p>Password</p>
+            <input type="password" name="password" placeholder=" ">
+        </label>
+
+        <label class="text-label">
+            <p>Conferma Password</p>
+            <input type="password" name="password_confirmation" placeholder=" ">
+        </label>
+        
+        <span class="error-dialog"></span>
+
+        <input class="cta-button input-button" type="submit" value="Registrati">
+    </form>
 
 @endsection

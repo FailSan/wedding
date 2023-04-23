@@ -1,7 +1,5 @@
 @extends('user.structure')
 
-@section('title', "Pagina di Login")
-
 @section('scripts')
     <script src="{{ asset('scripts/home.js') }}" defer></script>
 @endsection
@@ -11,21 +9,24 @@
     <form action="#" method="post" name="login_form" id="login_form">
         @csrf
 
-        <div class="labels">
-            <label for="login_email">E-Mail</label>
-            <label for="login_password">Password</label>
-            <label for="login_remember">Ricordami</label>
-        </div>
+        <label class="text-label">
+            <p>E-Mail</p>
+            <input type="mail" name="email" placeholder=" ">
+        </label>
 
-        <div class="inputs">
-            <input type="mail" name="email" id="login_email" placeholder="esempio@gmail.com"></label>
-            <input type="password" name="password" id="login_password" placeholder="******">
-            <input type="checkbox" name="remember" id="login_remember">
-        </div>
+        <label class="text-label">
+            <p>Password</p>
+            <input type="password" name="password" placeholder=" ">
+        </label>
 
-        <input type="submit" value="Entra">
+        <label class="check-label">
+            <p>Ricordami</p>
+            <input type="checkbox" name="remember">
+        </label>
+
+        <span class="error-dialog hidden"></span>
+
+        <input class="cta-button input-button" type="submit" value="Entra">
     </form>
-
-    <div class="dialogs"></div>
 
 @endsection

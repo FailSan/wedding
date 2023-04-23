@@ -22,6 +22,7 @@ function guestCreation(event) {
     let guestAllergies = guestForm.elements['allergies'].value;
     let guestChurchConfirm = guestForm.elements['church_confirm'].checked ? 1 : 0;
     let guestCastleConfirm = guestForm.elements['castle_confirm'].checked ? 1 : 0;
+    let guestChildMenu = guestForm.elements['child_menu'].checked ? 1 : 0;
     let guestUpdated = guestForm.elements['updated'].checked ? 1 : 0;
 
     let formToken = guestForm.elements['_token'].value;
@@ -33,6 +34,7 @@ function guestCreation(event) {
     guestData.append('allergies', guestAllergies);
     guestData.append('church_confirm', guestChurchConfirm);
     guestData.append('castle_confirm', guestCastleConfirm);
+    guestData.append('child_menu', guestChildMenu);
     guestData.append('updated', guestUpdated);
     guestData.append('_token', formToken);
 
@@ -45,20 +47,11 @@ function guestCreation(event) {
 
 function onGuestCreation(serverResponse) {
     if(serverResponse['error']) {
-        dialogShow(serverResponse['error'], false);
+        dialogShow(serverResponse['error']);
     } else {
-        dialogShow(serverResponse['success'], true);
+        dialogShow(serverResponse['success']);
 
         //Clean Form
-        /*
-        guestForm.elements['name'].value = "";
-        guestForm.elements['surname'].value = "";
-        guestForm.elements['diet'].value = "";
-        guestForm.elements['allergies'].value = "";
-        guestForm.elements['church_confirm'].checked = false;
-        guestForm.elements['castle_confirm'].checked = false;
-        guestForm.elements['updated'].checked = false;
-        */
        guestForm.reset();
 
         //Retrieve Data and Populate Table
@@ -66,18 +59,14 @@ function onGuestCreation(serverResponse) {
     }
 }
 
-function dialogShow(dialogData, successFlag) {
-    let dialogBox = document.querySelector('.dialogs');
+function dialogShow(dialogData) {
+    let dialogBox = document.querySelector('.error-dialog');
+    dialogBox.classList.remove('hidden');
     dialogBox.innerHTML = '';
 
     for(let message in dialogData) {
-        let messageBox = document.createElement('span');
+        let messageBox = document.createElement('p');
         messageBox.textContent = dialogData[message];
-
-        if(successFlag) 
-            messageBox.classList.add('success');
-        else
-            messageBox.classList.add('error');
 
         dialogBox.appendChild(messageBox);
     }
@@ -101,6 +90,7 @@ searchForm.elements['search_string'].addEventListener('input', filterData);
 searchForm.elements['veg_flag'].addEventListener('change', filterData);
 searchForm.elements['church_flag'].addEventListener('change', filterData);
 searchForm.elements['castle_flag'].addEventListener('change', filterData);
+searchForm.elements['child_flag'].addEventListener('change', filterData);
 searchForm.elements['updated_flag'].addEventListener('change', filterData);
 searchForm.addEventListener('submit', filterData);
 
@@ -113,6 +103,7 @@ function filterData(event) {
     let vegFlag = searchForm.elements['veg_flag'].checked;
     let churchFlag = searchForm.elements['church_flag'].checked;
     let castleFlag = searchForm.elements['castle_flag'].checked;
+    let childFlag = searchForm.elements['child_flag'].checked;
     let updatedFlag = searchForm.elements['updated_flag'].checked;
 
     let currentHead = document.querySelector('th:not([data-order="none"])');
@@ -167,15 +158,18 @@ function filterData(event) {
                 });
                 break;
             case 'updated':
+            case 'church_confirm':
+            case 'castle_confirm':
+            case 'child_menu':
                 serverData.sort((first, second) => {
-                    if(first.updated === second.updated) {
+                    if(first[currentSort] === second[currentSort]) {
                         if(first.id < second.id)
                             return -1;
                         if(first.id > second.id)
                             return 1;
                         return 0;
                     }
-                    return second.updated - first.updated;
+                    return second[currentSort] - first[currentSort];
                 });
                 break;
             case 'host':
@@ -246,6 +240,13 @@ function filterData(event) {
         if(castleFlag) {
             filteredData = filteredData.filter((guest) => {
                 if(guest.castle_confirm)
+                    return true;
+            });
+        }
+
+        if(childFlag) {
+            filteredData = filteredData.filter((guest) => {
+                if(guest.child_menu)
                     return true;
             });
         }
@@ -326,6 +327,13 @@ function createTable(guestData) {
             castle_confirm_cell.textContent = 'No';
         guestRow.appendChild(castle_confirm_cell);
 
+        let child_menu_cell = document.createElement('td');
+        if(guestData[i]['child_menu'])
+            child_menu_cell.textContent = 'Sì';
+        else
+            child_menu_cell.textContent = 'No';
+        guestRow.appendChild(child_menu_cell);
+
         let updated_cell = document.createElement('td');
         if(guestData[i]['updated'])
             updated_cell.textContent = 'Sì';
@@ -373,10 +381,8 @@ function guestDelete(event) {
 
 function onGuestDelete(serverResponse) {
     if(serverResponse['error']) {
-        dialogShow(serverResponse['error'], false);
+        dialogShow(serverResponse['error']);
     } else {
-        dialogShow(serverResponse['success'], true);
-
         //Retrieve Data and Populate Table
         retrieveData().then((guestData) => createTable(guestData));
     }

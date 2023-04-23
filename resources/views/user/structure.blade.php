@@ -4,13 +4,10 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>@yield('title')</title>
-
-        <!-- Fonts -->
+        <title>{{ __("Il Matrimonio di C&A") }}</title>
 
         <!-- Styles -->
         <link rel ="stylesheet" href="{{ asset('styles/main.css') }}">
-        @yield('styles')
 
         <!-- Scripts -->
         @yield('scripts')
@@ -19,10 +16,9 @@
     <body>
         @include('user.header')
 
-        <div>@yield('title')</div>
-
-        @section('content')
-        @show
-        
+        <main>
+            @section('content')
+            @show
+        </main>
     </body>
 </html>

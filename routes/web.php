@@ -30,16 +30,15 @@ Route::get('/lang/{locale}', function($locale) {
 
 Route::controller(UserController::class)->prefix('user')->group(function() {
     //Basic Actions
-    Route::post('/login', 'login');
+    Route::post('/login', 'login')->name('user.login');
     Route::get('/logout', 'logout')->middleware('auth');
     Route::post('/create', 'create');
 
     //Views
     Route::view('/signup', 'user.signup');
-    Route::view('/login', 'user.login');
-    Route::view('/administration', 'user.dashboard')->middleware('auth');
+    Route::view('/', 'user.login');
     Route::get('/administration/guests', 'guestsView')->middleware('auth');
-    Route::get('/administration/tables', 'tablesView')->middleware('auth');
+    Route::view('/administration/tables', 'tablesView')->middleware('auth');
 });
 
 Route::controller(GuestController::class)->prefix('guest')->group(function() {

@@ -37,12 +37,9 @@ function userLogin(event) {
 
 function onUserLogin(serverResponse) {
     if(serverResponse['error']) {
-        dialogShow(serverResponse['error'], false);
+        dialogShow(serverResponse['error']);
     } else {
-        dialogShow(serverResponse['success'], true);
-        setTimeout(function() {
-            location.href = "/user/administration";
-        }, 2000);
+        location.href = "/user/administration/guests";
     }
 }
 
@@ -80,26 +77,17 @@ function onUserSignup(serverResponse) {
     if(serverResponse['error']) {
         dialogShow(serverResponse['error'], false);
     } else {
-        dialogShow(serverResponse['success'], true);
-        setTimeout(function() {
-            location.href = '/user/login';
-        }, 2000);
+        location.href = '/user';
     }
 }
 
-function dialogShow(dialogData, successFlag) {
-    console.log(dialogData);
-
-    let dialogBox = document.querySelector('.dialogs');
+function dialogShow(dialogData) {
+    let dialogBox = document.querySelector('.error-dialog');
+    dialogBox.classList.remove('hidden');
     dialogBox.innerHTML = '';
     for(let message in dialogData) {
-        let messageBox = document.createElement('span');
+        let messageBox = document.createElement('p');
         messageBox.textContent = dialogData[message];
-
-        if(successFlag)
-            messageBox.classList.add('success');
-        else
-            messageBox.classList.add('error');
 
         dialogBox.appendChild(messageBox);
     }
