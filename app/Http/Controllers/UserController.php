@@ -39,7 +39,7 @@ class UserController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
  
-        return redirect()->route('home');
+        return redirect()->route('user.login');
     }
 
     //User dashboard redirect
