@@ -37,7 +37,7 @@ function fillPercentage() {
 function initiateWindow() {
     fillPercentage();
     
-    if(churchContainer.style.getPropertyValue("position") == "sticky") {
+    if(window.getComputedStyle(churchContainer).getPropertyValue("position") == "sticky") {
         let churchFix = -(churchContainer.scrollHeight-mainDocument.clientHeight) + "px";
         let castleFix = -(castleContainer.scrollHeight-mainDocument.clientHeight) + "px";
 
