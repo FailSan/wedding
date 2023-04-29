@@ -679,7 +679,7 @@ main .form-feed {
 }
 
 .add-guest.edit-mode {
-    background-image: url('../storage/images/edit.png');
+    background-image: url('../storage/images/edit.svg');
 }
 
 
@@ -689,7 +689,7 @@ main .form-feed {
 
 
 .add-guest.edit-mode:hover {
-    background-image: url("../storage/images/edit.png");
+    background-image: url("../storage/images/white-edit.svg");
 }
 
 #extra_guests_form .submit-container input[type="submit"] {

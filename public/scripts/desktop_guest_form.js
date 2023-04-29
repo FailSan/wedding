@@ -344,7 +344,7 @@ function toggleGuestDetails(event) {
         let extraInputs = extraFieldset.elements;
         Array.prototype.forEach.call(extraInputs, input => {
             if(input.type == "checkbox")
-                input.checked = currentGuest[input.name];
+                input.checked = currentGuest[input.name] == 0 ? false : true;
             else
                 input.value = currentGuest[input.name]
         });

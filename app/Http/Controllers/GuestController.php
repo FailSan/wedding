@@ -34,6 +34,16 @@ class GuestController extends Controller
         }
     }
 
+    public function edit(Request $request) {
+        $guestCode = $request->cookie('code');
+        if($guestCode) {
+            $authGuest = Guest::where('code', $guestCode)->first();
+            return view('guest.form')->with('guest', $authGuest);
+        } else {
+            return redirect()->route('guest.landing');
+        }
+    }
+
     //Guest Login
     public function search(Request $request) {
         $inputData = $request->input();

@@ -7,4 +7,8 @@
     .summary-field {
         gap: 4px;
     }
+
+    .button-container {
+        flex-direction: column;
+    }
 }

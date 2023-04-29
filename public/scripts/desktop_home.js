@@ -37,15 +37,13 @@ function fillPercentage() {
 function initiateWindow() {
     fillPercentage();
     
-    let churchFix = -(churchContainer.scrollHeight-mainDocument.clientHeight) + "px";
-    let castleFix = -(castleContainer.scrollHeight-mainDocument.clientHeight) + "px";
+    if(churchContainer.style.getPropertyValue("position") == "sticky") {
+        let churchFix = -(churchContainer.scrollHeight-mainDocument.clientHeight) + "px";
+        let castleFix = -(castleContainer.scrollHeight-mainDocument.clientHeight) + "px";
 
-    churchContainer.style.setProperty('--topFix', churchFix);
-    castleContainer.style.setProperty('--topFix', castleFix);
-    /*
-    churchContainer.style.top = - (churchContainer.scrollHeight - mainDocument.clientHeight) + "px";
-    castleContainer.style.top = - (castleContainer.scrollHeight - mainDocument.clientHeight) + "px";
-    */
+        churchContainer.style.setProperty('--topFix', churchFix);
+        castleContainer.style.setProperty('--topFix', castleFix);
+    }
 }
 
 let menuOpener = document.querySelector('nav [data-open]');

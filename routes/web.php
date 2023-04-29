@@ -50,6 +50,7 @@ Route::controller(GuestController::class)->prefix('guest')->group(function() {
 
     //Views
     Route::get('/', 'landing')->name('guest.landing');
+    Route::get('/edit', 'edit');
     Route::view('/thanks', 'guest.thanks');
     
     //API

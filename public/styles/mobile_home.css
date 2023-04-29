@@ -93,7 +93,8 @@
 
         padding: 0px 24px 10vh 24px;
 
-        top: 56px;
+        position: relative;
+        top: 0px;
     }
 
     [data-content="home"] > img {
@@ -136,6 +137,8 @@
         gap: 64px;
 
         padding: 64px 24px 64px 24px;
+
+        top: -24px;
     }
 
     [data-content="intro"] .left {
@@ -188,7 +191,8 @@
 
         padding: 64px 24px 64px 24px;
     
-        top: 56px;
+        position: relative;
+        top: -24px;
     }
 
     [data-content="when"] > p:nth-of-type(1) {
@@ -214,6 +218,15 @@
     /***** CHURCH AND CASTLE ********************************************/
     /********************************************************************/
 
+    [data-content="church"] {
+        position: relative;
+        --topFix: -48px;
+    }
+    
+    [data-content="castle"] {
+        position: relative;
+        --topFix: -72px;
+    }
 
     [data-content="church"] .head .top, [data-content="castle"] .head .top {
         align-items: flex-start;
@@ -305,7 +318,8 @@
 
         padding: 72px 0px 72px 0px;
 
-        top: 56px;
+        position: relative;
+        top: -96px;
     }
 
     [data-content="guest"] .slider {

@@ -85,6 +85,15 @@
                 <p>{{ __("Hai già confermato i tuoi dati.") }}</p>
                 <p class="grey-dialog">{{ __("Se dovessi avere necessità di modificare qualcosa, contattaci!") }}
             </div>
+
+            <div class="button-container">
+                <a href="/">
+                    <button class="cta-button white-button">Torna alla Home</button>
+                </a>
+                <a href="/guest/edit">
+                    <button class="cta-button action-button edit-mode">Modifica i dati</button>
+                </a>
+            </div>
             
         </main>
     </body>
