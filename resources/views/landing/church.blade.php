@@ -11,8 +11,7 @@
 <span class="content">
     <p class="brown-heading">{{ __("Cerimonia") }}</p>
     <span class="mid-dialog">
-        <p class="main-dialog">{{ __("Chiara la conoscete anche voi. Siamo consapevoli che la aspetteremo, sotto un sole da 40 gradi, al centro di Catania?") }}</p>
-        <p class="main-dialog">{{ __("Ma quando mai? Il tempo di un paio di email e di mettermi le scarpe. Tanto voi mica avete altri impegni.") }}</p>
+        <p class="main-dialog">{{ __("La tradizione vuole che le spose si facciano attendere. Sotto il sole dell'estate, al centro di Catania. Per continuare con la comodità.") }}</p>
     </span>
     
     <span class="hour">

@@ -6,9 +6,7 @@
             <img src="{{ Storage::url('images/faq_arrow.svg') }}">
         </span>
         <span class="answer hidden">
-            <p>{{ __("Aurelio non mangia pesce, quindi almeno al matrimonio ci sarà la carne.") }}</p>
-            <p class="grey-dialog">{{ __("Nel form di partecipazione, però,
-                potrete indicare eventuali esigenze particolari sul menù.") }}</p>
+            <p>{{ __("Abbiamo scelto un menù di carne, per andare incontro ai gusti di più persone (incluso lo sposo). Nel form di partecipazione, però, potrete indicare eventuali esigenze particolari a proposito del cibo.") }}</p>
         </span>
     </div>
 
@@ -19,8 +17,7 @@
         </span>
         <span class="answer hidden">
             <p>{{ __("Certo che puoi, ma sei sicur* che reggano open bar e festa dopo cena?") }}</p>
-            <p class="grey-dialog">{{ __("Speriamo che tutti vi godiate la giornata, ma non abbiamo potuto 
-                organizzare un servizio di intrattenimento dedicato anche a bambini e bambine.") }}</p>
+            <p>{{ __("Speriamo che tutti vi godiate la giornata, ma non abbiamo potuto organizzare un servizio di intrattenimento dedicato anche a bambini e bambine.") }}
         </span>
     </div>
     
@@ -40,8 +37,7 @@
             <img src="{{ Storage::url('images/faq_arrow.svg') }}">
         </span>
         <span class="answer hidden">
-            <p class="grey-dialog">{{ __("Non ti preoccupare! Nel form di partecipazione potrai indicare tutte le intolleranze o le eventuali richieste,
-                 in modo che il catering possa organizzarsi al meglio!") }}</p>
+            <p>{{ __("Non ti preoccupare! Nel form di partecipazione potrai indicare tutte le intolleranze o le eventuali richieste, in modo che il catering possa organizzarsi al meglio!") }}</p>
         </span>
     </div>
 
@@ -51,7 +47,7 @@
             <img src="{{ Storage::url('images/faq_arrow.svg') }}">
         </span>
         <span class="answer hidden">
-            <p class="grey-dialog">{{ __("Puoi vestirti come preferisci.") }}</p>
+            <p>{{ __("Puoi vestirti come preferisci.") }}</p>
             <p>{{ __("Anche con le Birkenstock.") }}</p>
         </span>
     </div>
@@ -62,7 +58,7 @@
             <img src="{{ Storage::url('images/faq_arrow.svg') }}">
         </span>
         <span class="answer hidden">
-            <p class="grey-dialog">{{ __("C'è l'Iban di Chiara, così la smette di lamentarsi che è senza soldi.") }}</p>
+            <p>{{ __("No, c'è solo il nostro Iban. Non avete scelta.") }}</p>
         </span>
     </div>
 

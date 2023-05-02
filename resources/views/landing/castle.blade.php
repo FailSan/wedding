@@ -11,9 +11,7 @@
 <span class="content">
     <p class="brown-heading">{{ __("Ricevimento") }}</p>
     <span class="mid-dialog">
-        <p class="main-dialog">{{ __("Ho visto in una puntata dei Simpson che il riso crudo fa esplodere gli uccelli. 
-            E quindi vediamo se è vero.") }}</p>
-        <p class="main-dialog">{{ __("Dopo le eventuali esplosioni, vi invitiamo ad aspettarci per il ricevimento.") }}</p>
+        <p class="main-dialog">{{ __("Dopo la cerimonia, come da tradizione, ci lancerete addosso il riso, se nel frattempo non si sarà cotto per il caldo. Poi potrete aspettarci per l'inizio della festa.") }}</p>
     </span>
 
     <span class="hour">

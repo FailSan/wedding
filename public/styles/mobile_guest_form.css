@@ -251,6 +251,7 @@
     }
 
     .form-summary .submit-container .cta-button.input-button {
+        font-size: 8px;
         min-width: auto;
         width: 50%;
     }

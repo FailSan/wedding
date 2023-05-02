@@ -39,7 +39,7 @@
 
 <div class="submit-container">
     <button class="cta-button action-button add-guest edit-mode" tabindex="-1">
-        Modifica Dati
+        {{ __("Modifica Dati") }}
     </button>
 
     <button class="cta-button input-button" tabindex="-1">

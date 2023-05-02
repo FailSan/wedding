@@ -1,5 +1,5 @@
 <p class="brown-heading">{{ __("Quando ci sposiamo?") }}</p>
-<p class="main-title">13 {{ __("Luglio") }} 2023</p>
+<p class="main-title">{{ __("13 Luglio") }} 2023</p>
 <p>{{ __("Una data comoda: è al centro della settimana, è un giovedì. Di luglio. Così potevamo scombinarvi le ferie.") }}</p>
 
 <div class="countdown">

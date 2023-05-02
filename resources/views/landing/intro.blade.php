@@ -4,10 +4,10 @@
 </div>
 
 <div class="right">
-    <p class="main-dialog">{{ __("Avete capito bene. Dopo 7 anni dovevo pur cedere. Anche perchè, lei aveva cominciato a lamentarsi del fatto che stanno arrivando gli “anta” ...") }}</p>
+    <p class="main-dialog">{{ __("Dopo sette anni, vicini agli “enta” e agli “anta”, abbiamo deciso di cedere.") }}</p>
     <span class="little-dialog">
-        <p>{{ __("Tornando seri: siamo emozionati e felici di invitarvi al giorno più importante della nostra vita!") }}</p>
-        <p class="grey-dialog">{{ __("Più importante dopo quello dell'uscita dell'iPhone, naturalmente.") }}</p>
+        <p>{{ __("Per questo siamo emozionati e felici di invitarvi al giorno più importante della nostra vita.") }}</p>
+        <p class="grey-dialog">{{ __("O, quantomeno, importante quanto una finale di volley o l'uscita dell'iPhone.") }}</p>
     </span>
 </div>
 

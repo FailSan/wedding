@@ -17,8 +17,9 @@ window.addEventListener('scroll', fillPercentage);
 
 function hideLoader() {
     setTimeout(function() {
+        bodyDocument.classList.remove('hidden');
         loaderDocument.classList.add('hidden');
-
+        
         initiateWindow();
 
         setTimeout(function() {

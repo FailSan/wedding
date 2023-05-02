@@ -11,4 +11,17 @@
     .button-container {
         flex-direction: column;
     }
+
+    .edit-mode {
+        background-image: none;
+
+        justify-content: center;
+
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .edit-mode:hover {
+        background-image: none;
+    }
 }

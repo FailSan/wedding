@@ -71,7 +71,7 @@
                     <p class="field">{{ __("Ospiti Extra") }}</p>
                     <p class="value">{{ $guest->guests->count() }} (
                         @foreach($guest->guests as $extra)
-                            {{ $extra->name }}  {{ $extra->surname }}
+                            {{ $extra->name." ".$extra->surname }}
                             @if(!$loop->last)
                                 ,
                             @endif
@@ -88,10 +88,10 @@
 
             <div class="button-container">
                 <a href="/">
-                    <button class="cta-button white-button">Torna alla Home</button>
+                    <button class="cta-button white-button">{{ __("Torna alla Home") }}</button>
                 </a>
                 <a href="/guest/edit">
-                    <button class="cta-button action-button edit-mode">Modifica i dati</button>
+                    <button class="cta-button action-button edit-mode">{{ __("Modifica Dati") }}</button>
                 </a>
             </div>
             

@@ -50,8 +50,7 @@
 
                 <span class="mid-label">
                     <p class="question">{{ __("Sei un invitato?") }}</p>
-                    <p>{{ __("Inserisci il tuo nome e cognome e il codice che ti è stato inviato via messaggio.
-                    Potrai cosi fornirci alcuni dettagli che ci serviranno per organizzare al meglio l'evento.") }}</p>
+                    <p>{{ __("Inserisci il tuo nome e cognome e il codice che ti è stato inviato via messaggio. Potrai cosi fornirci alcuni dettagli che ci serviranno per organizzare al meglio l'evento.") }}</p>
                 </span>
 
                 <form action="#" method="post" id="guest-login">

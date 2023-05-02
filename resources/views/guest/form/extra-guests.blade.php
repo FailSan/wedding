@@ -48,7 +48,6 @@
 
     <span class="bot-section">
         <img src="{{ Storage::url('images/info.svg') }}">
-        <p class="grey-dialog">{{ __("Compila i campi e clicca su 'Aggiungi Ospite'.
-            Premi 'Conferma' per completare la registrazione.") }}</p>
+        <p class="grey-dialog">{{ __("Compila i campi e clicca su 'Aggiungi Ospite'. Premi 'Conferma' per completare la registrazione.") }}</p>
     </span>
 </form>

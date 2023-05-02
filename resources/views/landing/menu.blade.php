@@ -35,6 +35,6 @@
 
     <span class="link" data-page="misc">
         <p>[07]</p>
-        <p class="main-title section-name">{{ __("Faq & Contatti") }}</p>
+        <p class="main-title section-name">{{ __("Faq") }} & {{ __("Contatti") }}</p>
     </span>
 </div>

@@ -4,8 +4,7 @@
 </span>
 
 <span class="mid-dialog">
-    <p>{{ __("Per organizzare al meglio l'evento, avremmo bisogno che tu
-        ci fornisca qualche informazione.") }}</p>
+    <p>{{ __("Per organizzare al meglio l'evento, avremmo bisogno che tu ci fornisca qualche informazione.") }}</p>
     <p>{{ __("Quando sei pronto possiamo cominciare!") }}</p>
 </span>
 

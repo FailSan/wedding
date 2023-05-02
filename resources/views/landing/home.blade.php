@@ -14,7 +14,8 @@
         <script src="{{ asset('scripts/desktop_home.js') }}" defer></script>
 
     </head>
-    <body>
+
+    <body class="hidden">
         
         <div class="modal-loading">
             <img src="{{ Storage::url('images/rings-loader.svg') }}">

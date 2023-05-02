@@ -24,7 +24,6 @@
 
     <span class="bot-section">
         <img src="{{ Storage::url('images/info.svg') }}">
-        <p class="grey-dialog">{{ __("La cerimonia si svolgerà alle 16.30 presso la Chiesa di San Francesco d'Assisi
-            All'Immacolata. Abbiamo bisogno di sapere in anticipo se ci sarai.") }}</p>
+        <p class="grey-dialog">{{ __("La cerimonia si svolgerà alle 16.30 presso la Chiesa di San Francesco d'Assisi All'Immacolata. Abbiamo bisogno di sapere in anticipo se ci sarai.") }}</p>
     </span>
 </form>

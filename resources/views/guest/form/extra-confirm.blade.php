@@ -24,7 +24,6 @@
 
     <span class="bot-section">
         <img src="{{ Storage::url('images/info.svg') }}">
-        <p class="grey-dialog">{{ __("Puoi portare con te qualcuno se vuoi, assicurati però di inserire i
-            suoi dati corretti.") }}</p>
+        <p class="grey-dialog">{{ __("Puoi portare con te qualcuno se vuoi, assicurati però di inserire i suoi dati corretti.") }}</p>
     </span>
 </form>

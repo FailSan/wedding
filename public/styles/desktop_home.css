@@ -93,7 +93,7 @@ menu {
     overflow-x: hidden;
     overflow-y: hidden;
 
-    transition: 0.5s linear, color 1s linear 0.5s;
+    transition: 0.5s linear, color 0.5s linear 0.5s;
 }
 
 menu.hidden {
@@ -106,7 +106,7 @@ menu.hidden {
 
     z-index: -1;
 
-    transition: 1s linear;
+    transition: 0.5s linear;
 }
 
 menu .row {
@@ -469,7 +469,7 @@ menu .row .link:hover .main-title.section-name {
     width: 100%;
 }
 
-[data-content="church"] .content .hour .main-dialog, [data-content="castle"] .content .hour .main-dialog {
+[data-content="church"] .content .hour .main-title, [data-content="castle"] .content .hour .main-title {
     font-size: min(calc(120px - ((1440px - 100vw) / 15)), calc(120px - ((810px - 100vh) / 15)));
 }
 
@@ -732,7 +732,6 @@ menu .row .link:hover .main-title.section-name {
 
 [data-content="misc"] .faqs .question .link.active {
     font-weight: bold;
-    padding: 10px 0px 8px 0px;
 }
 
 [data-content="misc"] .faqs .question .link img {
@@ -746,9 +745,9 @@ menu .row .link:hover .main-title.section-name {
 
 [data-content="misc"] .faqs .question .answer {
     width: 100%;
-    max-height: 100vh;
+    max-height: 50vh;
 
-    padding: 0px 0px 16px 0px;
+    padding-bottom: 16px;
 
     overflow: hidden;
 
@@ -757,8 +756,7 @@ menu .row .link:hover .main-title.section-name {
 
 [data-content="misc"] .faqs .question .answer.hidden {
     max-height: 0px;
-
-    padding: 0px;
+    padding-bottom: 0px;
 }
 
 [data-content="misc"] .contacts {
