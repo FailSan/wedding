@@ -6,7 +6,7 @@
 <span class="container">
     <span class="little-dialog">
         <p>{{ __("Facci sapere entro il 2 giugno, per piacere.") }}</p>
-        <p class="grey-dialog">{{ __("Sennò ti veniamo a cercare a casa. E non scherzo.") }}</p>
+        <p>{{ __("Sennò ti veniamo a cercare a casa. E non scherzo.") }}</p>
     </span>
     
     <a href="/guest">

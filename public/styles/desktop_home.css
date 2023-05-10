@@ -655,6 +655,17 @@ menu .row .link:hover .main-title.section-name {
     font-size: min(calc(120px - ((1440px - 100vw) / 15)), calc(120px - ((810px - 100vh) / 15)));
 }
 
+[data-content="present"] .iban-details {
+    text-align: right;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+
+    width: 100%;
+}
+
 [data-content="present"] .separator {
     border-right: 1px Solid rgba(19, 19, 19, 0.2);
 

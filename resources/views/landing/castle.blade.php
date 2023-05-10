@@ -11,7 +11,7 @@
 <span class="content">
     <p class="brown-heading">{{ __("Ricevimento") }}</p>
     <span class="mid-dialog">
-        <p class="main-dialog">{{ __("Dopo la cerimonia, come da tradizione, ci lancerete addosso il riso, se nel frattempo non si sarà cotto per il caldo. Poi potrete aspettarci per l'inizio della festa.") }}</p>
+        <p class="main-dialog">{{ __("Dopo la cerimonia ci lancerete addosso il riso, se nel frattempo non si sarà cotto per il caldo. Poi potrete aspettarci per l'inizio della festa.") }}</p>
     </span>
 
     <span class="hour">

@@ -14,4 +14,9 @@
     <p class="main-title">IT91K0301503200000002950674</p>
 </span>
 
+<span class="iban-details">
+    <p>{{ __("Intestatario") }}: Chiara Santangelo</p>
+    <p>{{ __("Causale: Regalo Matrimonio") }}</p>
+</span>
+
 <div class="separator"></div>

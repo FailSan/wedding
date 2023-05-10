@@ -247,6 +247,10 @@ main .form-feed {
     margin-bottom: 48px;
 }
 
+.form-container form .top-section .main-dialog i {
+    padding-right: 0.5ch;
+}
+
 .form-container form .bot-section {
     display: flex;
     align-items: flex-start;

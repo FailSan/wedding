@@ -3,7 +3,7 @@
 
     <span class="top-section">
         <p class="brown-heading">6 / 7</p>
-        <p class="main-dialog">{{ __("Soffri di") }} <i>{{ __("Allergie") }}</i> {{ __("particolari? Indicacele tutte scrivendo gli allergeni uno dopo l'altro separandoli con una virgola.") }}</p>
+        <p class="main-dialog">{{ __("Soffri di") }} <i>{{ __("Allergie") }}</i>  {{ __("particolari? Indicacele tutte scrivendo gli allergeni uno dopo l'altro separandoli con una virgola.") }}</p>
         
         <label class="text-label">
             <p>{{ __("Glutine, lattosio, pesche, aglio, ecc...") }}</p>

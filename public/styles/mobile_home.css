@@ -91,7 +91,7 @@
 
         min-height: calc(100vh - 56px);
 
-        padding: 0px 24px 15vh 24px;
+        padding: 0px 24px 20vh 24px;
 
         position: relative;
         top: 0px;
@@ -371,8 +371,8 @@
     [data-content="present"] .separator {
         height: 120px;
 
-        margin-top: 80px;
-        margin-bottom: 30px;
+        margin-top: 10px;
+        margin-bottom: -72px;
     }
 
     /********************************************************************/

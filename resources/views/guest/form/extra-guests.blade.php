@@ -4,7 +4,7 @@
     <span class="top-section">
         <p class="brown-heading">8 / 8</p>
         <p class="main-dialog">{{ __("Aggiungi gli ospiti che desideri invitare.") }}</p>
-        <p>{{ __("Inserisci i loro dati e quando avrai finito, clicca 'Conferma' e vai avanti!") }}</p>
+        <p>{{ __("Inserisci i loro dati e quando avrai finito, clicca Conferma e vai avanti!") }}</p>
 
         <fieldset class="extra-guests-container"></fieldset>
 
