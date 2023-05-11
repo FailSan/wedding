@@ -221,9 +221,13 @@
     .add-guest.edit-mode {
         background-image: none;
     }
+    
+    .add-guest:hover {
+        background-image: none;
+    }
 
-    #extra_guests_form .submit-container input[type="submit"] {
-        font-size: 8px;
+    .add-guest.edit-mode:hover {
+        background-image: none;
     }
 
     #extra_guests_form .bot-section {

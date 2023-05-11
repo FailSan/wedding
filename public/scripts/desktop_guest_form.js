@@ -65,60 +65,58 @@ function sectionSwipeUp() {
     let currentSection = richSections.find(section => section.selected);
     let currentIndex = richSections.indexOf(currentSection);
 
-    if(currentIndex < (richSections.length - 1)) {
-        if(currentIndex == 0) {
-            navArrows.classList.remove('hidden');
+    if(currentIndex == 0) {
+        navArrows.classList.remove('hidden');
 
-            prevAction.classList.add('disabled');
-            prevAction.removeEventListener('click', formSwipeDown);
-        }
-
-        if(currentIndex == 1) {
-            navArrows.classList.add('hidden');
-        }
-
-        let newSection = richSections[currentIndex + 1];
-
-        currentSection.selected = false;
-        newSection.selected = true;
-
-        document.documentElement.style.setProperty('--section-index', ++currentIndex);
-        sidePercentage.updateLength();
+        prevAction.classList.add('disabled');
+        prevAction.removeEventListener('click', formSwipeDown);
     }
+
+    if(currentIndex == 1) {
+        navArrows.classList.add('hidden');
+    }
+
+    if(currentIndex == 2) {
+        return;
+    }
+
+    let newSection = richSections[currentIndex + 1];
+
+    currentSection.selected = false;
+    newSection.selected = true;
+
+    document.documentElement.style.setProperty('--section-index', ++currentIndex);
+    sidePercentage.updateLength();
 }
 
 function sectionSwipeDown() {
     let currentSection = richSections.find(section => section.selected);
     let currentIndex = richSections.indexOf(currentSection);
 
-    if(currentIndex > 0) {
-        if(currentIndex == 1) {
-            return;
-        }
-
-        if(currentIndex == (richSections.length - 1)) {
-            navArrows.classList.remove('hidden');
-
-            prevAction.removeEventListener('click', sectionSwipeDown);
-            prevAction.addEventListener('click', formSwipeDown);
-            nextAction.classList.remove('disabled');
-            nextAction.addEventListener('click', inputControl);
-        }
-
-        let newSection = richSections[currentIndex - 1];
-
-        currentSection.selected = false;
-        newSection.selected = true;
-
-        document.documentElement.style.setProperty('--section-index', --currentIndex);
-        sidePercentage.updateLength();
+    if(currentIndex == 0) {
+        return;
     }
+
+    if(currentIndex == 1) {
+        return;
+    }
+
+    if(currentIndex == 2) {
+        navArrows.classList.remove('hidden');
+    }
+
+    let newSection = richSections[currentIndex - 1];
+    
+    currentSection.selected = false;
+    newSection.selected = true;
+
+    document.documentElement.style.setProperty('--section-index', --currentIndex);
+    sidePercentage.updateLength();
 }
 
 function formSwipeUp() {
     let enabledForms = richForms.filter(form => form.enabled);
     let currentForm = enabledForms.find(form => form.selected);
-
     let currentIndex = enabledForms.indexOf(currentForm);
 
     if(currentIndex < (enabledForms.length - 1)) {
@@ -128,6 +126,11 @@ function formSwipeUp() {
             prevAction.addEventListener('click', formSwipeDown);
         }
 
+        if(currentIndex == 6) {
+            nextAction.classList.add('submit-mode');
+            nextAction.textContent = document.documentElement.lang === "it" ? "Vai al riepilogo" : "Go to recap";
+        }
+
         let newForm = enabledForms[currentIndex + 1];
 
         currentForm.selected = false;
@@ -135,14 +138,9 @@ function formSwipeUp() {
 
         document.documentElement.style.setProperty('--form-index', ++currentIndex);
         sidePercentage.updateLength();
+
     } else {
         sectionSwipeUp();
-        prevAction.removeEventListener('click', formSwipeDown);
-        prevAction.addEventListener('click', sectionSwipeDown);
-
-        nextAction.classList.add('disabled');
-        nextAction.removeEventListener('click', inputControl);
-
         summaryUpdate();
     }
 }
@@ -154,10 +152,17 @@ function formSwipeDown() {
     let currentIndex = enabledForms.indexOf(currentForm);
 
     if(currentIndex > 0) {
+
         if(currentIndex == 1) {
             prevAction.classList.add('disabled');
             prevAction.removeEventListener('click', formSwipeDown);
         }
+
+        if(currentIndex == 7) {
+            nextAction.classList.remove('submit-mode');
+            nextAction.textContent = "";
+        }
+
         let newForm = enabledForms[currentIndex - 1];
 
         currentForm.selected = false;
@@ -165,6 +170,7 @@ function formSwipeDown() {
 
         document.documentElement.style.setProperty('--form-index', --currentIndex);
         sidePercentage.updateLength();
+
     } else {
         sectionSwipeDown();
     }
@@ -252,7 +258,7 @@ function addExtraGuest(event) {
     let extraInputs = extraFieldset.elements;
 
     if(mainGuest.extraGuests.length >= 10) {
-        let textError = 'Non puoi aggiungere più di 10 ospiti.';
+        let textError = document.documentElement.lang === "it" ? 'Non puoi aggiungere più di 10 ospiti.' : "You can't add more than 10 guests.";
         let errorList = {'guestsLength': [textError]};
         currentForm.showError(errorList);
     } else {
@@ -330,7 +336,7 @@ function toggleGuestDetails(event) {
         currentRadio.checked = false;
         currentForm.element.reset();
 
-        addExtraButton.firstElementChild.textContent = 'Aggiungi Ospite';
+        addExtraButton.firstElementChild.textContent = document.documentElement.lang === "it" ? 'Aggiungi Ospite' : "Add Guest";
         addExtraButton.classList.remove('edit-mode');
         addExtraButton.removeEventListener('click', editExtraGuest);
         addExtraButton.addEventListener('click', addExtraGuest);
@@ -349,7 +355,7 @@ function toggleGuestDetails(event) {
                 input.value = currentGuest[input.name]
         });
 
-        addExtraButton.firstElementChild.textContent = 'Modifica Ospite';
+        addExtraButton.firstElementChild.textContent = document.documentElement.lang === "it" ? 'Modifica Ospite' : "Modify Guest";
         addExtraButton.classList.add('edit-mode');
         addExtraButton.removeEventListener('click', addExtraGuest);
         addExtraButton.addEventListener('click', editExtraGuest);
@@ -396,7 +402,7 @@ function onEditExtraValidation(jsonData) {
             else
                 input.value = currentGuest[input.name];
         });
-        jsonData.error.editGuest = ['Sono stati caricati i dati precedentemente validati.'];
+        jsonData.error.editGuest = document.documentElement.lang === "it" ? ['Sono stati caricati i dati precedentemente validati.'] : ["Previously validated data were loaded."];
         currentForm.showError(jsonData.error);
 
     } else {
@@ -409,7 +415,7 @@ function onEditExtraValidation(jsonData) {
         currentForm.showValidate();
         currentForm.element.reset();
 
-        addExtraButton.firstElementChild.textContent = 'Aggiungi Ospite';
+        addExtraButton.firstElementChild.textContent = document.documentElement.lang === "it" ? 'Aggiungi Ospite' : "Add Guest";
         addExtraButton.classList.remove('edit-mode');
         addExtraButton.removeEventListener('click', editExtraGuest);
         addExtraButton.addEventListener('click', addExtraGuest);
@@ -429,7 +435,7 @@ function deleteExtraGuest(event) {
         currentRadio.checked = false;
         currentForm.element.reset();
 
-        addExtraButton.firstElementChild.textContent = 'Aggiungi Ospite';
+        addExtraButton.firstElementChild.textContent = document.documentElement.lang === "it" ? 'Aggiungi Ospite' : "Add Guest";
         addExtraButton.classList.remove('edit-mode');
         addExtraButton.removeEventListener('click', editExtraGuest);
         addExtraButton.addEventListener('click', addExtraGuest);
@@ -453,11 +459,11 @@ function summaryUpdate() {
         switch(property) {
             case 'church_confirm':
             case 'castle_confirm':
-                propertyValue.textContent = (mainGuest[property] == '1') ? 'Sì' : 'No';
+                propertyValue.textContent = (mainGuest[property] == '1') ? ((document.documentElement.lang === "it") ? 'Sì' : "Yes") : 'No';
                 break;
             case 'diet':
             case 'allergies':
-                propertyValue.textContent = mainGuest[property] ? mainGuest[property] : "nessuna";
+                propertyValue.textContent = mainGuest[property] ? mainGuest[property] : ((document.documentElement.lang === "it") ? "nessuna" : "no one");
                 break;
             case 'extra_confirm':
                 let fullNameCollections = "";
@@ -471,7 +477,7 @@ function summaryUpdate() {
                 if(fullNameCollections) {
                     propertyValue.textContent = mainGuest["extra_guests"] + " (" + fullNameCollections + ")";
                 } else {
-                    propertyValue.textContent = "Nessuno";
+                    propertyValue.textContent = document.documentElement.lang === "it" ? "nessuno" : "no one";
                 }
                 break;
             case 'extra_guests':

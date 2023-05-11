@@ -49,12 +49,12 @@
 
                 <span class="summary-field" data-content="church_confirm">
                     <p class="field">{{ __("Presente alla Cerimonia") }}</p>
-                    <p class="value">{{ $guest->church_confirm ? "Si" : "No" }}</p>
+                    <p class="value">{{ $guest->church_confirm ? ((app()->getLocale() == "it") ? "Si" : "Yes") : "No" }}</p>
                 </span>
 
                 <span class="summary-field" data-content="castle_confirm">
                     <p class="field">{{ __("Presente al Ricevimento") }}</p>
-                    <p class="value">{{ $guest->castle_confirm ? "Si" : "No" }}</p>
+                    <p class="value">{{ $guest->castle_confirm ? ((app()->getLocale() == "it") ? "Si" : "Yes") : "No" }}</p>
                 </span>
 
                 <span class="summary-field" data-content="diet">

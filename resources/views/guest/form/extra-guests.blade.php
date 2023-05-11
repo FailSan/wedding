@@ -41,8 +41,6 @@
             <button class="cta-button action-button add-guest" tabindex="-1">
                 <p>{{ __("Aggiungi Ospite") }}</p>
             </button>
-
-            <input class="cta-button input-button" type="submit" value="{{ __('Conferma') }}" tabindex="-1">
         </div>
     </span>
 

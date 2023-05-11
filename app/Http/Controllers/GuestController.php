@@ -214,6 +214,9 @@ class GuestController extends Controller
                 'allergies' => Str::lower($extraGuest->allergies) ?: 'nessuna',
                 'child_menu' => $extraGuest->child_menu,
                 'password' => Str::upper(Str::random(8)),
+                'church_confirm' => $mainProperties['church_confirm'],
+                'castle_confirm' => true,
+                'updated' => true
             ]);
 
             if($newGuest) {

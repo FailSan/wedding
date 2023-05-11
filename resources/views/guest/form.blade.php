@@ -20,7 +20,7 @@
         </div>
 
         <nav class="sidebar">
-            <a href="/guest"><img class="logo" src="{{ Storage::url('images/logo.svg') }}"></a>
+            <a href="/guest" tabindex="-1"><img class="logo" src="{{ Storage::url('images/logo.svg') }}"></a>
 
             <span class="language">
                 <p data-lang="it" @class(["selected" => app()->getLocale() == "it"])><a href="/lang/it">IT</a></p>
