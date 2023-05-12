@@ -81,11 +81,6 @@
                 </span>
             </div>
 
-            <div class="contact-container">
-                <p>{{ __("Hai già confermato i tuoi dati.") }}</p>
-                <p class="grey-dialog">{{ __("Se dovessi avere necessità di modificare qualcosa, contattaci!") }}
-            </div>
-
             <div class="button-container">
                 <a href="/">
                     <button class="cta-button white-button">{{ __("Torna alla Home") }}</button>

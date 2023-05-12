@@ -186,7 +186,7 @@
         padding-bottom: 3px;
     }
 
-    .form-container form input[type="text"]:focus {
+    .form-container form .mini-form input[type="text"]:focus {
         padding-bottom: 3px;
     }
 
@@ -206,13 +206,9 @@
     }
 
     .add-guest {
-        font-size: 8px;
-
         background-image: none;
 
         justify-content: center;
-
-        height: 48px;
 
         padding-left: 0px;
         padding-right: 0px;
@@ -240,23 +236,26 @@
     /***** SUMMARY ******************************************************/
     /********************************************************************/
 
-    .form-summary .submit-container {
-        margin-top: 24px;
-        row-gap: 20px;
+    main .form-summary .brown-heading {
+        margin-bottom: 34px;
     }
 
     .summary-field {
         gap: 4px;
     }
 
+    .form-summary .submit-container {
+        flex-direction: column;
+        margin-top: 24px;
+    }
+
     .form-summary .submit-container .add-guest {
         min-width: auto;
-        width: 50%;
+        width: 100%;
     }
 
     .form-summary .submit-container .cta-button.input-button {
-        font-size: 8px;
         min-width: auto;
-        width: 50%;
+        width: 100%;
     }
 }

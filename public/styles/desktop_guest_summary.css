@@ -53,17 +53,6 @@ main {
     width: 100%;
 }
 
-.contact-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-
-    width: 100%;
-
-    margin-top: 110px;
-}
-
 .button-container {
     display: flex;
     justify-content: flex-start;
@@ -72,7 +61,7 @@ main {
 
     width: 100%;
 
-    margin-top: 42px;
+    margin-top: 110px;
 }
 
 .edit-mode {
