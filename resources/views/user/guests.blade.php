@@ -107,6 +107,9 @@
 
             <thead>
                 <tr>
+                    <td colspan="12" class="guest-counter">Invitati Trovati: {{ $guests->count() }}</td>
+                </tr>
+                <tr>
                     <th data-sort="id" data-order="asc">ID</th>
                     <th data-sort="name" data-order="none">NOME</th>
                     <th data-sort="surname" data-order="none">COGNOME</th>

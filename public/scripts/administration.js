@@ -286,6 +286,10 @@ function sortTable(event) {
 //Populate Table
 function createTable(guestData) {
     let mainTable = document.querySelector('#guest_table');
+
+    let mainCounter = mainTable.querySelector('.guest-counter');
+    mainCounter.textContent = 'Invitati Trovati: ' + guestData.length;
+
     let mainBody = mainTable.querySelector('tbody');
     mainBody.innerHTML = "";
 
