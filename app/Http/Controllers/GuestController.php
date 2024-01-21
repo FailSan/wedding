@@ -230,4 +230,24 @@ class GuestController extends Controller
             return response()->json(['error' => 'Invitato NON Aggiornato']);
         }
     }
+
+    public function filter(Request $request) {
+        $searchParams = $request->input('searchParams');
+        $pageParams = $request->input('pageParams');
+
+        $pageIndex = $pageParams['pageIndex'];
+        $pageSize = $pageParams['pageSize'];
+
+        $pageTotal = ceil(Guest::all()->count() / $pageSize);
+        $results = Guest::skip($pageIndex * $pageSize)->take($pageSize)->get();
+
+        $objectResponse = [
+            "results" => $results,
+            "pageTotal" => $pageTotal,
+            "pageIndex" => $pageIndex,
+            "pageSize" => $pageSize
+        ];
+
+        return response()->json($objectResponse);
+    }
 }

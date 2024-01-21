@@ -21,6 +21,8 @@ use App\Http\Controllers\TableController;
 
 Route::view('/', 'landing.home')->name('home');
 
+Route::view('/test', 'table.table');
+
 Route::get('/lang/{locale}', function($locale) {
     app()->setLocale($locale);
     session()->put('locale', $locale);
@@ -45,6 +47,7 @@ Route::controller(GuestController::class)->prefix('guest')->group(function() {
     //Basic Actions
     Route::post('/create', 'create');
     Route::post('/update', 'update');
+    Route::any('/filter', 'filter');
     Route::get('/delete/{guest_id}', 'delete');
     Route::post('/search', 'search');
 
